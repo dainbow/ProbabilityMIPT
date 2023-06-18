@@ -485,4 +485,70 @@
   \[\forall n \in \mathbb{N} \: \forall B \in \mathcal{B}(\mathbb{R}^n):\: P_n(B) = P(F_n(B))\]
 \end{theorem}
 
+\section{Случайные элементы, случайные величины и векторы на вероятностном пространстве}
+Пусть $(\Omega,\, \mathcal{F},\, P)$ -- вероятностное пространство, а $(E,\, \xi)$ -- измеримое пространство.
+
+\begin{definition}
+  Отображение $X:\: \Omega \to E$ называтся случайным элементом, если оно измеримо, то есть
+  \[\forall B \in \xi:\: X^{-1}(B) = \{\omega :\: X(\omega) \in B\} \in \mathcal{F}\]
+\end{definition}
+
+\begin{definition}
+  Если $(E,\, \xi) = (\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, то случайный элемент называется случайной величиной.
+\end{definition}
+
+\begin{definition}
+  Если $(E,\,\xi) = (\mathbb{R}^n,\, \mathcal{B}(\mathbb{R}^n))$, то случайный элемент называется случайным вектором.
+\end{definition}
+
+\begin{lemma}
+  Критерий измеримости отображения.
+
+  Пусть $\mathcal{M} \subset \mathcal{E}$, так чтобы $\sigma(\mathcal{M}) = \mathcal{E}$.
+  Тогда $X:\: \Omega \to E$ является случайным элементом $\Leftrightarrow$
+  \[\forall B \in \mathcal{M}:\: X^{-1}(B) \in \mathcal{F}\]
+\end{lemma}
+
+\begin{proof}
+  $\Rightarrow$ очевидно.
+
+  $\Leftarrow$ Рассмотрим
+  \[\mathcal{D} = \{B \in \mathcal{E}:\: X^{-1}(B) \in \mathcal{F}\}\]
+  Легко видеть, что $\mathcal{D}$ -- это $\sigma$-алгебра, так как $\mathcal{E}$ -- $\sigma$-алгебра, а прообраз сохраняет теоретико-множественные операции.
+
+  По условию $\mathcal{M} \subset \mathcal{D} \Rightarrow \sigma(\mathcal{M}) = \mathcal{E} \subset \mathcal{D}$ в силу минимальности.
+\end{proof}
+
+\begin{corollary}
+  Следующие утверждения эквивалентны:
+  \begin{enumerate}
+    \item $X:\: \Omega \to \mathbb{R}$ -- случайная величина
+    \item $\forall x \in \mathbb{R}$:
+    \[\{\omega:\: X(\omega) < x\} \in \mathcal{F}\]
+    \item $\forall x \in \mathbb{R}$:
+    \[\{\omega:\: X(\omega) \leq x\} \in \mathcal{F}\]
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  Применяем лемму для $\mathcal{M} = \{(-\infty,\,x),\, x \in \mathbb{R}\}$ или $\mathcal{M} = \{(-\infty,\,x],\, x \in \mathbb{R}\}$. В обоих случаях $\sigma(\mathcal{M}) = \mathcal{B}(\mathbb{R})$
+\end{proof}
+
+\begin{corollary}
+  $X := (X_1,\,\cdots,\,X_n):\: \Omega \to \mathbb{R}^n$ -- случайный вектор $\Leftrightarrow$
+  \[\forall i = \overline{1,\,n}:\: X_i -- \text{ случайная величина}\]
+\end{corollary}
+
+\begin{proof}
+  $\Rightarrow$ Пусть $B \in \mathcal{B}(\mathbb{R})$. Тогда 
+  \[X_i^{-1}(B) = X^{-1}(\mathbb{R} \times\cdots\times \stackrel{i}{B}\times\cdots\times\mathbb{R}) \in \mathcal{F}\]
+  Это верно, так как $X$ -- случайный вектор и 
+  \[\mathbb{R} \times\cdots\times \stackrel{i}{B}\times\cdots\times \mathbb{R} \in \mathcal{B}(\mathbb{R}^n)\]
+  $\Leftarrow$ Рассмотрим $\mathcal{M} = \{B_1\times\cdots\times B_n :\: B_i \in \mathcal{B}(\mathbb{R})\}$. Тогда $\sigma(\mathcal{M}) = \mathcal{B}(\mathbb{R}^n)$ и проверим условие леммы:
+  \[X^{-1}(B_1\times\cdots\times B_n) = \stackrel{\in \mathcal{F}}{X^{-1}_1(B_1)} \cap\cdots\cap \stackrel{\in \mathcal{F}}{X_n^{-1}(B_n)} \in \mathcal{F}\]
+  так как $\forall i = \overline{1,\,n}:\: X_i$ -- случайная величина.
+
+  Значит по предыдущей лемме $\Rightarrow X$ -- случайный вектор.
+\end{proof}
+
 \end{document}
