@@ -444,565 +444,641 @@
 		      \[F(\vec{x}_{(n)}) = P((-\infty,\, \vec{x}_{(n)}]) \stackrel{n \to +\infty}{\to} P(\emptyset) = 0\]
 		\item Проверим, например для $n = 2$, что
 		      \[\bigtriangleup_{a_1,\,b_1}^1 \circ \cdots \circ \bigtriangleup_{a_n,\,b_n}^n F(\vec{x}) = P((a_1,\,b_1] \times\cdots\times (a_n,\,b_n])\]
-          Действительно:
-          \begin{align*}
-            \bigtriangleup^1_{a_1,\,b_1} \circ\bigtriangleup^2_{a_2,\,b_2} F(x_1,\,x_2) = \bigtriangleup^1_{a_1,\,b_1} (F(x_1,\,b_2) - F(x_1,\,a_2)) =\\
-            F(b_1,\,b_2) - F(b_1,\,a_2) - F(a_1,\,b_2) + F(a_1,\,a_2) = P((a_1,\,b_1] \times (a_2,\,b_2]) \geq 0 
-          \end{align*}
-          \begin{figure}[h]
-            \includegraphics[scale=0.3]{img/f_example.png}
-          \end{figure}
+		      Действительно:
+		      \begin{align*}
+			      \bigtriangleup^1_{a_1,\,b_1} \circ\bigtriangleup^2_{a_2,\,b_2} F(x_1,\,x_2) = \bigtriangleup^1_{a_1,\,b_1} (F(x_1,\,b_2) - F(x_1,\,a_2)) = \\
+			      F(b_1,\,b_2) - F(b_1,\,a_2) - F(a_1,\,b_2) + F(a_1,\,a_2) = P((a_1,\,b_1] \times (a_2,\,b_2]) \geq 0
+		      \end{align*}
+		      \begin{figure}[h]
+			      \includegraphics[scale=0.3]{img/f_example.png}
+		      \end{figure}
 
 
-          В общем случае достаточно заметить, что 
-          \[\bigtriangleup^i_{a_i,\,b_i}P(B_1\times\cdots\times B_{i - 1} \times (-\infty,\, x_i]\times\cdots\times B_n) = P(B_1\times\cdots\times(a_i,\,b_i]\times\cdots\times B_n)\]
+		      В общем случае достаточно заметить, что
+		      \[\bigtriangleup^i_{a_i,\,b_i}P(B_1\times\cdots\times B_{i - 1} \times (-\infty,\, x_i]\times\cdots\times B_n) = P(B_1\times\cdots\times(a_i,\,b_i]\times\cdots\times B_n)\]
 	\end{enumerate}
 \end{proof}
 
 \begin{theorem}
-  О построении вероятностной меры на $(\mathbb{R}^n,\, \mathcal{B}(\mathbb{R}^n))$ по функции распределения (б/д).
+	О построении вероятностной меры на $(\mathbb{R}^n,\, \mathcal{B}(\mathbb{R}^n))$ по функции распределения (б/д).
 
-  Пусть $F(\vec{x})$ удовлетворяет всем свойствам из предыдущей леммы. Тогда $\exists!$ вероятностная мера на $(\mathbb{R}^n,\, \mathcal{B}(\mathbb{R}^n))$, для которой $F$ является функцией распределения.
+	Пусть $F(\vec{x})$ удовлетворяет всем свойствам из предыдущей леммы. Тогда $\exists!$ вероятностная мера на $(\mathbb{R}^n,\, \mathcal{B}(\mathbb{R}^n))$, для которой $F$ является функцией распределения.
 \end{theorem}
 
 \begin{definition}
-  Пусть $P$ -- вероятностная мера на $(\mathbb{R}^\infty,\, \mathcal{B}(\mathbb{R}^\infty))$.
+	Пусть $P$ -- вероятностная мера на $(\mathbb{R}^\infty,\, \mathcal{B}(\mathbb{R}^\infty))$.
 
-  $\forall n \in \mathbb{N}$ рассмотрим
-  \[P_n(B) = P(F_n(B))\]
-  где $F_n(B) = \{\vec{x} = (x_1,\,x_2,\,\cdots) :\: (x_1\,\,\cdots,\,x_n) \in B\}$ -- циллиндр с основанием $B$.
+	$\forall n \in \mathbb{N}$ рассмотрим
+	\[P_n(B) = P(F_n(B))\]
+	где $F_n(B) = \{\vec{x} = (x_1,\,x_2,\,\cdots) :\: (x_1\,\,\cdots,\,x_n) \in B\}$ -- циллиндр с основанием $B$.
 
-  Тогда $P_n$ будет вероятностной мерой в $\mathbb{R}^n$. Кроме того, $\forall n :\: \forall B \in \mathcal{B}(\mathbb{R}^n)$:
-  \[P_n(B) = P_{n + 1}(B \times \mathbb{R})\]
-  Это свойство согласованности.
+	Тогда $P_n$ будет вероятностной мерой в $\mathbb{R}^n$. Кроме того, $\forall n :\: \forall B \in \mathcal{B}(\mathbb{R}^n)$:
+	\[P_n(B) = P_{n + 1}(B \times \mathbb{R})\]
+	Это свойство согласованности.
 \end{definition}
 
 \begin{theorem}
-  Колмогорова о мерах в $\mathbb{R}^\infty$ (б/д).
+	Колмогорова о мерах в $\mathbb{R}^\infty$ (б/д).
 
-  Пусть $P_1,\,P_2,\,\cdots$ -- последовательность вероятностных мер в $\mathbb{R},\,\mathbb{R}^2,\,\cdots$, обладающая свойством согласованности.
-  Тогда $\exists!$ вероятностная мера $P$ на $(\mathbb{R}^\infty,\,\mathcal{B}(\mathbb{R}^\infty))$, такая что 
-  \[\forall n \in \mathbb{N} \: \forall B \in \mathcal{B}(\mathbb{R}^n):\: P_n(B) = P(F_n(B))\]
+	Пусть $P_1,\,P_2,\,\cdots$ -- последовательность вероятностных мер в $\mathbb{R},\,\mathbb{R}^2,\,\cdots$, обладающая свойством согласованности.
+	Тогда $\exists!$ вероятностная мера $P$ на $(\mathbb{R}^\infty,\,\mathcal{B}(\mathbb{R}^\infty))$, такая что
+	\[\forall n \in \mathbb{N} \: \forall B \in \mathcal{B}(\mathbb{R}^n):\: P_n(B) = P(F_n(B))\]
 \end{theorem}
 
 \section{Случайные элементы, случайные величины и векторы на вероятностном пространстве}
 Пусть $(\Omega,\, \mathcal{F},\, P)$ -- вероятностное пространство, а $(E,\, \xi)$ -- измеримое пространство.
 
 \begin{definition}
-  Отображение $X:\: \Omega \to E$ называтся случайным элементом, если оно измеримо, то есть
-  \[\forall B \in \xi:\: X^{-1}(B) = \{\omega :\: X(\omega) \in B\} \in \mathcal{F}\]
+	Отображение $X:\: \Omega \to E$ называтся случайным элементом, если оно измеримо, то есть
+	\[\forall B \in \xi:\: X^{-1}(B) = \{\omega :\: X(\omega) \in B\} \in \mathcal{F}\]
 \end{definition}
 
 \begin{definition}
-  Если $(E,\, \xi) = (\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, то случайный элемент называется случайной величиной.
+	Если $(E,\, \xi) = (\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, то случайный элемент называется случайной величиной.
 \end{definition}
 
 \begin{definition}
-  Если $(E,\,\xi) = (\mathbb{R}^n,\, \mathcal{B}(\mathbb{R}^n))$, то случайный элемент называется случайным вектором.
+	Если $(E,\,\xi) = (\mathbb{R}^n,\, \mathcal{B}(\mathbb{R}^n))$, то случайный элемент называется случайным вектором.
 \end{definition}
 
 \begin{lemma}
-  Критерий измеримости отображения.
+	Критерий измеримости отображения.
 
-  Пусть $\mathcal{M} \subset \mathcal{E}$, так чтобы $\sigma(\mathcal{M}) = \mathcal{E}$.
-  Тогда $X:\: \Omega \to E$ является случайным элементом $\Leftrightarrow$
-  \[\forall B \in \mathcal{M}:\: X^{-1}(B) \in \mathcal{F}\]
+	Пусть $\mathcal{M} \subset \mathcal{E}$, так чтобы $\sigma(\mathcal{M}) = \mathcal{E}$.
+	Тогда $X:\: \Omega \to E$ является случайным элементом $\Leftrightarrow$
+	\[\forall B \in \mathcal{M}:\: X^{-1}(B) \in \mathcal{F}\]
 \end{lemma}
 
 \begin{proof}
-  $\Rightarrow$ очевидно.
+	$\Rightarrow$ очевидно.
 
-  $\Leftarrow$ Рассмотрим
-  \[\mathcal{D} = \{B \in \mathcal{E}:\: X^{-1}(B) \in \mathcal{F}\}\]
-  Легко видеть, что $\mathcal{D}$ -- это $\sigma$-алгебра, так как $\mathcal{E}$ -- $\sigma$-алгебра, а прообраз сохраняет теоретико-множественные операции.
+	$\Leftarrow$ Рассмотрим
+	\[\mathcal{D} = \{B \in \mathcal{E}:\: X^{-1}(B) \in \mathcal{F}\}\]
+	Легко видеть, что $\mathcal{D}$ -- это $\sigma$-алгебра, так как $\mathcal{E}$ -- $\sigma$-алгебра, а прообраз сохраняет теоретико-множественные операции.
 
-  По условию $\mathcal{M} \subset \mathcal{D} \Rightarrow \sigma(\mathcal{M}) = \mathcal{E} \subset \mathcal{D}$ в силу минимальности.
+	По условию $\mathcal{M} \subset \mathcal{D} \Rightarrow \sigma(\mathcal{M}) = \mathcal{E} \subset \mathcal{D}$ в силу минимальности.
 \end{proof}
 
 \begin{corollary}
-  Следующие утверждения эквивалентны:
-  \begin{enumerate}
-    \item $X:\: \Omega \to \mathbb{R}$ -- случайная величина
-    \item $\forall x \in \mathbb{R}$:
-    \[\{\omega:\: X(\omega) < x\} \in \mathcal{F}\]
-    \item $\forall x \in \mathbb{R}$:
-    \[\{\omega:\: X(\omega) \leq x\} \in \mathcal{F}\]
-  \end{enumerate}
+	Следующие утверждения эквивалентны:
+	\begin{enumerate}
+		\item $X:\: \Omega \to \mathbb{R}$ -- случайная величина
+		\item $\forall x \in \mathbb{R}$:
+		      \[\{\omega:\: X(\omega) < x\} \in \mathcal{F}\]
+		\item $\forall x \in \mathbb{R}$:
+		      \[\{\omega:\: X(\omega) \leq x\} \in \mathcal{F}\]
+	\end{enumerate}
 \end{corollary}
 
 \begin{proof}
-  Применяем лемму для $\mathcal{M} = \{(-\infty,\,x),\, x \in \mathbb{R}\}$ или $\mathcal{M} = \{(-\infty,\,x],\, x \in \mathbb{R}\}$. В обоих случаях $\sigma(\mathcal{M}) = \mathcal{B}(\mathbb{R})$
+	Применяем лемму для $\mathcal{M} = \{(-\infty,\,x),\, x \in \mathbb{R}\}$ или $\mathcal{M} = \{(-\infty,\,x],\, x \in \mathbb{R}\}$. В обоих случаях $\sigma(\mathcal{M}) = \mathcal{B}(\mathbb{R})$
 \end{proof}
 
 \begin{corollary}
-  $X := (X_1,\,\cdots,\,X_n):\: \Omega \to \mathbb{R}^n$ -- случайный вектор $\Leftrightarrow$
-  \[\forall i = \overline{1,\,n}:\: X_i -- \text{ случайная величина}\]
+	$X := (X_1,\,\cdots,\,X_n):\: \Omega \to \mathbb{R}^n$ -- случайный вектор $\Leftrightarrow$
+	\[\forall i = \overline{1,\,n}:\: X_i -- \text{ случайная величина}\]
 \end{corollary}
 
 \begin{proof}
-  $\Rightarrow$ Пусть $B \in \mathcal{B}(\mathbb{R})$. Тогда 
-  \[X_i^{-1}(B) = X^{-1}(\mathbb{R} \times\cdots\times \stackrel{i}{B}\times\cdots\times\mathbb{R}) \in \mathcal{F}\]
-  Это верно, так как $X$ -- случайный вектор и 
-  \[\mathbb{R} \times\cdots\times \stackrel{i}{B}\times\cdots\times \mathbb{R} \in \mathcal{B}(\mathbb{R}^n)\]
-  $\Leftarrow$ Рассмотрим $\mathcal{M} = \{B_1\times\cdots\times B_n :\: B_i \in \mathcal{B}(\mathbb{R})\}$. Тогда $\sigma(\mathcal{M}) = \mathcal{B}(\mathbb{R}^n)$ и проверим условие леммы:
-  \[X^{-1}(B_1\times\cdots\times B_n) = \stackrel{\in \mathcal{F}}{X^{-1}_1(B_1)} \cap\cdots\cap \stackrel{\in \mathcal{F}}{X_n^{-1}(B_n)} \in \mathcal{F}\]
-  так как $\forall i = \overline{1,\,n}:\: X_i$ -- случайная величина.
+	$\Rightarrow$ Пусть $B \in \mathcal{B}(\mathbb{R})$. Тогда
+	\[X_i^{-1}(B) = X^{-1}(\mathbb{R} \times\cdots\times \stackrel{i}{B}\times\cdots\times\mathbb{R}) \in \mathcal{F}\]
+	Это верно, так как $X$ -- случайный вектор и
+	\[\mathbb{R} \times\cdots\times \stackrel{i}{B}\times\cdots\times \mathbb{R} \in \mathcal{B}(\mathbb{R}^n)\]
+	$\Leftarrow$ Рассмотрим $\mathcal{M} = \{B_1\times\cdots\times B_n :\: B_i \in \mathcal{B}(\mathbb{R})\}$. Тогда $\sigma(\mathcal{M}) = \mathcal{B}(\mathbb{R}^n)$ и проверим условие леммы:
+	\[X^{-1}(B_1\times\cdots\times B_n) = \stackrel{\in \mathcal{F}}{X^{-1}_1(B_1)} \cap\cdots\cap \stackrel{\in \mathcal{F}}{X_n^{-1}(B_n)} \in \mathcal{F}\]
+	так как $\forall i = \overline{1,\,n}:\: X_i$ -- случайная величина.
 
-  Значит по предыдущей лемме $\Rightarrow X$ -- случайный вектор.
+	Значит по предыдущей лемме $\Rightarrow X$ -- случайный вектор.
 \end{proof}
 
 \section{Характеристики случайной величины и случайного вектора}
 \begin{definition}
-  Распределением случайной величины (вектора) $\xi$ называется вероятностная мера $P_\xi$ на $(\mathbb{R},\,\mathcal{B}(\mathbb{R}))$ ($(\mathbb{R}^n,\,\mathcal{B}(\mathbb{R}^n))$), определённая по правилу:
-  \[P_\xi(B) = P(\xi \in B),\, B \in \mathcal{B}(\mathbb{R}) \; (\mathbb{R}^n)\]
+	Распределением случайной величины (вектора) $\xi$ называется вероятностная мера $P_\xi$ на $(\mathbb{R},\,\mathcal{B}(\mathbb{R}))$ ($(\mathbb{R}^n,\,\mathcal{B}(\mathbb{R}^n))$), определённая по правилу:
+	\[P_\xi(B) = P(\xi \in B),\, B \in \mathcal{B}(\mathbb{R}) \; (\mathbb{R}^n)\]
 \end{definition}
 
 \begin{definition}
-  Функцией распределения случайной величины $\xi$ называется
-  \[F_\xi(x) = P(\xi \leq x) = P_\xi((-\infty,\, x])\]
+	Функцией распределения случайной величины $\xi$ называется
+	\[F_\xi(x) = P(\xi \leq x) = P_\xi((-\infty,\, x])\]
 \end{definition}
 
 \begin{note}
-  \[P(\xi_1 \leq x_1,\, \xi_2 \leq x_2) := P(\{\xi_1 \leq x_1\} \cap \{\xi_2 \leq x_2\})\]
+	\[P(\xi_1 \leq x_1,\, \xi_2 \leq x_2) := P(\{\xi_1 \leq x_1\} \cap \{\xi_2 \leq x_2\})\]
 \end{note}
 
 \begin{definition}
-  Если $\xi = (\xi_1,\,\cdots,\,\xi_n)$ -- случайный вектор, то его функцией распределения называется
-  \[F_\xi(x_1,\,\cdots,\,x_n) = P_\xi((-\infty,\,x_1]\times\cdots\times (-\infty,\,x_n]) = P(\xi_1 \leq x_1,\, \cdots,\, \xi_n \leq x_n)\] 
+	Если $\xi = (\xi_1,\,\cdots,\,\xi_n)$ -- случайный вектор, то его функцией распределения называется
+	\[F_\xi(x_1,\,\cdots,\,x_n) = P_\xi((-\infty,\,x_1]\times\cdots\times (-\infty,\,x_n]) = P(\xi_1 \leq x_1,\, \cdots,\, \xi_n \leq x_n)\]
 \end{definition}
 
 \begin{definition}
-  Случайная величина является 
-  \begin{itemize}
-    \item Дискретной, если таково её распределение
-    \item Абсолютно-непрерывной, если таково её распределение
-    
-    В этом случае $\xi$ имеет плотность $p_\xi(t) \geq 0$:
-    \[F_\xi(x) = \int_{-\infty}^x p_\xi(t)dt\]
-    \item Сингулярной, если таково её распределение
-  \end{itemize}
+	Случайная величина является
+	\begin{itemize}
+		\item Дискретной, если таково её распределение
+		\item Абсолютно-непрерывной, если таково её распределение
+
+		      В этом случае $\xi$ имеет плотность $p_\xi(t) \geq 0$:
+		      \[F_\xi(x) = \int_{-\infty}^x p_\xi(t)dt\]
+		\item Сингулярной, если таково её распределение
+	\end{itemize}
 \end{definition}
 
 \begin{definition}
-  Случайная величина $\xi$ называется простой, если она принимает конечное число значений. В этом случае $\xi$ имеет вид:
-  \[\xi = \sum_{k = 1}^n x_k \mathbb{I}_{A_k}\]
-  где $x_1,\,\cdots,\,x_n$ -- различные числа, $A_1,\,\cdots,\,A_n$ -- разбиение $\Omega$.
+	Случайная величина $\xi$ называется простой, если она принимает конечное число значений. В этом случае $\xi$ имеет вид:
+	\[\xi = \sum_{k = 1}^n x_k \mathbb{I}_{A_k}\]
+	где $x_1,\,\cdots,\,x_n$ -- различные числа, $A_1,\,\cdots,\,A_n$ -- разбиение $\Omega$.
 \end{definition}
 
 \begin{definition}
-  Пусть $\xi$ -- случайная величина (вектор) на $(\Omega,\, \mathcal{F},\,P)$. Сигма-алгеброй, порождённой $\xi$, называется 
-  \[\mathcal{F}_\xi = \{\{\xi \in B\} :\: B \in \mathcal{B}(\mathbb{R})\} \: (\mathbb{R}^n)\]
-  Заметим, что $\mathcal{F}_\xi \subset \mathcal{F}$
+	Пусть $\xi$ -- случайная величина (вектор) на $(\Omega,\, \mathcal{F},\,P)$. Сигма-алгеброй, порождённой $\xi$, называется
+	\[\mathcal{F}_\xi = \{\{\xi \in B\} :\: B \in \mathcal{B}(\mathbb{R})\} \: (\mathbb{R}^n)\]
+	Заметим, что $\mathcal{F}_\xi \subset \mathcal{F}$
 \end{definition}
 
 \begin{definition}
-  Случайная величина (вектор) $\eta$ является $\mathcal{F}_\xi$-измеримое, если $\mathcal{F}_\eta \subset \mathcal{F}_\xi$
+	Случайная величина (вектор) $\eta$ является $\mathcal{F}_\xi$-измеримое, если $\mathcal{F}_\eta \subset \mathcal{F}_\xi$
 \end{definition}
 
 \begin{definition}
-  Если $\xi$ -- это случайная величина, то положим
-  \[\xi^+ := \max(\xi,\, 0);\;\;\; \xi^- := \max(-\xi,\, 0)\]
-  Тогда, $\xi = \xi^+ - \xi^-$
+	Если $\xi$ -- это случайная величина, то положим
+	\[\xi^+ := \max(\xi,\, 0);\;\;\; \xi^- := \max(-\xi,\, 0)\]
+	Тогда, $\xi = \xi^+ - \xi^-$
 \end{definition}
 
 \begin{definition}
-  Функция $\phi:\: \mathbb{R}^n \to \mathbb{R}^m$ называется борелевской, если 
-  \[\forall B \in \mathcal{B}(\mathbb{R}^m) :\: \phi^{-1}(B) = \{x :\: \phi(x) \in B\} \in \mathcal{B}(\mathbb{R}^n)\]
+	Функция $\phi:\: \mathbb{R}^n \to \mathbb{R}^m$ называется борелевской, если
+	\[\forall B \in \mathcal{B}(\mathbb{R}^m) :\: \phi^{-1}(B) = \{x :\: \phi(x) \in B\} \in \mathcal{B}(\mathbb{R}^n)\]
 \end{definition}
 
 \begin{lemma} \label{BOREL_MEASURE}
-  $\eta$ является $\mathcal{F}_\xi$-измеримой $\Leftrightarrow \exists$ борелевская функция $\phi$, такая что $\eta = \phi(\xi)$.
+	$\eta$ является $\mathcal{F}_\xi$-измеримой $\Leftrightarrow \exists$ борелевская функция $\phi$, такая что $\eta = \phi(\xi)$.
 \end{lemma}
 
 \begin{proof}
-  $\Leftrightarrow$ Пусть $\eta = \phi(\xi)$ и $B \in \mathcal{B}(\mathbb{R})$. Тогда
-  \[\{\eta \in B\} = \{\xi \in \stackrel{\in \mathcal{B}(\mathbb{R})}{\phi^{-1}(B)}\} \in \mathcal{F}_\xi \Rightarrow \mathcal{F}_\eta \subset \mathcal{F}_\xi\]
+	$\Leftrightarrow$ Пусть $\eta = \phi(\xi)$ и $B \in \mathcal{B}(\mathbb{R})$. Тогда
+	\[\{\eta \in B\} = \{\xi \in \stackrel{\in \mathcal{B}(\mathbb{R})}{\phi^{-1}(B)}\} \in \mathcal{F}_\xi \Rightarrow \mathcal{F}_\eta \subset \mathcal{F}_\xi\]
 \end{proof}
 
 \begin{theorem}
-  О приближении простыми.
-  
-  \begin{enumerate}
-    \item Пусть $\xi \geq 0$. Тогда $\exists$ последовательность $\mathcal{F}_\xi$-измеримых случайных величин $\{\xi_n,\, n \in \mathbb{N}\}$, такая что 
-    \[0 \leq \xi_n \uparrow \xi\]
-    \item Если $\xi$ -- произвольная случайная величина, то $\exists$ последовательность $\mathcal{F}_\xi$ измеримых простых случайных величин $\{\xi_n,\, n \in \mathbb{N}\}$, такая что
-    \[\forall n \in \mathbb{N}:\: |\xi_n| \leq |\xi|,\, \lim_{n \to +\infty}\xi_n = \xi\]
-  \end{enumerate}
+	О приближении простыми.
+
+	\begin{enumerate}
+		\item Пусть $\xi \geq 0$. Тогда $\exists$ последовательность $\mathcal{F}_\xi$-измеримых случайных величин $\{\xi_n,\, n \in \mathbb{N}\}$, такая что
+		      \[0 \leq \xi_n \uparrow \xi\]
+		\item Если $\xi$ -- произвольная случайная величина, то $\exists$ последовательность $\mathcal{F}_\xi$ измеримых простых случайных величин $\{\xi_n,\, n \in \mathbb{N}\}$, такая что
+		      \[\forall n \in \mathbb{N}:\: |\xi_n| \leq |\xi|,\, \lim_{n \to +\infty}\xi_n = \xi\]
+	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  \begin{enumerate}
-    \item Предъявим $\xi_n$ в явном виде:
-    \[\xi_n = \sum_{k = 1}^{n2^n}\frac{k - 1}{2^n}\mathbb{I}_{\{\frac{k - 1}{2^n} \leq \xi < \frac{k}{2^n}\}}\]
-    Легко видеть, что $0 \leq \xi_n \leq \xi_{n + 1}$ и $\xi = \lim\limits_{n \to +\infty} \xi_n$. Кроме того, $\forall n:\: \xi_n$ -- борелевская функция от $\xi \Rightarrow \xi_n$ -- по (\ref{BOREL_MEASURE}) это $\mathcal{F}_\xi$-измеримая случайная величина.
-    \item Приближаем $\xi^+$ и $\xi^-$ по предыдущему пункту, затем берём разность
-  \end{enumerate}
+	\begin{enumerate}
+		\item Предъявим $\xi_n$ в явном виде:
+		      \[\xi_n = \sum_{k = 1}^{n2^n}\frac{k - 1}{2^n}\mathbb{I}_{\{\frac{k - 1}{2^n} \leq \xi < \frac{k}{2^n}\}}\]
+		      Легко видеть, что $0 \leq \xi_n \leq \xi_{n + 1}$ и $\xi = \lim\limits_{n \to +\infty} \xi_n$. Кроме того, $\forall n:\: \xi_n$ -- борелевская функция от $\xi \Rightarrow \xi_n$ -- по (\ref{BOREL_MEASURE}) это $\mathcal{F}_\xi$-измеримая случайная величина.
+		\item Приближаем $\xi^+$ и $\xi^-$ по предыдущему пункту, затем берём разность
+	\end{enumerate}
 \end{proof}
 
 \section{Независимости произвольного набора случайных величин}
 \begin{definition}
-  Случайные векторы $\{\xi_\alpha,\, \alpha \in \mathfrak{A}\}$ называются независимыми в совокупности, если независимы в совокупности порождённые ими $\sigma$-алгебры.
+	Случайные векторы $\{\xi_\alpha,\, \alpha \in \mathfrak{A}\}$ называются независимыми в совокупности, если независимы в совокупности порождённые ими $\sigma$-алгебры.
 \end{definition}
 
 \begin{corollary}
-  Случайные векторы $\xi_1,\,\cdots,\,\xi_n,\, \xi_i \in \mathbb{R}^{k_i},\, i = \overline{1,\,n}$ независимы в совокупности $\Leftrightarrow$
-  \[\forall B_1,\,\cdots,\,B_n \in \mathcal{B}(\mathbb{R}^{k_i}) :\: P(\xi_1 \in B_1,\,\cdots,\,\xi_n \in B_n) = \prod_{i = 1}^n P(\xi_i \in B_i)\]
+	Случайные векторы $\xi_1,\,\cdots,\,\xi_n,\, \xi_i \in \mathbb{R}^{k_i},\, i = \overline{1,\,n}$ независимы в совокупности $\Leftrightarrow$
+	\[\forall B_1,\,\cdots,\,B_n \in \mathcal{B}(\mathbb{R}^{k_i}) :\: P(\xi_1 \in B_1,\,\cdots,\,\xi_n \in B_n) = \prod_{i = 1}^n P(\xi_i \in B_i)\]
 \end{corollary}
 
 \begin{lemma}
-  Критерий независимости в терминах функций распределения
+	Критерий независимости в терминах функций распределения
 
-  Случайные величины $\xi_1,\,\cdots,\,\xi_n$ независимы в совокупности $\Leftrightarrow$
-  \[\forall x_1,\,\cdots,\,x_n \in \mathbb{R} :\: P(\xi_1 \leq x_1,\,\cdots,\,\xi_n \leq x_n) = \prod_{i = 1}^n P(\xi_i \leq x_i)\]
-  То есть функция распределения вектора распадается в произведение функций распределения компонент.
+	Случайные величины $\xi_1,\,\cdots,\,\xi_n$ независимы в совокупности $\Leftrightarrow$
+	\[\forall x_1,\,\cdots,\,x_n \in \mathbb{R} :\: P(\xi_1 \leq x_1,\,\cdots,\,\xi_n \leq x_n) = \prod_{i = 1}^n P(\xi_i \leq x_i)\]
+	То есть функция распределения вектора распадается в произведение функций распределения компонент.
 \end{lemma}
 
 \begin{proof}
-  $\Rightarrow$ очевидно из следствия выше.
+	$\Rightarrow$ очевидно из следствия выше.
 
-  $\Leftarrow$ Проверим $\mathcal{M}_j = \{\{\xi_j \leq x\}:\: x \in \mathbb{R}\}$ -- подходящая $\pi$-система. Очевидно, что $\mathcal{M}_j$ -- это $\pi$-система и $\sigma(\mathcal{M}_j) \subset \mathcal{F}_{\xi_j}$.
+	$\Leftarrow$ Проверим $\mathcal{M}_j = \{\{\xi_j \leq x\}:\: x \in \mathbb{R}\}$ -- подходящая $\pi$-система. Очевидно, что $\mathcal{M}_j$ -- это $\pi$-система и $\sigma(\mathcal{M}_j) \subset \mathcal{F}_{\xi_j}$.
 
-  Тогда $\forall A \in \mathcal{M}_j$ имеет вид 
-  \[A = \{\xi_j \in B\},\, B \in \mathcal{B}(\mathbb{R})\]
-  Тогда введём
-  \[\mathcal{D} := \{B \in \mathcal{B}(\mathbb{R}) :\: \{\xi_j \in B\} \in \sigma(\mathcal{M}_j)\}\]
-  Тогда $\mathcal{D}$ -- это тоже $\sigma$-алгебра:
-  \begin{enumerate}
-    \item \[\{\xi_j \in \mathbb{R}\} = \Omega \in \sigma(\mathcal{M}_j) \Rightarrow \mathbb{R} \in \mathcal{D}\]
-    \item \[\{\xi_j \in B_1 \cap B_2\} = \{\xi_j \in B_1\} \cap \{\xi_j \in B_2\} \in \sigma(\mathcal{M}_j) \Rightarrow B_1 \cap B_2 \in \mathcal{D}\]
-    \item Аналогично
-    \[B \in \mathcal{D} \Rightarrow \overline{B} \in \mathcal{D}\]
-    \item Аналогично
-    \[B_i \in \mathcal{D},\, i \in \mathbb{N} \Rightarrow \bigcup_{i = 1}^\infty B_i \in \mathcal{D}\]
-  \end{enumerate}
-  По построению все полуинтервалы $(-\infty,\, x] \in \mathcal{D} \Rightarrow \mathcal{B}(\mathbb{R}) \subset \mathcal{D}$. Значит, $\sigma(M_j) = \mathcal{F}_{\xi_j}$. Тогда, применяя (\ref{INDEPENDENCE_CRIT}), получим требуемое.
+	Тогда $\forall A \in \mathcal{M}_j$ имеет вид
+	\[A = \{\xi_j \in B\},\, B \in \mathcal{B}(\mathbb{R})\]
+	Тогда введём
+	\[\mathcal{D} := \{B \in \mathcal{B}(\mathbb{R}) :\: \{\xi_j \in B\} \in \sigma(\mathcal{M}_j)\}\]
+	Тогда $\mathcal{D}$ -- это тоже $\sigma$-алгебра:
+	\begin{enumerate}
+		\item \[\{\xi_j \in \mathbb{R}\} = \Omega \in \sigma(\mathcal{M}_j) \Rightarrow \mathbb{R} \in \mathcal{D}\]
+		\item \[\{\xi_j \in B_1 \cap B_2\} = \{\xi_j \in B_1\} \cap \{\xi_j \in B_2\} \in \sigma(\mathcal{M}_j) \Rightarrow B_1 \cap B_2 \in \mathcal{D}\]
+		\item Аналогично
+		      \[B \in \mathcal{D} \Rightarrow \overline{B} \in \mathcal{D}\]
+		\item Аналогично
+		      \[B_i \in \mathcal{D},\, i \in \mathbb{N} \Rightarrow \bigcup_{i = 1}^\infty B_i \in \mathcal{D}\]
+	\end{enumerate}
+	По построению все полуинтервалы $(-\infty,\, x] \in \mathcal{D} \Rightarrow \mathcal{B}(\mathbb{R}) \subset \mathcal{D}$. Значит, $\sigma(M_j) = \mathcal{F}_{\xi_j}$. Тогда, применяя (\ref{INDEPENDENCE_CRIT}), получим требуемое.
 \end{proof}
 
 \begin{note}
-  То же самое верно и для случайных векторов.
+	То же самое верно и для случайных векторов.
 
-  $\xi_1,\,\cdots,\,\xi_n$ независимы в совокупности $\Leftrightarrow$
-  \[\forall \vec{x}_1,\,\cdots,\,\vec{x}_n :\: P(\xi_1 \leq \vec{x}_1,\,\cdots,\,\xi_n \leq \vec{x}_n) = \prod_{k = 1}^n P(\xi_1 \leq \vec{x}_1)\]
+	$\xi_1,\,\cdots,\,\xi_n$ независимы в совокупности $\Leftrightarrow$
+	\[\forall \vec{x}_1,\,\cdots,\,\vec{x}_n :\: P(\xi_1 \leq \vec{x}_1,\,\cdots,\,\xi_n \leq \vec{x}_n) = \prod_{k = 1}^n P(\xi_1 \leq \vec{x}_1)\]
 \end{note}
 
 \begin{lemma}
-  О независимости борелевских функций от независимых случайных величин.
+	О независимости борелевских функций от независимых случайных величин.
 
-  Пусть $\xi_1,\,\cdots,\,\xi_n$ -- независимые случайные векторы, $\xi_i \in \mathbb{R}^{k_i},\, k_i \in \mathbb{N},\, i = \overline{1,\,n}$. Пусть $f_i:\: \mathbb{R}^{k_i} \to \mathbb{R}^{m_i},\, i = \overline{1,\,n}$ -- борелевские функции. Положим $\eta_i = f_i(\xi_i)$. Тогда $\eta_1,\,\cdots,\,\eta_n$ -- независимые в совокупности.
+	Пусть $\xi_1,\,\cdots,\,\xi_n$ -- независимые случайные векторы, $\xi_i \in \mathbb{R}^{k_i},\, k_i \in \mathbb{N},\, i = \overline{1,\,n}$. Пусть $f_i:\: \mathbb{R}^{k_i} \to \mathbb{R}^{m_i},\, i = \overline{1,\,n}$ -- борелевские функции. Положим $\eta_i = f_i(\xi_i)$. Тогда $\eta_1,\,\cdots,\,\eta_n$ -- независимые в совокупности.
 \end{lemma}
 
 \begin{proof}
-  $\eta_1,\,\cdots,\,\eta_n$ независимы в совокупности $\Leftrightarrow \mathcal{F}_{\eta_1},\,\cdots,\,\mathcal{F}_{\eta_n}$ независимы в совокупности.
+	$\eta_1,\,\cdots,\,\eta_n$ независимы в совокупности $\Leftrightarrow \mathcal{F}_{\eta_1},\,\cdots,\,\mathcal{F}_{\eta_n}$ независимы в совокупности.
 
-  Но $\mathcal{F}_{\eta_i} \subset \mathcal{F}_{\xi_i} \Rightarrow \mathcal{F}_{\eta_1},\,\cdots,\,\mathcal{F}_{\eta_n}$ независимы как подсистемы в независимых $\sigma$-алгебрах.
+	Но $\mathcal{F}_{\eta_i} \subset \mathcal{F}_{\xi_i} \Rightarrow \mathcal{F}_{\eta_1},\,\cdots,\,\mathcal{F}_{\eta_n}$ независимы как подсистемы в независимых $\sigma$-алгебрах.
 \end{proof}
 
 \begin{corollary}
-  $[\xi_1,\,\cdots,\,\xi_{n_1}],\, [\xi_{n_1 + 1},\,\cdots,\,\xi_{n_1 + n_2}],\,\cdots,\, [\xi_{n_1 + \cdots + n_{k - 1} + 1},\,\cdots,\, \xi_{n_1 + \cdots + n_k}]$ -- независимые блоки случайных величин. Пусть $f_j :\: \mathbb{R}^{n_j} \to \mathbb{R},\, j = \overline{1,\,k}$ -- борелевские функции. Тогда $f_1(\xi_1,\,\cdots,\,\xi_{n_1}),\, f_2(\xi_{n_1 + 1},\,\cdots,\,\xi_{n_1 + n_2}),\,\cdots,\, f_k(\xi_{n_1 + \cdots + n_{k - 1} + 1},\,\cdots,\, \xi_{n_1 + \cdots + n_k})$ -- независимые в совокупности случайные величины.
+	$[\xi_1,\,\cdots,\,\xi_{n_1}],\, [\xi_{n_1 + 1},\,\cdots,\,\xi_{n_1 + n_2}],\,\cdots,\, [\xi_{n_1 + \cdots + n_{k - 1} + 1},\,\cdots,\, \xi_{n_1 + \cdots + n_k}]$ -- независимые блоки случайных величин. Пусть $f_j :\: \mathbb{R}^{n_j} \to \mathbb{R},\, j = \overline{1,\,k}$ -- борелевские функции. Тогда $f_1(\xi_1,\,\cdots,\,\xi_{n_1}),\, f_2(\xi_{n_1 + 1},\,\cdots,\,\xi_{n_1 + n_2}),\,\cdots,\, f_k(\xi_{n_1 + \cdots + n_{k - 1} + 1},\,\cdots,\, \xi_{n_1 + \cdots + n_k})$ -- независимые в совокупности случайные величины.
 \end{corollary}
 
 \begin{proof}
-  Пускай $\eta_1 := (\xi_1,\,\cdots,\,\xi_{n_1}),\, \cdots,\, \eta_k := (\xi_{n_1 + \cdots + n_{k - 1} + 1},\,\cdots,\, \xi_{n_1 + \cdots + n_k})$. По предыдущей лемме $\eta_i,\, i = \overline{1,\,k}$ будут независимы в совокупности.
+	Пускай $\eta_1 := (\xi_1,\,\cdots,\,\xi_{n_1}),\, \cdots,\, \eta_k := (\xi_{n_1 + \cdots + n_{k - 1} + 1},\,\cdots,\, \xi_{n_1 + \cdots + n_k})$. По предыдущей лемме $\eta_i,\, i = \overline{1,\,k}$ будут независимы в совокупности.
 \end{proof}
 
 \section{Теорема о математическом ожидании произведения независимых случайных величин с конечными математическими ожиданиями}
 \begin{theorem}
-  О математическом ожидании произведения независимых случайных величин с конечными математическими ожиданиями.
+	О математическом ожидании произведения независимых случайных величин с конечными математическими ожиданиями.
 
-  Пусть $\xi,\, \eta$ -- независимые случайные величины, $E\xi,\, E\eta$ -- конечные. Тогда $E\xi\eta$ тоже конечно, причём $E\xi\eta = E\xi\cdot E\eta$.
+	Пусть $\xi,\, \eta$ -- независимые случайные величины, $E\xi,\, E\eta$ -- конечные. Тогда $E\xi\eta$ тоже конечно, причём $E\xi\eta = E\xi\cdot E\eta$.
 \end{theorem}
 
 \begin{proof}
-  Пусть сначала $\xi,\, \eta$ -- простые случайные величины, то есть
-  \[\xi = \sum_{i = 1}^n x_i\mathbb{I}\{\xi = x_i\};\; \eta = \sum_{j = 1}^m y_j\mathbb{I}\{\eta = y_j\}\]
-  где $x_1,\,\cdots,\,x_n$ -- значения $\xi$, а $y_1,\,\cdots,\,y_j$ -- значения $\eta$. Тогда
-  \[\xi\eta = \sum_{i = 1}^n\sum_{j = 1}^m x_iy_j \mathbb{I}\{\xi = x_i,\, \eta = y_j\}\]
-  Берём $E$ от обеих частей:
-  \begin{align*}
-    E\xi\eta = \sum_{i = 1}^n\sum_{j = 1}^m x_iy_j P(\xi = x_i,\, \eta = y_j) \stackrel{\independent}{=} \sum_{i = 1}^n\sum_{j = 1}^m x_iy_j P(\xi = x_i)P(\eta = y_j) = \\
-    \left(\sum_{i = 1}x_iP(\xi = x_i)\right)\left(\sum_{j = 1}^my_jP(\eta = y_j)\right) = E\xi\cdot E\eta
-  \end{align*}
-  Далее, пусть $\xi,\,\eta \geq 0$ -- неотрицательные случайные величины. Тогда рассмотрим последовательности простых случайных величин $\{\xi_n,\, n \in \mathbb{N}\},\, \{\eta_m,\, m \in \mathbb{N}\}$, такие что
-  \[0 \leq \xi_n \uparrow \xi ;\;\;\; 0 \leq \eta_m \uparrow \eta\]
-  и $\forall n \in \mathbb{N}:\: \xi_n$ является $\mathcal{F}_\xi$-измеримой, $\eta_n$ -- $\mathcal{F}_\eta$-измеримой.
+	Пусть сначала $\xi,\, \eta$ -- простые случайные величины, то есть
+	\[\xi = \sum_{i = 1}^n x_i\mathbb{I}\{\xi = x_i\};\; \eta = \sum_{j = 1}^m y_j\mathbb{I}\{\eta = y_j\}\]
+	где $x_1,\,\cdots,\,x_n$ -- значения $\xi$, а $y_1,\,\cdots,\,y_j$ -- значения $\eta$. Тогда
+	\[\xi\eta = \sum_{i = 1}^n\sum_{j = 1}^m x_iy_j \mathbb{I}\{\xi = x_i,\, \eta = y_j\}\]
+	Берём $E$ от обеих частей:
+	\begin{align*}
+		E\xi\eta = \sum_{i = 1}^n\sum_{j = 1}^m x_iy_j P(\xi = x_i,\, \eta = y_j) \stackrel{\independent}{=} \sum_{i = 1}^n\sum_{j = 1}^m x_iy_j P(\xi = x_i)P(\eta = y_j) = \\
+		\left(\sum_{i = 1}x_iP(\xi = x_i)\right)\left(\sum_{j = 1}^my_jP(\eta = y_j)\right) = E\xi\cdot E\eta
+	\end{align*}
+	Далее, пусть $\xi,\,\eta \geq 0$ -- неотрицательные случайные величины. Тогда рассмотрим последовательности простых случайных величин $\{\xi_n,\, n \in \mathbb{N}\},\, \{\eta_m,\, m \in \mathbb{N}\}$, такие что
+	\[0 \leq \xi_n \uparrow \xi ;\;\;\; 0 \leq \eta_m \uparrow \eta\]
+	и $\forall n \in \mathbb{N}:\: \xi_n$ является $\mathcal{F}_\xi$-измеримой, $\eta_n$ -- $\mathcal{F}_\eta$-измеримой.
 
-  Следовательно, $0 \leq \xi_n\eta_n \uparrow \xi\eta$ и $\forall n \in \mathbb{N}:\: \xi_n \independent \eta_n$. По определению мат. ожидания:
-  \[E\xi\eta = \lim_{n \to +\infty} E\xi_n\eta_n \stackrel{\independent}{=} \lim_{n \to +\infty}E\xi_n\cdot \lim_{n \to +\infty}E\eta_n = E\xi\cdot E\eta\]
-  Теперь пусть $\xi,\, \eta$ -- произвольные случайные величины. Тогда $\xi^\pm \independent \eta^\pm$, как функции от независимых случайных величин. Причём
-  \[(\xi\eta)^+ = \xi^+\eta^+ + \xi^-\eta^- ;\;\;\; (\xi\eta)^- = \xi^+\eta^- + \xi^-\eta^+\]
-  По определению
-  \begin{align*}
-    E\xi\eta = E(\xi\eta)^+ - E(\xi\eta)^- = E\xi^+\eta^+ + E\xi^-\eta^- - E\xi^+\eta^- - E\xi^-\eta^+ \stackrel{\independent}{=} \\
-    E\xi^+\cdot E\eta^+ + E\xi^-\cdot E\eta^- - E\xi^+ \cdot E\eta^- - E\xi^-\cdot E\eta^+ = (E\xi^+ - E\xi^-)(E\eta^+ - E\eta^-) = \\
-    E\xi \cdot E\eta
-  \end{align*}
+	Следовательно, $0 \leq \xi_n\eta_n \uparrow \xi\eta$ и $\forall n \in \mathbb{N}:\: \xi_n \independent \eta_n$. По определению мат. ожидания:
+	\[E\xi\eta = \lim_{n \to +\infty} E\xi_n\eta_n \stackrel{\independent}{=} \lim_{n \to +\infty}E\xi_n\cdot \lim_{n \to +\infty}E\eta_n = E\xi\cdot E\eta\]
+	Теперь пусть $\xi,\, \eta$ -- произвольные случайные величины. Тогда $\xi^\pm \independent \eta^\pm$, как функции от независимых случайных величин. Причём
+	\[(\xi\eta)^+ = \xi^+\eta^+ + \xi^-\eta^- ;\;\;\; (\xi\eta)^- = \xi^+\eta^- + \xi^-\eta^+\]
+	По определению
+	\begin{align*}
+		E\xi\eta = E(\xi\eta)^+ - E(\xi\eta)^- = E\xi^+\eta^+ + E\xi^-\eta^- - E\xi^+\eta^- - E\xi^-\eta^+ \stackrel{\independent}{=}   \\
+		E\xi^+\cdot E\eta^+ + E\xi^-\cdot E\eta^- - E\xi^+ \cdot E\eta^- - E\xi^-\cdot E\eta^+ = (E\xi^+ - E\xi^-)(E\eta^+ - E\eta^-) = \\
+		E\xi \cdot E\eta
+	\end{align*}
 \end{proof}
 
 \section{Теорема о замене переменных в интеграле Лебега...}
 \begin{theorem}
-  О замене переменных в интеграле Лебега.
+	О замене переменных в интеграле Лебега.
 
-  Пусть $\xi$ -- случайный вектор из $\mathbb{R}^m$ на $(\Omega,\, \mathcal{F},\,P),\, P_\xi$ -- его распределение. Тогда $\forall g:\: \mathbb{R}^m \to \mathbb{R}$ -- борелевской функции, выполнено
-  \[Eg(\xi) = \int_\Omega g(\xi)dP = \int_{\mathbb{R}^m}g(x)P_\xi(dx)\]
+	Пусть $\xi$ -- случайный вектор из $\mathbb{R}^m$ на $(\Omega,\, \mathcal{F},\,P),\, P_\xi$ -- его распределение. Тогда $\forall g:\: \mathbb{R}^m \to \mathbb{R}$ -- борелевской функции, выполнено
+	\[Eg(\xi) = \int_\Omega g(\xi)dP = \int_{\mathbb{R}^m}g(x)P_\xi(dx)\]
 \end{theorem}
 
 \begin{proof}
-  Пусть сначала $g(x) = \mathbb{I}_A(x)$, где $A \in \mathcal{B}(\mathbb{R}^m)$. Тогда 
-  \[
-    Eg(\xi) = E\mathbb{I}\{\xi \in A\} = P(\xi \in A) = P_\xi(A) = \int_A P_\xi(dx) = \int_{\mathbb{R}^m}\mathbb{I}_A(x)P_\xi(dx) = \int_{\mathbb{R}^m}g(x)P_\xi(dx)
-  \]
-  В формуле из утверждения теоремы обе части линейны по $g$. Равенство верно для индикаторов $\Rightarrow$ верно для простых функций.
+	Пусть сначала $g(x) = \mathbb{I}_A(x)$, где $A \in \mathcal{B}(\mathbb{R}^m)$. Тогда
+	\[
+		Eg(\xi) = E\mathbb{I}\{\xi \in A\} = P(\xi \in A) = P_\xi(A) = \int_A P_\xi(dx) = \int_{\mathbb{R}^m}\mathbb{I}_A(x)P_\xi(dx) = \int_{\mathbb{R}^m}g(x)P_\xi(dx)
+	\]
+	В формуле из утверждения теоремы обе части линейны по $g$. Равенство верно для индикаторов $\Rightarrow$ верно для простых функций.
 
-  Если $g \geq 0$, то рассмотрим последовательность простых функций $0 \leq g_n \uparrow g$. Тогда 
-  \[\int_{\mathbb{R}^m}g(x)P_\xi(dx) \stackrel{n \to +\infty}{\leftarrow} \int_{\mathbb{R}^m}g_n(x)P_\xi(dx) = Eg_n(\xi) \stackrel{n \to +\infty}{\to} Eg(\xi)\]
-  для неотрицательных доказали.
+	Если $g \geq 0$, то рассмотрим последовательность простых функций $0 \leq g_n \uparrow g$. Тогда
+	\[\int_{\mathbb{R}^m}g(x)P_\xi(dx) \stackrel{n \to +\infty}{\leftarrow} \int_{\mathbb{R}^m}g_n(x)P_\xi(dx) = Eg_n(\xi) \stackrel{n \to +\infty}{\to} Eg(\xi)\]
+	для неотрицательных доказали.
 
-  Если $g$ -- произвольная функция, то раскладываем $g = g^+ - g^-$ и пользуемся линейностью.
+	Если $g$ -- произвольная функция, то раскладываем $g = g^+ - g^-$ и пользуемся линейностью.
 
-  Причём все математические ожидания будут конечны, бесконечны и неопределены одновременно.
+	Причём все математические ожидания будут конечны, бесконечны и неопределены одновременно.
 \end{proof}
 
 \begin{corollary}
-  \begin{enumerate}
-    \item Для вычисления $Eg(\xi)$ достаточно знать распределение $P_\xi$.
-    \item Если распределение $\xi,\, \eta$ совпадают, то $\forall$ борелевской функции $g(x)$ выполнено
-    \[Eg(\xi) = Eg(\eta)\]
-    \item Если $\xi$ -- случайная величина, то
-    \[E\xi = \int_\mathbb{R} xP_\xi(dx)\]
-  \end{enumerate}
+	\begin{enumerate}
+		\item Для вычисления $Eg(\xi)$ достаточно знать распределение $P_\xi$.
+		\item Если распределение $\xi,\, \eta$ совпадают, то $\forall$ борелевской функции $g(x)$ выполнено
+		      \[Eg(\xi) = Eg(\eta)\]
+		\item Если $\xi$ -- случайная величина, то
+		      \[E\xi = \int_\mathbb{R} xP_\xi(dx)\]
+	\end{enumerate}
 \end{corollary}
 
 \begin{note}
-  \[dF(x) := P(dx)\]
-  где $F$ -- функция распределения вероятностной меры $P$.
+	\[dF(x) := P(dx)\]
+	где $F$ -- функция распределения вероятностной меры $P$.
 \end{note}
 
 \begin{definition}
-  Пусть $P$ -- вероятностная мера на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$, $\mu$ -- $\sigma$-конечная мера на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$. Мера $P$ имеет плотность $p(t) \geq 0$ по мере $\mu$, если 
-  \[\forall B \in \mathcal{B}(\mathbb{R}^m) :\: P(B) = \int_B p(t)\mu(dt)\]
+	Пусть $P$ -- вероятностная мера на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$, $\mu$ -- $\sigma$-конечная мера на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$. Мера $P$ имеет плотность $p(t) \geq 0$ по мере $\mu$, если
+	\[\forall B \in \mathcal{B}(\mathbb{R}^m) :\: P(B) = \int_B p(t)\mu(dt)\]
 \end{definition}
 
 \begin{theorem}
-  О плотности.
-  
-  Пусть случайный вектор $\xi \in \mathbb{R}^m$ имеет распределение $P_\xi$, и $P_\xi$ имеет плотность $p(t)$ по $\sigma$-конечной мере на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$. Тогда $\forall$ борелевской функции $g(x) :\: \mathbb{R}^m \to \mathbb{R}$ выполнено
-  \[Eg(\xi) = \int_{\mathbb{R}^m}g(x)P_\xi(dx) = \int_{\mathbb{R}^m}g(x)p(x)\mu(dx)\]
+	О плотности.
+
+	Пусть случайный вектор $\xi \in \mathbb{R}^m$ имеет распределение $P_\xi$, и $P_\xi$ имеет плотность $p(t)$ по $\sigma$-конечной мере на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$. Тогда $\forall$ борелевской функции $g(x) :\: \mathbb{R}^m \to \mathbb{R}$ выполнено
+	\[Eg(\xi) = \int_{\mathbb{R}^m}g(x)P_\xi(dx) = \int_{\mathbb{R}^m}g(x)p(x)\mu(dx)\]
 \end{theorem}
 
 \begin{proof}
-  Пусть сначала $g(x) = \mathbb{I}_A(x)$, где $A \in \mathcal{B}(\mathbb{R}^m)$. Тогда 
-  \[
-    Eg(\xi) = P(\xi \in A) = P_\xi(A) = \int_Ap(x)\mu(dx) = \int_{\mathbb{R}^m}\mathbb{I}_A(x)p(x)\mu(dx) = \int_{\mathbb{R}^m}g(x)p(x)\mu(dx)
-  \]
-  Обе части доказываемого равенства линейны по $g \Rightarrow$ формула верна для простых функций.
+	Пусть сначала $g(x) = \mathbb{I}_A(x)$, где $A \in \mathcal{B}(\mathbb{R}^m)$. Тогда
+	\[
+		Eg(\xi) = P(\xi \in A) = P_\xi(A) = \int_Ap(x)\mu(dx) = \int_{\mathbb{R}^m}\mathbb{I}_A(x)p(x)\mu(dx) = \int_{\mathbb{R}^m}g(x)p(x)\mu(dx)
+	\]
+	Обе части доказываемого равенства линейны по $g \Rightarrow$ формула верна для простых функций.
 
-  Если $g \geq 0$, то рассмотрим последовательность простых функций $\{g_n,\, n \in \mathbb{N}\}$, такую что $0 \leq g_n(x) \uparrow g(x)$. Тогда по определению интеграла Лебега:
-  \[
-    Eg(\xi) = \lim_{n \to +\infty}Eg_n(\xi) = \lim_{n \to +\infty} \int_{\mathbb{R}^m}g_n(x)p(x)\mu(dx) = \int_{\mathbb{R}^m}g(x)p(x)\mu(dx)
-  \]
-  (по теореме о монотонной сходимости)
+	Если $g \geq 0$, то рассмотрим последовательность простых функций $\{g_n,\, n \in \mathbb{N}\}$, такую что $0 \leq g_n(x) \uparrow g(x)$. Тогда по определению интеграла Лебега:
+	\[
+		Eg(\xi) = \lim_{n \to +\infty}Eg_n(\xi) = \lim_{n \to +\infty} \int_{\mathbb{R}^m}g_n(x)p(x)\mu(dx) = \int_{\mathbb{R}^m}g(x)p(x)\mu(dx)
+	\]
+	(по теореме о монотонной сходимости)
 
-  Для произвольной $g$ раскладываем $g(x) = g^+ - g^-$ и пользуемся линейностью.
+	Для произвольной $g$ раскладываем $g(x) = g^+ - g^-$ и пользуемся линейностью.
 \end{proof}
 
 \begin{corollary}
-  Пусть $\xi$ -- дискретная случайная величина, сосредоточенная на $X$. Тогда
-  \[Eg(\xi) = \sum_{x \in X}g(x)P(\xi = x)\]
+	Пусть $\xi$ -- дискретная случайная величина, сосредоточенная на $X$. Тогда
+	\[Eg(\xi) = \sum_{x \in X}g(x)P(\xi = x)\]
 \end{corollary}
 
 \begin{proof}
-  Мы знаем, что $p(x) = P_\xi(\{x\}) = P(\xi = x)$. Тогда
-  \[Eg(\xi) = \int_\mathbb{R}g(x)p(x)\mu(dx) = \sum_{x \in X} g(x)P(\xi = x)\]
+	Мы знаем, что $p(x) = P_\xi(\{x\}) = P(\xi = x)$. Тогда
+	\[Eg(\xi) = \int_\mathbb{R}g(x)p(x)\mu(dx) = \sum_{x \in X} g(x)P(\xi = x)\]
 \end{proof}
 
 \begin{corollary}
-  Пусть $\xi$ -- абсолютно непрерывная случайная величина с плотностью $p(x)$. Тогда
-  \[Eg(\xi) = \int_\mathbb{R} g(x)p(x)dx\]
+	Пусть $\xi$ -- абсолютно непрерывная случайная величина с плотностью $p(x)$. Тогда
+	\[Eg(\xi) = \int_\mathbb{R} g(x)p(x)dx\]
 \end{corollary}
 
 \begin{corollary}
-  Пусть $\xi$ -- случайный вектор из $\mathbb{R}^m$ с плотностью $p(x)$. Тогда
-  \[Eg(\xi) = \int_{\mathbb{R}^m}g(\vec{x})p(\vec{x})d\vec{x}\]
+	Пусть $\xi$ -- случайный вектор из $\mathbb{R}^m$ с плотностью $p(x)$. Тогда
+	\[Eg(\xi) = \int_{\mathbb{R}^m}g(\vec{x})p(\vec{x})d\vec{x}\]
 \end{corollary}
 
 \section{Прямое произведение вероятностных пространств}
 \begin{definition}
-  Пусть $(\Omega_1,\, \mathcal{F}_1,\, P_1)$ и $(\Omega_2,\, \mathcal{F}_2,\, P_2)$ -- два вероятностных пространства. Их прямым произведением называется вероятностное пространство $(\Omega,\, \mathcal{F},\, P)$, где
-  \begin{enumerate}
-    \item $\Omega = \Omega_1 \times \Omega_2$
-    \item $\mathcal{F} = \mathcal{F}_1 \otimes \mathcal{F}_2 = \sigma(B_1 \times B_2:\: B_i \in \mathcal{F}_i)$ -- $\sigma$-алгебра, порождённая прямоугольниками.
-    \item $P = P_1 \times P_2$ -- вероятностная мера на $(\Omega,\, \mathcal{F})$, такая, что $P(B_1 \times B_2) = P_1(B_1)P_2(B_2)$
-  \end{enumerate} 
+	Пусть $(\Omega_1,\, \mathcal{F}_1,\, P_1)$ и $(\Omega_2,\, \mathcal{F}_2,\, P_2)$ -- два вероятностных пространства. Их прямым произведением называется вероятностное пространство $(\Omega,\, \mathcal{F},\, P)$, где
+	\begin{enumerate}
+		\item $\Omega = \Omega_1 \times \Omega_2$
+		\item $\mathcal{F} = \mathcal{F}_1 \otimes \mathcal{F}_2 = \sigma(B_1 \times B_2:\: B_i \in \mathcal{F}_i)$ -- $\sigma$-алгебра, порождённая прямоугольниками.
+		\item $P = P_1 \times P_2$ -- вероятностная мера на $(\Omega,\, \mathcal{F})$, такая, что $P(B_1 \times B_2) = P_1(B_1)P_2(B_2)$
+	\end{enumerate}
 \end{definition}
 
 \begin{lemma}
-  Такая вероятностая мера $P$ существует и единственна.
+	Такая вероятностая мера $P$ существует и единственна.
 \end{lemma}
 
 \begin{proof}
-  Рассмотрим $\mathcal{A}$ -- конечное объединение непересекающихся прямоугольников. Тогда $\mathcal{A}$ -- алгебра и $\sigma(\mathcal{A}) = \mathcal{F}$. Определим $P$ на $\mathcal{A}$ по конечной аддитивности. Остаётся проверить, что $P$ -- счётно-аддитивна на $\mathcal{A}$.
+	Рассмотрим $\mathcal{A}$ -- конечное объединение непересекающихся прямоугольников. Тогда $\mathcal{A}$ -- алгебра и $\sigma(\mathcal{A}) = \mathcal{F}$. Определим $P$ на $\mathcal{A}$ по конечной аддитивности. Остаётся проверить, что $P$ -- счётно-аддитивна на $\mathcal{A}$.
 
-  Пусть $C = \sqcup_i C_i;\; C_i,\,C \in \mathcal{A}$. Надо проверить, что 
-  \[P(C) = \sum_{i = 1}^\infty P(C_i)\]
-  Достаточно проверить для прямоугольников:
-  \[C = A \times B,\, C_i = A_i \times B_i\]
-  Представим в виде индикаторов:
-  \[\mathbb{I}_{A \times B}(\omega_1,\, \omega_2) = \sum_{i = 1}^\infty \mathbb{I}_{A_i \times B_i}(\omega_1,\,\omega_2)\]
-  или
-  \[\mathbb{I}_A(\omega_1)\cdot\mathbb{I}_B(\omega_2) = \sum_{i = 1}^\infty \mathbb{I}_{A_i}(\omega_1)\mathbb{I}_{B_i}(\omega_2)\]
-  Зафиксируем $\omega_1 \in \Omega_1$ и возьмём $E$ от обеих частей неравенства в $(\Omega_2,\, \mathcal{F}_2,\, P_2)$:
-  \[\mathbb{I}_A(\omega_1)P_2(B_2) = \sum_{i = 1}^\infty \mathbb{I}_{A_i}(\omega_1)P_2(B_i)\]
-  Теперь берём $E$ в $(\Omega_1,\, \mathcal{F}_1,\, P_1)$:
-  \[P_1(A)P_2(B) = \sum_{i = 1}^\infty P_1(A_i)P_2(B_i)\]
+	Пусть $C = \sqcup_i C_i;\; C_i,\,C \in \mathcal{A}$. Надо проверить, что
+	\[P(C) = \sum_{i = 1}^\infty P(C_i)\]
+	Достаточно проверить для прямоугольников:
+	\[C = A \times B,\, C_i = A_i \times B_i\]
+	Представим в виде индикаторов:
+	\[\mathbb{I}_{A \times B}(\omega_1,\, \omega_2) = \sum_{i = 1}^\infty \mathbb{I}_{A_i \times B_i}(\omega_1,\,\omega_2)\]
+	или
+	\[\mathbb{I}_A(\omega_1)\cdot\mathbb{I}_B(\omega_2) = \sum_{i = 1}^\infty \mathbb{I}_{A_i}(\omega_1)\mathbb{I}_{B_i}(\omega_2)\]
+	Зафиксируем $\omega_1 \in \Omega_1$ и возьмём $E$ от обеих частей неравенства в $(\Omega_2,\, \mathcal{F}_2,\, P_2)$:
+	\[\mathbb{I}_A(\omega_1)P_2(B_2) = \sum_{i = 1}^\infty \mathbb{I}_{A_i}(\omega_1)P_2(B_i)\]
+	Теперь берём $E$ в $(\Omega_1,\, \mathcal{F}_1,\, P_1)$:
+	\[P_1(A)P_2(B) = \sum_{i = 1}^\infty P_1(A_i)P_2(B_i)\]
 \end{proof}
 
 \begin{theorem}
-  Фубини (б/д).
+	Фубини (б/д).
 
-  Пусть $(\Omega,\, \mathcal{F},\, P)$ -- это прямое произведение $(\Omega_1,\, \mathcal{F}_1,\, P_1)$ и $(\Omega_2,\, \mathcal{F}_2,\, P_2)$. Пусть случайная величина $\xi:\: \Omega \to \mathbb{R}$ такова, что 
-  \[\int_\Omega \xi dP < +\infty\]
-  Тогда 
-  \[\int_{\Omega_i}\xi(\omega_1,\, \omega_2)P_i(d\omega_i)\]
-  конечен почти наверное по мере $P_{3 - i}$, является $\mathcal{F}_{3 - i}$ измеримой функцией и, кроме того,
-  \begin{align*}
-    \int_\Omega \xi(\omega_1,\, \omega_2)P(d\omega_1,\, d\omega_2) = \\
-    \int_{\Omega_1}\left(\int_{\Omega_2}\xi(\omega_1,\, \omega_2)P_2(d\omega_2)\right)P_1(d\omega_1) = \int_{\Omega_2}\left(\int_{\Omega_1}\xi(\omega_1,\, \omega_2)P_1(d\omega_1)\right)P_2(d\omega_2)
-  \end{align*}
+	Пусть $(\Omega,\, \mathcal{F},\, P)$ -- это прямое произведение $(\Omega_1,\, \mathcal{F}_1,\, P_1)$ и $(\Omega_2,\, \mathcal{F}_2,\, P_2)$. Пусть случайная величина $\xi:\: \Omega \to \mathbb{R}$ такова, что
+	\[\int_\Omega \xi dP < +\infty\]
+	Тогда
+	\[\int_{\Omega_i}\xi(\omega_1,\, \omega_2)P_i(d\omega_i)\]
+	конечен почти наверное по мере $P_{3 - i}$, является $\mathcal{F}_{3 - i}$ измеримой функцией и, кроме того,
+	\begin{align*}
+		\int_\Omega \xi(\omega_1,\, \omega_2)P(d\omega_1,\, d\omega_2) = \\
+		\int_{\Omega_1}\left(\int_{\Omega_2}\xi(\omega_1,\, \omega_2)P_2(d\omega_2)\right)P_1(d\omega_1) = \int_{\Omega_2}\left(\int_{\Omega_1}\xi(\omega_1,\, \omega_2)P_1(d\omega_1)\right)P_2(d\omega_2)
+	\end{align*}
 \end{theorem}
 
 \section{Совместное распределение\dots}
 \begin{proposition}
-  Если случайные величины $\xi,\,\eta$ -- независимые, то
-  \[P_{(\xi,\,\eta)} = P_\xi \times P_\eta\]
+	Если случайные величины $\xi,\,\eta$ -- независимые, то
+	\[P_{(\xi,\,\eta)} = P_\xi \times P_\eta\]
 \end{proposition}
 
 \begin{proof}
-  \[
-    P_{(\xi,\,\eta)}(B_1 \times B_2) = P((\xi,\,\eta) \in B_1 \times B_2) = P(\xi \in B_1,\, \eta \in B_2) \stackrel{\independent}{=} P_\xi(B_1)P_\eta(B_2)
-  \]
+	\[
+		P_{(\xi,\,\eta)}(B_1 \times B_2) = P((\xi,\,\eta) \in B_1 \times B_2) = P(\xi \in B_1,\, \eta \in B_2) \stackrel{\independent}{=} P_\xi(B_1)P_\eta(B_2)
+	\]
 \end{proof}
 
 \begin{lemma}
-  О свёртке распределений.
+	О свёртке распределений.
 
-  Пусть $\xi,\, \eta$ -- это независимые случайные величины с функциями распределения $F_\xi,\, F_\eta$. Тогда $\xi + \eta$ имеет следующую функцию распределения:
-  \[F_{\xi + \eta}(z) = \int_\mathbb{R}F_\xi(z - x)dF_\eta(x) = \int_\mathbb{R}F_\eta(z - x)dF_\xi(x)\]
+	Пусть $\xi,\, \eta$ -- это независимые случайные величины с функциями распределения $F_\xi,\, F_\eta$. Тогда $\xi + \eta$ имеет следующую функцию распределения:
+	\[F_{\xi + \eta}(z) = \int_\mathbb{R}F_\xi(z - x)dF_\eta(x) = \int_\mathbb{R}F_\eta(z - x)dF_\xi(x)\]
 \end{lemma}
 
 \begin{proof}
-  \begin{align*}
-    F_{\xi + \eta}(z) = P(\xi + \eta \leq z) = \int_{\mathbb{R}^2}\mathbb{I}\{x + y \leq z\}P_{(\xi,\,\eta)}(dx,\, dy) \stackrel{\text{Фубини}}{=}\\
-    \int_\mathbb{R}\left(\int_\mathbb{R}\mathbb{I}\{x + y \leq z\}P_\xi(dx)\right)P_\eta(dy) = \int_\mathbb{R} F_\xi(z - y)dF_\eta(y)
-  \end{align*}
+	\begin{align*}
+		F_{\xi + \eta}(z) = P(\xi + \eta \leq z) = \int_{\mathbb{R}^2}\mathbb{I}\{x + y \leq z\}P_{(\xi,\,\eta)}(dx,\, dy) \stackrel{\text{Фубини}}{=} \\
+		\int_\mathbb{R}\left(\int_\mathbb{R}\mathbb{I}\{x + y \leq z\}P_\xi(dx)\right)P_\eta(dy) = \int_\mathbb{R} F_\xi(z - y)dF_\eta(y)
+	\end{align*}
 \end{proof}
 
 \begin{corollary}
-  Формула свёртки.
+	Формула свёртки.
 
-  Пусть $\xi \independent \eta$ с плотностями $p_\xi,\, p_\eta$. Тогда $\xi + \eta$ тоже имеет плотность, причём
-  \[p_{\xi + \eta}(z) = \int_\mathbb{R}p_\xi(z - x)p_\eta(x)dx = \int_\mathbb{R} p_\eta(z - x)p_\xi(x)dx\]
+	Пусть $\xi \independent \eta$ с плотностями $p_\xi,\, p_\eta$. Тогда $\xi + \eta$ тоже имеет плотность, причём
+	\[p_{\xi + \eta}(z) = \int_\mathbb{R}p_\xi(z - x)p_\eta(x)dx = \int_\mathbb{R} p_\eta(z - x)p_\xi(x)dx\]
 \end{corollary}
 
 \begin{proof}
-  По лемме о свёртке:
-  \begin{align*}
-    F_{\xi + \eta}(z) = \int_\mathbb{R}F_\xi(z - x)dF_\eta(x) = \int_\mathbb{R}\left(\int_{-\infty}^{z - x}p_\xi(y)dy\right)p_\eta(x)dx \stackrel{y' := y + x}{=} \\
-    \int_\mathbb{R} \left(\int_{-\infty}^z p_\xi(y' - x)dy'\right)p\eta(x)dx \stackrel{\text{Фубини}}{=} \int_{-\infty}^z \left(\int_\mathbb{R}p_\xi(y' - x)p_\eta(x)dx\right)dy' = \\
-    \int_{-\infty}^z p_{\xi + \eta}(y')dy'
-  \end{align*}
+	По лемме о свёртке:
+	\begin{align*}
+		F_{\xi + \eta}(z) = \int_\mathbb{R}F_\xi(z - x)dF_\eta(x) = \int_\mathbb{R}\left(\int_{-\infty}^{z - x}p_\xi(y)dy\right)p_\eta(x)dx \stackrel{y' := y + x}{=}                   \\
+		\int_\mathbb{R} \left(\int_{-\infty}^z p_\xi(y' - x)dy'\right)p\eta(x)dx \stackrel{\text{Фубини}}{=} \int_{-\infty}^z \left(\int_\mathbb{R}p_\xi(y' - x)p_\eta(x)dx\right)dy' = \\
+		\int_{-\infty}^z p_{\xi + \eta}(y')dy'
+	\end{align*}
 \end{proof}
 
 \section{Дисперсия, ковариация и коэффициент корреляции}
 \begin{definition}
-  Дисперсией случайной величины $\xi$ называется 
-  \[D\xi = E(\xi - E\xi)^2\]
-  если $E\xi$ конечно.
+	Дисперсией случайной величины $\xi$ называется
+	\[D\xi = E(\xi - E\xi)^2\]
+	если $E\xi$ конечно.
 \end{definition}
 
 \begin{definition}
-  Ковариацией случайных величин $\xi,\,\eta$ называется
-  \[\text{cov }(\xi,\,\eta) = E(\xi - E\xi)(\eta - E\eta)\]
-  если $E\xi,\, E\eta$ конечны.
+	Ковариацией случайных величин $\xi,\,\eta$ называется
+	\[\text{cov }(\xi,\,\eta) = E(\xi - E\xi)(\eta - E\eta)\]
+	если $E\xi,\, E\eta$ конечны.
 \end{definition}
 
 \begin{definition}
-  $\xi$ и $\eta$ называются некоррелированными, если
-  \[\text{cov }(\xi,\,\eta) = 0\]
+	$\xi$ и $\eta$ называются некоррелированными, если
+	\[\text{cov }(\xi,\,\eta) = 0\]
 \end{definition}
 
 \begin{definition}
-  Коэффициентом корреляции случайных величин $\xi,\, \eta$ называется
-  \[\rho(\xi,\,\eta) = \frac{\text{cov }(\xi,\,\eta)}{\sqrt{D\xi\cdot D\eta}}\]
-  если $D\xi,\, D\eta$ положительная и конечная.
+	Коэффициентом корреляции случайных величин $\xi,\, \eta$ называется
+	\[\rho(\xi,\,\eta) = \frac{\text{cov }(\xi,\,\eta)}{\sqrt{D\xi\cdot D\eta}}\]
+	если $D\xi,\, D\eta$ положительная и конечная.
 \end{definition}
 
 \begin{lemma}
-  Свойства дисперсии и ковариации.
+	Свойства дисперсии и ковариации.
 
-  \begin{enumerate}
-    \item Ковариация билинейна
-    \item $\forall c \in \mathbb{R}:\: D(c\xi) = c^2D(\xi),\, D(\xi + c) = D(\xi)$
-    \item $\text{cov }(\xi,\,\eta) = E\xi\eta - E\xi\cdot E\eta$. В частности $D\xi = E\xi^2 - (E\xi)^2$
-    \item Неравенство Коши-Буняковского: 
-    \[|E\xi\eta| \leq \sqrt{E\xi^2 \cdot E\eta^2}\]
-    причём равенство достигается $\Leftrightarrow \xi,\, \eta$ линейно зависимы.
-    \item $|\rho(\xi,\,\eta)| \leq 1$ и равен 1 $\Leftrightarrow \xi - E\xi,\, \eta - E\eta$ линейно зависимы почти наверное 
-  \end{enumerate}
+	\begin{enumerate}
+		\item Ковариация билинейна
+		\item $\forall c \in \mathbb{R}:\: D(c\xi) = c^2D(\xi),\, D(\xi + c) = D(\xi)$
+		\item $\text{cov }(\xi,\,\eta) = E\xi\eta - E\xi\cdot E\eta$. В частности $D\xi = E\xi^2 - (E\xi)^2$
+		\item Неравенство Коши-Буняковского:
+		      \[|E\xi\eta| \leq \sqrt{E\xi^2 \cdot E\eta^2}\]
+		      причём равенство достигается $\Leftrightarrow \xi,\, \eta$ линейно зависимы.
+		\item $|\rho(\xi,\,\eta)| \leq 1$ и равен 1 $\Leftrightarrow \xi - E\xi,\, \eta - E\eta$ линейно зависимы почти наверное
+	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  $1-3$ следуют из свойств математического ожидания. $4$ было доказано на ОВИТМе.
+	$1-3$ следуют из свойств математического ожидания. $4$ было доказано на ОВИТМе.
 
-  Для последнего свойства рассмотрим 
-  \[\xi' := \frac{\xi - E\xi}{\sqrt{D\xi}},\, \eta' := \frac{\eta - E\eta}{\sqrt{D\eta}} \Rightarrow \rho(\xi,\, \eta) = E\xi'\eta'\]
-  По неравенству КБ:
-  \[|\rho(\xi,\,\eta)| \leq \sqrt{E(\xi')^2E(\eta')^2} = 1\]
-  Равенство достигается $\Leftrightarrow \xi',\, \eta'$ линейно зависимы почти наверное.
+	Для последнего свойства рассмотрим
+	\[\xi' := \frac{\xi - E\xi}{\sqrt{D\xi}},\, \eta' := \frac{\eta - E\eta}{\sqrt{D\eta}} \Rightarrow \rho(\xi,\, \eta) = E\xi'\eta'\]
+	По неравенству КБ:
+	\[|\rho(\xi,\,\eta)| \leq \sqrt{E(\xi')^2E(\eta')^2} = 1\]
+	Равенство достигается $\Leftrightarrow \xi',\, \eta'$ линейно зависимы почти наверное.
 \end{proof}
 
 \begin{corollary}
-  Если $\xi_1,\,\cdots,\,\xi_n$ -- попарно некоррелированные случайные величины с конечными дисперсиями, то
-  \[D(\xi_1 + \cdots + \xi_n) = \sum_{k = 1}^n D\xi_k\]
+	Если $\xi_1,\,\cdots,\,\xi_n$ -- попарно некоррелированные случайные величины с конечными дисперсиями, то
+	\[D(\xi_1 + \cdots + \xi_n) = \sum_{k = 1}^n D\xi_k\]
 \end{corollary}
 
 \begin{proof}
-  \begin{align*}
-    D(\xi_1 + \cdots + \xi_n) = \text{cov }(\xi_1 + \cdots + \xi_n,\, \xi_1 + \cdots + \xi_n) = \sum_{i,\, j = 1}^n\text{cov }(\xi_i,\,\xi_j) =\\
-    \sum_{i = 1}^n \text{cov }(\xi_i,\, \xi_i) = \sum_{i = 1}^n D\xi_i
-  \end{align*}
+	\begin{align*}
+		D(\xi_1 + \cdots + \xi_n) = \text{cov }(\xi_1 + \cdots + \xi_n,\, \xi_1 + \cdots + \xi_n) = \sum_{i,\, j = 1}^n\text{cov }(\xi_i,\,\xi_j) = \\
+		\sum_{i = 1}^n \text{cov }(\xi_i,\, \xi_i) = \sum_{i = 1}^n D\xi_i
+	\end{align*}
 \end{proof}
 
 \begin{corollary}
-  Если $\xi_1,\,\cdots,\,\xi_n$ -- независимые случайные величины с конечными дисперсиями, то 
-  \[D(\xi_1 + \cdots + \xi_n) = \sum_{k = 1}^nD\xi_k\]
+	Если $\xi_1,\,\cdots,\,\xi_n$ -- независимые случайные величины с конечными дисперсиями, то
+	\[D(\xi_1 + \cdots + \xi_n) = \sum_{k = 1}^nD\xi_k\]
 \end{corollary}
 
 \begin{proof}
-  Независимые $\Rightarrow$ некоррелированные
+	Независимые $\Rightarrow$ некоррелированные
 \end{proof}
 
 \begin{definition}
-  Пусть $\xi = (\xi_1,\,\cdots,\,\xi_n)$ -- случайный вектор. Тогда $E\xi$ называется вектор из матожиданий компонент:
-  \[E\xi = (E\xi_1,\,\cdots,\,E\xi_n)\]
+	Пусть $\xi = (\xi_1,\,\cdots,\,\xi_n)$ -- случайный вектор. Тогда $E\xi$ называется вектор из матожиданий компонент:
+	\[E\xi = (E\xi_1,\,\cdots,\,E\xi_n)\]
 \end{definition}
 
 \begin{definition}
-  Дисперсией (матрицей ковариаций) вектора $\xi$ называется матрица:
-  \[D\xi = (\text{cov }(\xi_i,\, \xi_j);\; i,\,j = \overline{1,\,n})\]
+	Дисперсией (матрицей ковариаций) вектора $\xi$ называется матрица:
+	\[D\xi = (\text{cov }(\xi_i,\, \xi_j);\; i,\,j = \overline{1,\,n})\]
 \end{definition}
 
 \begin{proposition}
-  Матрица ковариаций -- симметричная и неотрицательно определённая матрица.
+	Матрица ковариаций -- симметричная и неотрицательно определённая матрица.
 \end{proposition}
 
 \begin{proof}
-  $\text{cov }(\xi_i,\,\xi_j) = \text{cov }(\xi_j,\, \xi_i)$ по определению ковариации $\Rightarrow$ симметричная.
+	$\text{cov }(\xi_i,\,\xi_j) = \text{cov }(\xi_j,\, \xi_i)$ по определению ковариации $\Rightarrow$ симметричная.
 
-  Пусть $\xi \in \mathbb{R}^n$, возьмём $\vec{x} \in \mathbb{R}^n$:
-  \begin{align*}
-    \langle D\xi \cdot \vec{x},\, \vec{x}\rangle = \sum_{i,\,j = 1}^n\text{cov }(\xi_i,\,\xi_j)x_ix_j = \sum_{i,\, j = 1}^n \text{cov }(x_i\xi_i,\, x_j\xi_j) =\\
-    \text{cov }\left(\sum_{i = 1}^n x_i\xi_i,\, \sum_{j = 1}^n x_j\xi_j\right) = D\left(\sum_{i = 1}^n x_i\xi_i\right) \geq 0
-  \end{align*}
+	Пусть $\xi \in \mathbb{R}^n$, возьмём $\vec{x} \in \mathbb{R}^n$:
+	\begin{align*}
+		\langle D\xi \cdot \vec{x},\, \vec{x}\rangle = \sum_{i,\,j = 1}^n\text{cov }(\xi_i,\,\xi_j)x_ix_j = \sum_{i,\, j = 1}^n \text{cov }(x_i\xi_i,\, x_j\xi_j) = \\
+		\text{cov }\left(\sum_{i = 1}^n x_i\xi_i,\, \sum_{j = 1}^n x_j\xi_j\right) = D\left(\sum_{i = 1}^n x_i\xi_i\right) \geq 0
+	\end{align*}
+\end{proof}
+
+\section{Сходимости случайных величин}
+\begin{definition}
+	Последовательность случайных величин $\{\xi_n,\, n \in \mathbb{N}\}$ сходится к случайной величине $\xi$:
+	\begin{enumerate}
+		\item С вероятностью 1 (почти наверное), если
+		      \[P\left(\lim_{n \to +\infty}\xi_n = \xi\right) = 1\]
+		      Обозначение: $\xi_n \stackrel{\text{п.н.}}{\to} \xi$
+
+		\item По вероятности, если:
+		      \[\forall \varepsilon > 0 :\: P(|\xi_n - \xi| \geq \varepsilon) \stackrel{n \to +\infty}{\to} 0\]
+		      Обозначение: $\xi_n \stackrel{P}{\to} \xi$
+
+		\item В среднем порядка $p > 0$ (в $L^p$), если
+		      \[E|\xi_n - \xi|^p \stackrel{n \to +\infty}{\to} 0 \]
+		      Обозначение: $\xi_n \stackrel{L^p}{\to} \xi$
+
+		\item По распределению, если $\forall f:\: \mathbb{R} \to \mathbb{R}$ -- непрерывных ограниченных функций выполнено
+		      \[Ef(\xi_n) \stackrel{n \to +\infty}{\to} Ef(\xi)\]
+		      Обозначение: $\xi_n \stackrel{d}{\to} \xi$
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+	Критерий сходимости с вероятностью 1.
+
+	Случайные величины $\xi_n \stackrel{\text{п.н.}}{\to} \xi \Leftrightarrow$
+	\[\forall \varepsilon > 0:\: P\left(\sup_{k \geq n} |\xi_k - \xi| > \varepsilon\right) \stackrel{n \to +\infty}{\to} 0\]
+\end{theorem}
+
+\begin{proof}
+	Рассмотрим
+	\[A_k^\varepsilon = \bigcup_{k \geq n}\{|\xi_k - \xi| > \varepsilon\} = \{\sup_{k \geq n} |\xi_k - \xi| > \varepsilon \}\]
+	Тогда
+	\[\{\xi_n \not\to \xi\} = \bigcup_{m = 1}^\infty \bigcap_{n = 1}^\infty A_n^{\frac{1}{m}}\]
+	Значит
+	\begin{align*}
+		P(\xi_n \not\to \xi) = 0 \Leftrightarrow P\left(\bigcup_{m = 1}^\infty \bigcap_{n = 1}^\infty A_n^{\frac{1}{m}}\right) = 0 \Leftrightarrow \forall m \in \mathbb{N} :\: P\left(\bigcap_{n = 1}^\infty A_n^{\frac{1}{m}}\right) = 0 \Leftrightarrow \\
+		\forall m \in \mathbb{N}:\: \lim_{n \to +\infty} P\left(A_n^{\frac{1}{m}}\right) = 0 \Leftrightarrow \forall \varepsilon > 0:\: \lim_{n \to +\infty}P(A_n^\varepsilon) = 0
+	\end{align*}
+\end{proof}
+
+\begin{theorem}
+	О взаимоотношении различных видов сходимостей.
+
+	\begin{enumerate}
+		\item $\xi_n \stackrel{\text{п.н.}}{\to} \xi \Rightarrow \xi_n \stackrel{P}{\to} \xi$
+		\item $\xi_n \stackrel{L^p}{\to} \xi \Rightarrow \xi_n \stackrel{P}{\to} \xi$
+		\item $\xi_n \stackrel{P}{\to} \xi \Rightarrow \xi_n \stackrel{d}{\to} \xi$
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $\forall \varepsilon > 0$ выполняется:
+		      \[P(|\xi_n - \xi| \geq \varepsilon) \leq P\left(|\xi_n - \xi| > \frac{\varepsilon}{2}\right) \leq P\left(\sup_{k \geq n}|\xi_k - \xi| > \frac{\varepsilon}{2}\right) \stackrel{n \to +\infty}{\to} 0\]
+		      в силу критерия сходимости с вероятностью $1$.
+
+		\item $\forall \varepsilon > 0$ выполняется:
+		      \[P(|\xi_n - \xi| \geq \varepsilon) = P(|\xi_n - \xi|^p \geq \varepsilon^p) \stackrel{\text{н-во Маркова}}{\leq} \frac{E|\xi_n - \xi|^p}{\varepsilon^p} \stackrel{n \to +\infty}{\to} 0\]
+
+		\item Пусть $f:\: \mathbb{R} \to \mathbb{R}$ -- произвольная ограниченная непрерывная функция. Возьмём $\varepsilon > 0$.  Пусть $|f(x)| \leq M,\, \forall x \in \mathbb{R}$. Пусть $N > 0$ таково, что $P(|\xi| > N) \leq \frac{\varepsilon}{2}$. В силу равномерной непрерывности $f$ на отрезках выберем $\delta > 0$, такое, что
+		      \[\forall x \in [-N,\, N] \: \forall y,\, |x - y| < \delta:\: |f(x) - f(y)| \leq \frac{\varepsilon}{4M}\]
+		      Рассмотрим разбиение $\Omega$:
+		      \[A_1 = \{|\xi_n - \xi| \leq \delta,\, |\xi| \leq N\};\;\;\; A_2 = \{|\xi_n - \xi| \leq \delta,\, |\xi| > N\};\;\;\; A_3 = \{|\xi_n - \xi| > \delta\}\]
+		      Значит можем оценить
+		      \[|Ef(\xi_n) - Ef(\xi)| \leq E|f(\xi_n) - f(\xi)| = \sum_{i = 1}^3 E(|f(\xi_n) - f(\xi)|\cdot\mathbb{I}_{A_i})\]
+		      На $A_1$ выполнено $|f(\xi_n) - f(\xi)| \leq \frac{\varepsilon}{2} \Rightarrow E|f(\xi_n) - f(\xi)|\mathbb{I}_A \leq \frac{\varepsilon}{2}$. На $A_2,\, A_3$ выполнено $|f(\xi_n) - f(\xi)| \leq 2M$. Тогда
+		      \[\sum_{i = 2}^3 E|f(\xi_n) - f(\xi)|\mathbb{I}_{A_i} \leq 2M(P(A_2) + P(A_3)) \leq 2M(P(|\xi| > N) + P(|\xi_n - \xi| > \delta)) \leq \varepsilon\]
+		      в силу сходимости по вероятности.
+
+		      В итоге получили, что
+		      \[\overline{\lim_{n \to +\infty}}|Ef(\xi_n) - Ef(\xi)| \leq \varepsilon\]
+		      В силу произвольности $\varepsilon > 0$ получаем, что $Ef(\xi_n) \stackrel{n \to +\infty}{\to} Ef(\xi)$
+	\end{enumerate}
 \end{proof}
 
 \end{document}
