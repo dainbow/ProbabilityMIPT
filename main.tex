@@ -738,4 +738,91 @@
   \end{align*}
 \end{proof}
 
+\section{Теорема о замене переменных в интеграле Лебега...}
+\begin{theorem}
+  О замене переменных в интеграле Лебега.
+
+  Пусть $\xi$ -- случайный вектор из $\mathbb{R}^m$ на $(\Omega,\, \mathcal{F},\,P),\, P_\xi$ -- его распределение. Тогда $\forall g:\: \mathbb{R}^m \to \mathbb{R}$ -- борелевской функции, выполнено
+  \[Eg(\xi) = \int_\Omega g(\xi)dP = \int_{\mathbb{R}^m}g(x)P_\xi(dx)\]
+\end{theorem}
+
+\begin{proof}
+  Пусть сначала $g(x) = \mathbb{I}_A(x)$, где $A \in \mathcal{B}(\mathbb{R}^m)$. Тогда 
+  \[
+    Eg(\xi) = E\mathbb{I}\{\xi \in A\} = P(\xi \in A) = P_\xi(A) = \int_A P_\xi(dx) = \int_{\mathbb{R}^m}\mathbb{I}_A(x)P_\xi(dx) = \int_{\mathbb{R}^m}g(x)P_\xi(dx)
+  \]
+  В формуле из утверждения теоремы обе части линейны по $g$. Равенство верно для индикаторов $\Rightarrow$ верно для простых функций.
+
+  Если $g \geq 0$, то рассмотрим последовательность простых функций $0 \leq g_n \uparrow g$. Тогда 
+  \[\int_{\mathbb{R}^m}g(x)P_\xi(dx) \stackrel{n \to +\infty}{\leftarrow} \int_{\mathbb{R}^m}g_n(x)P_\xi(dx) = Eg_n(\xi) \stackrel{n \to +\infty}{\to} Eg(\xi)\]
+  для неотрицательных доказали.
+
+  Если $g$ -- произвольная функция, то раскладываем $g = g^+ - g^-$ и пользуемся линейностью.
+
+  Причём все математические ожидания будут конечны, бесконечны и неопределены одновременно.
+\end{proof}
+
+\begin{corollary}
+  \begin{enumerate}
+    \item Для вычисления $Eg(\xi)$ достаточно знать распределение $P_\xi$.
+    \item Если распределение $\xi,\, \eta$ совпадают, то $\forall$ борелевской функции $g(x)$ выполнено
+    \[Eg(\xi) = Eg(\eta)\]
+    \item Если $\xi$ -- случайная величина, то
+    \[E\xi = \int_\mathbb{R} xP_\xi(dx)\]
+  \end{enumerate}
+\end{corollary}
+
+\begin{note}
+  \[dF(x) := P(dx)\]
+  где $F$ -- функция распределения вероятностной меры $P$.
+\end{note}
+
+\begin{definition}
+  Пусть $P$ -- вероятностная мера на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$, $\mu$ -- $\sigma$-конечная мера на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$. Мера $P$ имеет плотность $p(t) \geq 0$ по мере $\mu$, если 
+  \[\forall B \in \mathcal{B}(\mathbb{R}^m) :\: P(B) = \int_B p(t)\mu(dt)\]
+\end{definition}
+
+\begin{theorem}
+  О плотности.
+  
+  Пусть случайный вектор $\xi \in \mathbb{R}^m$ имеет распределение $P_\xi$, и $P_\xi$ имеет плотность $p(t)$ по $\sigma$-конечной мере на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$. Тогда $\forall$ борелевской функции $g(x) :\: \mathbb{R}^m \to \mathbb{R}$ выполнено
+  \[Eg(\xi) = \int_{\mathbb{R}^m}g(x)P_\xi(dx) = \int_{\mathbb{R}^m}g(x)p(x)\mu(dx)\]
+\end{theorem}
+
+\begin{proof}
+  Пусть сначала $g(x) = \mathbb{I}_A(x)$, где $A \in \mathcal{B}(\mathbb{R}^m)$. Тогда 
+  \[
+    Eg(\xi) = P(\xi \in A) = P_\xi(A) = \int_Ap(x)\mu(dx) = \int_{\mathbb{R}^m}\mathbb{I}_A(x)p(x)\mu(dx) = \int_{\mathbb{R}^m}g(x)p(x)\mu(dx)
+  \]
+  Обе части доказываемого равенства линейны по $g \Rightarrow$ формула верна для простых функций.
+
+  Если $g \geq 0$, то рассмотрим последовательность простых функций $\{g_n,\, n \in \mathbb{N}\}$, такую что $0 \leq g_n(x) \uparrow g(x)$. Тогда по определению интеграла Лебега:
+  \[
+    Eg(\xi) = \lim_{n \to +\infty}Eg_n(\xi) = \lim_{n \to +\infty} \int_{\mathbb{R}^m}g_n(x)p(x)\mu(dx) = \int_{\mathbb{R}^m}g(x)p(x)\mu(dx)
+  \]
+  (по теореме о монотонной сходимости)
+
+  Для произвольной $g$ раскладываем $g(x) = g^+ - g^-$ и пользуемся линейностью.
+\end{proof}
+
+\begin{corollary}
+  Пусть $\xi$ -- дискретная случайная величина, сосредоточенная на $X$. Тогда
+  \[Eg(\xi) = \sum_{x \in X}g(x)P(\xi = x)\]
+\end{corollary}
+
+\begin{proof}
+  Мы знаем, что $p(x) = P_\xi(\{x\}) = P(\xi = x)$. Тогда
+  \[Eg(\xi) = \int_\mathbb{R}g(x)p(x)\mu(dx) = \sum_{x \in X} g(x)P(\xi = x)\]
+\end{proof}
+
+\begin{corollary}
+  Пусть $\xi$ -- абсолютно непрерывная случайная величина с плотностью $p(x)$. Тогда
+  \[Eg(\xi) = \int_\mathbb{R} g(x)p(x)dx\]
+\end{corollary}
+
+\begin{corollary}
+  Пусть $\xi$ -- случайный вектор из $\mathbb{R}^m$ с плотностью $p(x)$. Тогда
+  \[Eg(\xi) = \int_{\mathbb{R}^m}g(\vec{x})p(\vec{x})d\vec{x}\]
+\end{corollary}
+
 \end{document}
