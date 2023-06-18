@@ -912,4 +912,97 @@
   \end{align*}
 \end{proof}
 
+\section{Дисперсия, ковариация и коэффициент корреляции}
+\begin{definition}
+  Дисперсией случайной величины $\xi$ называется 
+  \[D\xi = E(\xi - E\xi)^2\]
+  если $E\xi$ конечно.
+\end{definition}
+
+\begin{definition}
+  Ковариацией случайных величин $\xi,\,\eta$ называется
+  \[\text{cov }(\xi,\,\eta) = E(\xi - E\xi)(\eta - E\eta)\]
+  если $E\xi,\, E\eta$ конечны.
+\end{definition}
+
+\begin{definition}
+  $\xi$ и $\eta$ называются некоррелированными, если
+  \[\text{cov }(\xi,\,\eta) = 0\]
+\end{definition}
+
+\begin{definition}
+  Коэффициентом корреляции случайных величин $\xi,\, \eta$ называется
+  \[\rho(\xi,\,\eta) = \frac{\text{cov }(\xi,\,\eta)}{\sqrt{D\xi\cdot D\eta}}\]
+  если $D\xi,\, D\eta$ положительная и конечная.
+\end{definition}
+
+\begin{lemma}
+  Свойства дисперсии и ковариации.
+
+  \begin{enumerate}
+    \item Ковариация билинейна
+    \item $\forall c \in \mathbb{R}:\: D(c\xi) = c^2D(\xi),\, D(\xi + c) = D(\xi)$
+    \item $\text{cov }(\xi,\,\eta) = E\xi\eta - E\xi\cdot E\eta$. В частности $D\xi = E\xi^2 - (E\xi)^2$
+    \item Неравенство Коши-Буняковского: 
+    \[|E\xi\eta| \leq \sqrt{E\xi^2 \cdot E\eta^2}\]
+    причём равенство достигается $\Leftrightarrow \xi,\, \eta$ линейно зависимы.
+    \item $|\rho(\xi,\,\eta)| \leq 1$ и равен 1 $\Leftrightarrow \xi - E\xi,\, \eta - E\eta$ линейно зависимы почти наверное 
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  $1-3$ следуют из свойств математического ожидания. $4$ было доказано на ОВИТМе.
+
+  Для последнего свойства рассмотрим 
+  \[\xi' := \frac{\xi - E\xi}{\sqrt{D\xi}},\, \eta' := \frac{\eta - E\eta}{\sqrt{D\eta}} \Rightarrow \rho(\xi,\, \eta) = E\xi'\eta'\]
+  По неравенству КБ:
+  \[|\rho(\xi,\,\eta)| \leq \sqrt{E(\xi')^2E(\eta')^2} = 1\]
+  Равенство достигается $\Leftrightarrow \xi',\, \eta'$ линейно зависимы почти наверное.
+\end{proof}
+
+\begin{corollary}
+  Если $\xi_1,\,\cdots,\,\xi_n$ -- попарно некоррелированные случайные величины с конечными дисперсиями, то
+  \[D(\xi_1 + \cdots + \xi_n) = \sum_{k = 1}^n D\xi_k\]
+\end{corollary}
+
+\begin{proof}
+  \begin{align*}
+    D(\xi_1 + \cdots + \xi_n) = \text{cov }(\xi_1 + \cdots + \xi_n,\, \xi_1 + \cdots + \xi_n) = \sum_{i,\, j = 1}^n\text{cov }(\xi_i,\,\xi_j) =\\
+    \sum_{i = 1}^n \text{cov }(\xi_i,\, \xi_i) = \sum_{i = 1}^n D\xi_i
+  \end{align*}
+\end{proof}
+
+\begin{corollary}
+  Если $\xi_1,\,\cdots,\,\xi_n$ -- независимые случайные величины с конечными дисперсиями, то 
+  \[D(\xi_1 + \cdots + \xi_n) = \sum_{k = 1}^nD\xi_k\]
+\end{corollary}
+
+\begin{proof}
+  Независимые $\Rightarrow$ некоррелированные
+\end{proof}
+
+\begin{definition}
+  Пусть $\xi = (\xi_1,\,\cdots,\,\xi_n)$ -- случайный вектор. Тогда $E\xi$ называется вектор из матожиданий компонент:
+  \[E\xi = (E\xi_1,\,\cdots,\,E\xi_n)\]
+\end{definition}
+
+\begin{definition}
+  Дисперсией (матрицей ковариаций) вектора $\xi$ называется матрица:
+  \[D\xi = (\text{cov }(\xi_i,\, \xi_j);\; i,\,j = \overline{1,\,n})\]
+\end{definition}
+
+\begin{proposition}
+  Матрица ковариаций -- симметричная и неотрицательно определённая матрица.
+\end{proposition}
+
+\begin{proof}
+  $\text{cov }(\xi_i,\,\xi_j) = \text{cov }(\xi_j,\, \xi_i)$ по определению ковариации $\Rightarrow$ симметричная.
+
+  Пусть $\xi \in \mathbb{R}^n$, возьмём $\vec{x} \in \mathbb{R}^n$:
+  \begin{align*}
+    \langle D\xi \cdot \vec{x},\, \vec{x}\rangle = \sum_{i,\,j = 1}^n\text{cov }(\xi_i,\,\xi_j)x_ix_j = \sum_{i,\, j = 1}^n \text{cov }(x_i\xi_i,\, x_j\xi_j) =\\
+    \text{cov }\left(\sum_{i = 1}^n x_i\xi_i,\, \sum_{j = 1}^n x_j\xi_j\right) = D\left(\sum_{i = 1}^n x_i\xi_i\right) \geq 0
+  \end{align*}
+\end{proof}
+
 \end{document}
