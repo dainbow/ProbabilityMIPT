@@ -825,4 +825,49 @@
   \[Eg(\xi) = \int_{\mathbb{R}^m}g(\vec{x})p(\vec{x})d\vec{x}\]
 \end{corollary}
 
+\section{Прямое произведение вероятностных пространств}
+\begin{definition}
+  Пусть $(\Omega_1,\, \mathcal{F}_1,\, P_1)$ и $(\Omega_2,\, \mathcal{F}_2,\, P_2)$ -- два вероятностных пространства. Их прямым произведением называется вероятностное пространство $(\Omega,\, \mathcal{F},\, P)$, где
+  \begin{enumerate}
+    \item $\Omega = \Omega_1 \times \Omega_2$
+    \item $\mathcal{F} = \mathcal{F}_1 \otimes \mathcal{F}_2 = \sigma(B_1 \times B_2:\: B_i \in \mathcal{F}_i)$ -- $\sigma$-алгебра, порождённая прямоугольниками.
+    \item $P = P_1 \times P_2$ -- вероятностная мера на $(\Omega,\, \mathcal{F})$, такая, что $P(B_1 \times B_2) = P_1(B_1)P_2(B_2)$
+  \end{enumerate} 
+\end{definition}
+
+\begin{lemma}
+  Такая вероятностая мера $P$ существует и единственна.
+\end{lemma}
+
+\begin{proof}
+  Рассмотрим $\mathcal{A}$ -- конечное объединение непересекающихся прямоугольников. Тогда $\mathcal{A}$ -- алгебра и $\sigma(\mathcal{A}) = \mathcal{F}$. Определим $P$ на $\mathcal{A}$ по конечной аддитивности. Остаётся проверить, что $P$ -- счётно-аддитивна на $\mathcal{A}$.
+
+  Пусть $C = \sqcup_i C_i;\; C_i,\,C \in \mathcal{A}$. Надо проверить, что 
+  \[P(C) = \sum_{i = 1}^\infty P(C_i)\]
+  Достаточно проверить для прямоугольников:
+  \[C = A \times B,\, C_i = A_i \times B_i\]
+  Представим в виде индикаторов:
+  \[\mathbb{I}_{A \times B}(\omega_1,\, \omega_2) = \sum_{i = 1}^\infty \mathbb{I}_{A_i \times B_i}(\omega_1,\,\omega_2)\]
+  или
+  \[\mathbb{I}_A(\omega_1)\cdot\mathbb{I}_B(\omega_2) = \sum_{i = 1}^\infty \mathbb{I}_{A_i}(\omega_1)\mathbb{I}_{B_i}(\omega_2)\]
+  Зафиксируем $\omega_1 \in \Omega_1$ и возьмём $E$ от обеих частей неравенства в $(\Omega_2,\, \mathcal{F}_2,\, P_2)$:
+  \[\mathbb{I}_A(\omega_1)P_2(B_2) = \sum_{i = 1}^\infty \mathbb{I}_{A_i}(\omega_1)P_2(B_i)\]
+  Теперь берём $E$ в $(\Omega_1,\, \mathcal{F}_1,\, P_1)$:
+  \[P_1(A)P_2(B) = \sum_{i = 1}^\infty P_1(A_i)P_2(B_i)\]
+\end{proof}
+
+\begin{theorem}
+  Фубини (б/д).
+
+  Пусть $(\Omega,\, \mathcal{F},\, P)$ -- это прямое произведение $(\Omega_1,\, \mathcal{F}_1,\, P_1)$ и $(\Omega_2,\, \mathcal{F}_2,\, P_2)$. Пусть случайная величина $\xi:\: \Omega \to \mathbb{R}$ такова, что 
+  \[\int_\Omega \xi dP < +\infty\]
+  Тогда 
+  \[\int_{\Omega_i}\xi(\omega_1,\, \omega_2)P_i(d\omega_i)\]
+  конечен почти наверное по мере $P_{3 - i}$, является $\mathcal{F}_{3 - i}$ измеримой функцией и, кроме того,
+  \begin{align*}
+    \int_\Omega \xi(\omega_1,\, \omega_2)P(d\omega_1,\, d\omega_2) = \\
+    \int_{\Omega_1}\left(\int_{\Omega_2}\xi(\omega_1,\, \omega_2)P_2(d\omega_2)\right)P_1(d\omega_1) = \int_{\Omega_2}\left(\int_{\Omega_1}\xi(\omega_1,\, \omega_2)P_1(d\omega_1)\right)P_2(d\omega_2)
+  \end{align*}
+\end{theorem}
+
 \end{document}
