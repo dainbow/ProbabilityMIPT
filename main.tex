@@ -1,0 +1,181 @@
+\documentclass[a4paper,12pt]{article}
+
+%%% Работа с русским языком
+
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{indentfirst}            % красная строка в первом абзаце
+\usepackage[unicode]{hyperref}
+\usepackage{epigraph}
+\frenchspacing                      % равные пробелы между словами и предложениями
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % пакеты AMS
+\usepackage{bbm} % Blackboard bold для цифр
+\usepackage{icomma}                                    % "Умная" запятая
+
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+\renewcommand{\emptyset}{\ensuremath{\varnothing}}
+
+\newcommand{\cl}{\text{cl }}
+\newcommand{\setint}{\text{int }}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{proposition}{Утверждение}[section]
+\newtheorem*{corollary}{Следствие}
+\newtheorem*{exercise}{Упражнение}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem*{note}{Замечание}
+\newtheorem*{reminder}{Напоминание}
+\newtheorem*{example}{Пример}
+\newtheorem*{tasks}{Вопросы и задачи}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Решение}
+
+%%% Оформление страницы
+\usepackage{extsizes}     % Возможность сделать 14-й шрифт
+\usepackage{geometry}     % Простой способ задавать поля
+\usepackage{setspace}     % Интерлиньяж
+\usepackage{enumitem}     % Настройка окружений itemize и enumerate
+\usepackage{epigraph}     % Эпиграф
+\setlist{leftmargin=25pt} % Отступы в itemize и enumerate
+
+\geometry{top=25mm}    % Поля сверху страницы
+\geometry{bottom=30mm} % Поля снизу страницы
+\geometry{left=20mm}   % Поля слева страницы
+\geometry{right=20mm}  % Поля справа страницы
+
+\begin{document}
+\tableofcontents
+\newpage
+
+\section{Базовые определения}
+
+\begin{definition}
+	Система $\mathcal{F}$ подмножеств $\Omega$ называется алгеброй, если
+	\begin{enumerate}
+		\item $\Omega \in \mathcal{F}$
+		\item $A \in \mathcal{F}$, то $\overline{A} := (\Omega \setminus A) \in \mathcal{F}$
+		\item $A,\, B \in \mathcal{F}$, то $A \cap B \in \mathcal{F}$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Система $\mathcal{F}$ подмножеств $\Omega$ называется $\sigma$-алгеброй, если
+	\begin{enumerate}
+		\item $\mathcal{F}$ -- алгебра
+		\item $\forall \{A_n,\, n \in \mathbb{N}\},\, A_n \in \mathcal{F} \Rightarrow \cup_{n = 1}^\infty A_n \in \mathcal{F}$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	$P$ называется вероятностной мерой на $(\Omega,\, \mathcal{F})$, если $P:\: \mathcal{F} \to [0,\,1]$, удовлетворяющая свойствам:
+	\begin{enumerate}
+		\item $P(\Omega) = 1$
+		\item Если $\{A_n,\, n \in \mathbb{N}\}$, то
+		      \[P\left(\bigsqcup_{n = 1}^\infty A_n\right) = \sum_{n = 1}^\infty P(A_n)\]
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Вероятностное пространство -- это тройка $(\Omega,\, \mathcal{F},\, P)$, где
+	\begin{itemize}
+		\item $\Omega$ -- множество элементарных исходов
+		\item $\mathcal{F}$ -- $\sigma$-алгебра подмножеств $\Omega$, элементы $\mathcal{F}$ называются событиями
+		\item $P$ -- вероятностная мера на измеримом пространстве $(\Omega,\, \mathcal{F})$
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	Система $\mathcal{M}$ подмножеств в $\Omega$ называется $\pi$-системой, если из того, что $A,\, B \in \mathcal{M}$ следует, что $A \cap B \in \mathcal{M}$
+\end{definition}
+
+\begin{definition}
+	Система $\mathcal{L}$ подмножеств в $\Omega$ называется $\lambda$-системой, если
+	\begin{enumerate}
+		\item $\Omega \in \mathcal{L}$
+		\item $(A,\, B \in \mathcal{L};\; A \subset B) \Rightarrow B \setminus A \in \mathcal{L}$
+		\item $(A_n \uparrow A;\; \forall n \: A_n \in \mathcal{L}) \Rightarrow A \in \mathcal{L}$
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem} \label{FIRST_SYSTEM_TH}
+	Первая теорема о $\pi$-$\lambda$-системах
+
+	Система $\mathcal{F}$ подмножеств $\Omega$ является $\sigma$-алгеброй $\Leftrightarrow$ она является $\pi$-системой и $\lambda$-системой.
+\end{theorem}
+
+\begin{proof}
+	$\Rightarrow$ очевидно.
+
+	$\Leftarrow$ Проверим сначала, что $\mathcal{F}$ -- алгебра. Свойства $1),\,2)$ уже есть. По свойству $2)$ $\lambda$-системы $\overline{A} = \Omega \setminus A \in \mathcal{F}$, если $A \in \mathcal{F}$. Значит $\mathcal{F}$ -- алгебра.
+
+	Пусть $\{A_n,\, n \in \mathbb{N}\},\, \forall n \: A_n \in \mathcal{F},\, \forall i \neq j \: A_i \cap A_j = \emptyset$. Рассмотрим $B_n = \sqcup_{m = 1}^n A_m \in \mathcal{F}$. Тогда $B_n \subset B_{n + 1}$ и $\cup_{n = 1}^\infty B_n = \sqcup_{n = 1}^\infty A_n \Rightarrow$ по $3)$ свойству $\lambda$-системы: $B_n \uparrow \sqcup_{n = 1}^\infty A_n \in \mathcal{F}$.
+\end{proof}
+
+\begin{lemma}
+	Пусть $\mathcal{M}$ -- система подмножеств $\Omega$. Тогда существует минимальная (по включению) $\sigma$-алгебра (алгебра, $\pi$-система, $\lambda$-система), обозначаемая $\sigma(\mathcal{M})$ ($\lambda(\mathcal{M}),\, \pi(\mathcal{M}),\, \lambda(\mathcal{M})$), содержащая $\mathcal{M}$.
+\end{lemma}
+
+\begin{example}
+	\begin{enumerate}
+		\item Если $\Omega = \mathbb{R}$, то борелевской $\sigma$-алгеброй на $\mathbb{R}$ называется наименьшая $\sigma$-алгебра, содержащая все интервалы
+		      \[\mathcal{B}(\mathbb{R}) = \sigma((a;\;b) ,\: a < b)\]
+    \item Если $\Omega = \mathbb{R}^n,\, n > 1$.
+    
+    Борелевской $\sigma$-алгеброй в $\mathbb{R}^n$ называется минимальная $\sigma$-алгебра, содержащая множества вида $B_1 \times \cdots \times B_n,\, B_i \in \mathcal{B}(\mathbb{R})$, то есть
+    \[\mathcal{B}(\mathbb{R}^n) = \sigma(B_1 \times \cdots \times B_n:\: B_i \in \mathcal{B}(\mathbb{R}))\]
+    \item Если $\Omega = \mathbb{R}^\infty$, то есть $\Omega$ содержит все счётные последовательности вещественных чисел.
+    
+    Для $n \in \mathbb{N}$ и $B_n \in \mathcal{B}(\mathbb{R}^n)$ введём циллиндр:
+    \[F_n(B_n) = \{\vec{x} \in \mathbb{R}^\infty :\: (x_1,\,\cdots,\,x_n) \in B_n\}\]
+    Тогда минимальная $\sigma$-алгеьра, содержащая все циллиндры называется борелевской в $\mathbb{R}^\infty$, то есть
+    \[\mathcal{B}(\mathbb{R}^\infty) = \sigma(F_n(B_n):\: n \in \mathbb{N},\, B_n \in \mathcal{B}(\mathbb{R}^n))\]
+	\end{enumerate}
+\end{example}
+
+\section{Вторая теорема о $\pi$- и $\lambda$-системах. Следствия из неё.}
+\begin{theorem}
+  Вторая теорема о $\pi$-$\lambda$-системах.
+
+  Если $\mathcal{M}$ -- это $\pi$-система подмножеств в $\Omega$, то $\sigma(\mathcal{M}) = \lambda(\mathcal{M})$
+\end{theorem}
+
+\begin{proof}
+  Заметим, что $\sigma(\mathcal{M})$ -- $\lambda$-система, содержащая $\mathcal{M} \Rightarrow \lambda(\mathcal{M}) \subset \sigma(\mathcal{M})$.
+
+  Проверим, что $\lambda(\mathcal{M})$ -- это $\sigma$-алгебра. Раз $\lambda(\mathcal{M})$ -- это $\lambda$-система, то по (\ref{FIRST_SYSTEM_TH}) достаточно проверить, что $\lambda(\mathcal{M})$ -- это $\pi$-система.
+
+  Рассмотрим $\mathcal{M}_1 = \{B \in \lambda(\mathcal{M}):\: \forall A \in \mathcal{M},\, A \cap B \in \lambda(\mathcal{M})\}$. Заметим, что $\mathcal{M} \subset \mathcal{M}_1$. Проверим, что $\mathcal{M}_1$ -- это $\lambda$-система:
+  \begin{enumerate}
+    \item $\Omega \in \mathcal{M}_1$ -- очевидно
+    \item Пусть $B,\, C \in \mathcal{M}_1,\, C \subset B$, пусть $A \in \mathcal{M}$. Заметим, что $B \setminus C \in \lambda(\mathcal{M})$ и 
+    \[(B \setminus C) \cap A = \stackrel{\in \lambda(\mathcal{M})}{(B \cap A)} \setminus \stackrel{\in \lambda(\mathcal{M})}{(C \cap A)}\]
+    Значит по второму свойству $\lambda$-систем $(B \setminus C) \cap A \in \lambda(\mathcal{M})$
+    \item Пусть $B_n \uparrow B,\, B_n \in \mathcal{M}_1,\, A \in \mathcal{M} \Rightarrow$
+    \[\stackrel{\in \lambda(\mathcal{M})}{B_n \cap A}\: \uparrow B \cap A\]
+    Тогда по третьем свойству $\lambda$-систем $B \cap A \in \lambda(\mathcal{M})$. Но $B_n \in \lambda(\mathcal{M}) \Rightarrow$ по третьему свойству $\lambda$-системы получаем, что $B \in \lambda(\mathcal{M}) \Rightarrow B \in \mathcal{M}_1$.
+  \end{enumerate}
+  По условию $\mathcal{M} \subset \mathcal{M}_1 \Rightarrow$ в силу минимальности $\lambda(\mathcal{M}) \subset \mathcal{M}_1$. По построению $\mathcal{M}_1 \subset \lambda(\mathcal{M}) \Rightarrow \lambda(\mathcal{M}) = \mathcal{M}_1$, то есть $\forall B \in \lambda(\mathcal{M}) \: \forall A \in \mathcal{M} :\: A \cap B \in \lambda(\mathcal{M})$.
+
+  Далее рассмотрим $\mathcal{M}_2 = \{B \in \lambda(\mathcal{M}):\: \forall A \in \lambda(\mathcal{M}) \: A \cap B \in \lambda(\mathcal{M})\}$. В силу доказанного $\mathcal{M} \subset \mathcal{M}_2$. Совершенно аналогично с $\mathcal{M}_1$ проверяем, что $\mathcal{M}_2$ -- это $\lambda$-система. Тогда $\lambda(\mathcal{M}) \subset \mathcal{M}_2$. По построению $\mathcal{M}_2 \subset \lambda(\mathcal{M}) \Rightarrow \lambda(\mathcal{M}) = \mathcal{M}_2 \Rightarrow \lambda(\mathcal{M})$ -- это $\pi$-система.
+\end{proof}
+
+\begin{corollary}
+  Пусть $\mathcal{M}$ -- это $\pi$-система на $\Omega$, и $\mathcal{L}$ -- это $\lambda$-система на $\Omega$ и $\mathcal{M} \subset \mathcal{L}$. Тогда $\lambda(\mathcal{M}) \subset \mathcal{L}$
+\end{corollary}
+
+\end{document}
