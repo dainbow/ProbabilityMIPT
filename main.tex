@@ -219,88 +219,179 @@
 	\end{enumerate}
 	Раз $\mathcal{L}_1$ -- это $\lambda$-система и $\mathcal{M}_2 \subset \mathcal{L}_1$, по условию, то по (\ref{SECOND_SYSTEM_TH}) получим, что $\sigma(\mathcal{M}_2) \subset \mathcal{L}_1 \Rightarrow \sigma(\mathcal{M}_2) \independent \mathcal{M}_1$.
 
-  Рассмотрим $\mathcal{L}_2 = \{A \in \sigma(\mathcal{M}_1):\: A \independent \sigma(\mathcal{M}_2)\}$. Точно так же доказывается, что $\mathcal{L}_2$ -- это $\lambda$-система, $\mathcal{M}_1 \subset \mathcal{L}_2$ по доказанному $\Rightarrow \sigma(\mathcal{M}_1) \subset \mathcal{L}_2 \Rightarrow \sigma(M_1) \independent \sigma(M_2)$
+	Рассмотрим $\mathcal{L}_2 = \{A \in \sigma(\mathcal{M}_1):\: A \independent \sigma(\mathcal{M}_2)\}$. Точно так же доказывается, что $\mathcal{L}_2$ -- это $\lambda$-система, $\mathcal{M}_1 \subset \mathcal{L}_2$ по доказанному $\Rightarrow \sigma(\mathcal{M}_1) \subset \mathcal{L}_2 \Rightarrow \sigma(M_1) \independent \sigma(M_2)$
 \end{proof}
 
 \begin{definition}
-  Пусть $\{M_\alpha,\, \alpha \in \mathfrak{A}\}$ -- набор систем событий. Он называется независимым в совокупности, если независим в совокупности $\forall$ конечный поднабор.
+	Пусть $\{M_\alpha,\, \alpha \in \mathfrak{A}\}$ -- набор систем событий. Он называется независимым в совокупности, если независим в совокупности $\forall$ конечный поднабор.
 \end{definition}
 
 \section{Функция распределения вероятностной меры}
 \begin{definition}
-  Функцией распределения вероятностной меры $P$ на $\mathbb{R}$ называется 
-  \[F(x) = P((-\infty,\, x]),\, x \in \mathbb{R}\]
+	Функцией распределения вероятностной меры $P$ на $\mathbb{R}$ называется
+	\[F(x) = P((-\infty,\, x]),\, x \in \mathbb{R}\]
 \end{definition}
 
 \begin{lemma}
-  Свойства функции распределения.
+	Свойства функции распределения.
 
-  \begin{enumerate}
-    \item $F(x)$ не убывает
-    \item $F(+\infty) = 1,\, F(-\infty) = 0$
-    \item $F(x)$ непрерывна справа
-  \end{enumerate}
+	\begin{enumerate}
+		\item $F(x)$ не убывает
+		\item $F(+\infty) = 1,\, F(-\infty) = 0$
+		\item $F(x)$ непрерывна справа
+	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-  \begin{enumerate}
-    \item Пусть $y > x$. Тогда
-    \[(-\infty,\, x] \subset (-\infty,\, y] \Rightarrow F(x) = P((-\infty,\, x]) \leq P((-\infty,\, y]) = F(y)\]
-    \item Если $x_n \uparrow +\infty$, то $(-\infty,\, x_n] \uparrow \mathbb{R}$. Тогда в силу непрерывности меры
-    \[F(x_n) = P((-\infty,\, x_n]) \stackrel{n \to +\infty}{\to} P(\mathbb{R}) = 1\]
-    Если $x_n \downarrow -\infty$, то $(-\infty,\, x_n] \downarrow \emptyset$. Тогда в силу непрерывности меры
-    \[F(x_n) = P((-\infty,\, x_n]) \stackrel{n \to +\infty}{\to} P(\emptyset) = 0\]
-    \item Если $x_n \downarrow x$, то $(-\infty,\, x_n] \downarrow (-\infty,\, x]$. Тогда в силу непрерывности меры
-    \[F(x_n) = P((-\infty,\, x_n]) \stackrel{n \to +\infty}{\to} P((-\infty,\, x]) = F(x)\]
-  \end{enumerate}
+	\begin{enumerate}
+		\item Пусть $y > x$. Тогда
+		      \[(-\infty,\, x] \subset (-\infty,\, y] \Rightarrow F(x) = P((-\infty,\, x]) \leq P((-\infty,\, y]) = F(y)\]
+		\item Если $x_n \uparrow +\infty$, то $(-\infty,\, x_n] \uparrow \mathbb{R}$. Тогда в силу непрерывности меры
+		      \[F(x_n) = P((-\infty,\, x_n]) \stackrel{n \to +\infty}{\to} P(\mathbb{R}) = 1\]
+		      Если $x_n \downarrow -\infty$, то $(-\infty,\, x_n] \downarrow \emptyset$. Тогда в силу непрерывности меры
+		      \[F(x_n) = P((-\infty,\, x_n]) \stackrel{n \to +\infty}{\to} P(\emptyset) = 0\]
+		\item Если $x_n \downarrow x$, то $(-\infty,\, x_n] \downarrow (-\infty,\, x]$. Тогда в силу непрерывности меры
+		      \[F(x_n) = P((-\infty,\, x_n]) \stackrel{n \to +\infty}{\to} P((-\infty,\, x]) = F(x)\]
+	\end{enumerate}
 \end{proof}
 
 \begin{definition}
-  Эквивалентное определение функции распределения.
+	Эквивалентное определение функции распределения.
 
-  Функция, удовлетворяющая свойствам $1-3$ из предыдущей леммы, называется функцией распределения на $P$.
+	Функция, удовлетворяющая свойствам $1-3$ из предыдущей леммы, называется функцией распределения на $P$.
 \end{definition}
 
 \begin{theorem} \label{MEASURE_EXTEND_TH}
-  О продолжении меры (б/д)
+	О продолжении меры (б/д)
 
-  Пусть $\mathcal{A}$ -- алгебра подмножеств $\Omega$. Пусть $P_0 :\: \mathcal{A} \to [0,\,1]$ с условием, $P_0(\Omega) = 1$ и $P_0$ счётно-аддитивна на $\mathcal{A}$. Тогда $\exists!$ продолжение меры $P_0$ на $\sigma(A)$
+	Пусть $\mathcal{A}$ -- алгебра подмножеств $\Omega$. Пусть $P_0 :\: \mathcal{A} \to [0,\,1]$ с условием, $P_0(\Omega) = 1$ и $P_0$ счётно-аддитивна на $\mathcal{A}$. Тогда $\exists!$ продолжение меры $P_0$ на $\sigma(A)$
 \end{theorem}
 
 \begin{theorem}
-  О взаимной однозначности функции распределения и вероятностной меры.
+	О взаимной однозначности функции распределения и вероятностной меры.
 
-  Пусть $F(x),\, x \in \mathbb{R}$ -- функция распределения на $\mathbb{R}$. Тогда $\exists!$ вероятностная мера $P$ на $(\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, для которой $F$ является функцией распределения, то есть 
-  \[\forall x \in \mathbb{R} :\: F(x) = P((-\infty,\,x])\]
+	Пусть $F(x),\, x \in \mathbb{R}$ -- функция распределения на $\mathbb{R}$. Тогда $\exists!$ вероятностная мера $P$ на $(\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, для которой $F$ является функцией распределения, то есть
+	\[\forall x \in \mathbb{R} :\: F(x) = P((-\infty,\,x])\]
 \end{theorem}
 
 \begin{proof}
-  Рассмотрим на $\mathbb{R}$ алгебру $\mathcal{A}$, состоящую из конечных объединений непересекающихся интервалов: 
-  \[\forall A \in \mathcal{A}:\: A = \bigsqcup_{k = 1}^n (a_k,\,b_k],\, -\infty \leq a_1 < b_1 < a_2 < b_2 < \cdots < b_n \leq +\infty\]
-  Зададим на $\mathcal{A}$ меру $P_0$: 
-  \[\forall A \in \mathcal{A}:\: P_0(A) = \sum_{k = 1}^n (F(b_k) - F(a_k))\]
-  где $F(-\infty) = 0,\, F(+\infty) = 1$.
+	Рассмотрим на $\mathbb{R}$ алгебру $\mathcal{A}$, состоящую из конечных объединений непересекающихся интервалов:
+	\[\forall A \in \mathcal{A}:\: A = \bigsqcup_{k = 1}^n (a_k,\,b_k],\, -\infty \leq a_1 < b_1 < a_2 < b_2 < \cdots < b_n \leq +\infty\]
+	Зададим на $\mathcal{A}$ меру $P_0$:
+	\[\forall A \in \mathcal{A}:\: P_0(A) = \sum_{k = 1}^n (F(b_k) - F(a_k))\]
+	где $F(-\infty) = 0,\, F(+\infty) = 1$.
 
-  По построению $P_0(\mathbb{R}) = 1$ и $P_0$ будет конечно аддитивна на $\mathcal{A}$. Если мы проверим, что $P_0$ счётно аддитивна на $\mathcal{A}$, то по (\ref{MEASURE_EXTEND_TH}) $\exists!$ продолжение $P$ меры $P_0$ на $\sigma(A) = \mathcal{B}(\mathbb{R})$. Это и есть искомая мера $P$, причём
-  \[P((-\infty,\, x]) = P_0((-\infty,\, x]) = F(x)\]
-  По теореме о непрерывности вероятностной меры, достаточно проверить, что $P_0$ непрерывна в нуле.
+	По построению $P_0(\mathbb{R}) = 1$ и $P_0$ будет конечно аддитивна на $\mathcal{A}$. Если мы проверим, что $P_0$ счётно аддитивна на $\mathcal{A}$, то по (\ref{MEASURE_EXTEND_TH}) $\exists!$ продолжение $P$ меры $P_0$ на $\sigma(A) = \mathcal{B}(\mathbb{R})$. Это и есть искомая мера $P$, причём
+	\[P((-\infty,\, x]) = P_0((-\infty,\, x]) = F(x)\]
+	По теореме о непрерывности вероятностной меры, достаточно проверить, что $P_0$ непрерывна в нуле.
 
-  Пусть $A_n \downarrow \emptyset,\, \forall n :\: A_n \in \mathcal{A}$. Хотим проверить, что $P(A_n) \stackrel{n \to +\infty}{\to} 0$. В силу $2-3$ свойств функции распределения:
-  \[\forall A \in \mathcal{A} \: \forall \varepsilon > 0 \: \exists B \in A :\: \cl B \subset A,\, P_0(A \setminus B) \leq \varepsilon\]
-  Если $(a,\,b]$ является частью $A$, то для некоторого $a' > a$ будет выполнено
-  \[P_0((a,\, a']) \leq \varepsilon\]
-  Зафиксировав $\forall \varepsilon > 0$, выберем $B_n \: \forall n \in \mathbb{N}:\: B_n \in A$, такой что $\cl B_n \subset A_n$ и $P_0(A_n \setminus B_n) \leq \frac{\varepsilon}{2^n}$. 
-  
-  Пусть сначала все $A_n$ лежат внутри $[-N,\,N]$. Заметим, что раз $\cap_n A_n = \emptyset$, то $\cap_n \cl B_n = \emptyset$. В силу компактости $\exists n_0$:
-  \[\bigcap_{n = 1}^{n_0} \cl B_n = \emptyset \Rightarrow \bigcap_{n = 1}^{n_0} B_n = \emptyset\]
-  Рассмотрим 
-  \begin{align*}
-    P_0(A_{n_0}) = P_0\left(A_{n_0} \setminus \bigcup_{n = 1}^{n_0}B_n\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_{n_0}\setminus B_n)\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_n \setminus B_n)\right) \leq\\
-    \sum_{n = 1}^{n_0}P_0(A_n \setminus B_n) \leq \sum_{n = 1}^{n_0}\frac{\varepsilon}{2^n} \leq \varepsilon \Rightarrow P(A_n) \stackrel{n \to +\infty}{\to} 0
-  \end{align*}
-  Если $A$ бесконечно, то возьмём $N$, такой что $P_0(\mathbb{R} \setminus (-N,\, N]) \leq \frac{\varepsilon}{2}$. Рассмотрим $A_n' = A_n \cap (-N,\, N]$. Тогда по доказанному выше $P_0'(A_n') \stackrel{n \to +\infty}{\to} 0 \Rightarrow$ с некоторого $n_0$:
-  \[P_0(A_n) \leq P(A_n') + P_0(\mathbb{R}\setminus (-N,\, N]) \leq \varepsilon\]
+	Пусть $A_n \downarrow \emptyset,\, \forall n :\: A_n \in \mathcal{A}$. Хотим проверить, что $P(A_n) \stackrel{n \to +\infty}{\to} 0$. В силу $2-3$ свойств функции распределения:
+	\[\forall A \in \mathcal{A} \: \forall \varepsilon > 0 \: \exists B \in A :\: \cl B \subset A,\, P_0(A \setminus B) \leq \varepsilon\]
+	Если $(a,\,b]$ является частью $A$, то для некоторого $a' > a$ будет выполнено
+	\[P_0((a,\, a']) \leq \varepsilon\]
+	Зафиксировав $\forall \varepsilon > 0$, выберем $B_n \: \forall n \in \mathbb{N}:\: B_n \in A$, такой что $\cl B_n \subset A_n$ и $P_0(A_n \setminus B_n) \leq \frac{\varepsilon}{2^n}$.
+
+	Пусть сначала все $A_n$ лежат внутри $[-N,\,N]$. Заметим, что раз $\cap_n A_n = \emptyset$, то $\cap_n \cl B_n = \emptyset$. В силу компактости $\exists n_0$:
+	\[\bigcap_{n = 1}^{n_0} \cl B_n = \emptyset \Rightarrow \bigcap_{n = 1}^{n_0} B_n = \emptyset\]
+	Рассмотрим
+	\begin{align*}
+		P_0(A_{n_0}) = P_0\left(A_{n_0} \setminus \bigcup_{n = 1}^{n_0}B_n\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_{n_0}\setminus B_n)\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_n \setminus B_n)\right) \leq \\
+		\sum_{n = 1}^{n_0}P_0(A_n \setminus B_n) \leq \sum_{n = 1}^{n_0}\frac{\varepsilon}{2^n} \leq \varepsilon \Rightarrow P(A_n) \stackrel{n \to +\infty}{\to} 0
+	\end{align*}
+	Если $A$ бесконечно, то возьмём $N$, такой что $P_0(\mathbb{R} \setminus (-N,\, N]) \leq \frac{\varepsilon}{2}$. Рассмотрим $A_n' = A_n \cap (-N,\, N]$. Тогда по доказанному выше $P_0'(A_n') \stackrel{n \to +\infty}{\to} 0 \Rightarrow$ с некоторого $n_0$:
+	\[P_0(A_n) \leq P(A_n') + P_0(\mathbb{R}\setminus (-N,\, N]) \leq \varepsilon\]
 \end{proof}
+
+\section{Классификация вероятностных мер}
+\begin{definition}
+	Пусть $P$ -- вероятностная мера на $(\mathbb{R},\, \mathcal{B}(\mathbb{R}))$. Она называется дискретной, если $\exists$ не более чем счётное множество $X \subset \mathbb{R}$, такое, что
+	\[P(\mathbb{R} \setminus X) = 0,\, \forall x \in X:\: P(\{x\}) > 0\]
+	Говорят, что $P$ сосредоточена на $X$.
+
+	Пусть $X = (x_k,\, k \in \mathbb{N})$, обозначим $p_k = P(\{x_k\})$. Набор $(p_1,\,p_2,\,\cdots)$ образует распределение вероятностей на $X$.
+
+	Как выглядит функция распределения?
+	\[F(x) = \sum_{x_k \leq x}P(\{x_k\})\]
+	Она меняется скачками в точках $x_k$, в них значение увеличивается на
+	\[p_k = P(\{x_k\}) = \Delta F(x_k) = F(x_k) - F(x_k - 0)\]
+\end{definition}
+
+\begin{example}
+	Дискретные распределения:
+	\begin{enumerate}
+		\item Константы.
+		      \[X = \{x\};\; P(\{x\}) = 1\]
+		\item Распределение Бернулли, Bern($p$), $p \in [0,\,1]$:
+		      \[X = \{0,\, 1\};\; p_0 = 1 - p,\, p_1 = p\]
+		\item Биномиальное распределение, Bin($n,\,p$), $n \in \mathbb{N},\, p \in [0,\,1]$:
+		      \[X = \{0,\,\cdots,\,n\};\; p_k = C_n^k p^k (1-p)^{n - k};\; k = \overline{0,\,n}\]
+		\item Пуассоновское распределение, Pois($\lambda$), $\lambda > 0$
+		      \[X = \mathbb{Z}_+;\; p_k = \frac{\lambda^k}{k!}e^{-\lambda},\, k \in \mathbb{Z}_+\]
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Пусть $P$ -- вероятностная мера на $(\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, а $F$ -- её функция распределения. Она называется абсолютно непрерывной, если $\exists p(t) \geq 0$, такая что
+	\[\int_\mathbb{R}p(t)dt = 1;\; \forall x \in \mathbb{R} :\: F(x) = \int_{-\infty}^x p(t)dt\]
+	В этом случае $p(t)$ называется плотностью функции распределения $F$ и меры $P$.
+\end{definition}
+
+\begin{note}
+	Интегралы понимаются, как интегралы Лебега.
+\end{note}
+
+\begin{example}
+	\begin{enumerate}
+		\item Равномерное распределение, U($a,\,b$), $a < b$
+		      \[
+			      p(x) = \frac{1}{b - a}\cdot\mathbb{I}_{\{x \in [a,\,b]\}}(x);\; F(x) = \begin{cases}
+				      0,\, x < a                           \\
+				      \frac{x - a}{b - a},\, x \in [a,\,b] \\
+				      1,\, x > b
+			      \end{cases}
+		      \]
+		\item Нормальное (гауссовское) распределение, $\mathcal{N}(a,\,\sigma^2),\, a \in \mathbb{R},\, \sigma > 0$
+		      \[p(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x - a)^2}{2\sigma^2}};\; \Phi_{a,\,\sigma^2}(x) = \int_{-\infty}^x p(t)dt\]
+		\item Экспоненциальное (показательное) распределение, Exp($\alpha$), $\alpha > 0$.
+		      \[
+			      p(x) = \alpha e^{-\alpha x}\cdot\mathbb{I}\{x > 0\};\; F(x) = \begin{cases}
+				      0,\, x \leq 0 \\
+				      1 - e^{-\alpha x},\, x > 0
+			      \end{cases}
+		      \]
+    \item Гамма-распределение, $\Gamma(\alpha,\, \lambda),\, \alpha,\, \lambda > 0$
+    \[
+      p(x) = \frac{x^{\alpha - 1}\alpha^\lambda}{\Gamma(\lambda)}e^{-\lambda x}\mathbb{I}_{\{x > 0\}}(x);\; \Gamma(\lambda) = \int_0^{+\infty} x^{\lambda - 1}e^{-x}dx,\, \lambda > 0
+    \]
+    \item Распределение Коши, $K(\sigma),\, \sigma > 0$
+    \[p(x) = \frac{\sigma}{\pi(x^2 + \sigma^2)};\; F(x) = \frac{1}{2} + \frac{1}{\pi}\arctg\frac{x}{\sigma}\]
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+  Пусть $F$ -- функция распределения на $\mathbb{R}$. 
+
+  Точка $x$ является точкой роста $F$, если 
+  \[\forall \varepsilon > 0 :\: F(x + \varepsilon) - F(x - \varepsilon) > 0\]
+\end{definition}
+
+\begin{definition}
+  Функция распределения $F$ (и соответствующая ей мера $P$) называется сингулярной, если $F$ непрерывна и множество её точек роста имеет лебегову норму нуль.
+\end{definition}
+
+\begin{example}
+  Канторова лестница.
+
+  Мера $P$ сосредоточена на канторовом множестве, оно не счётное, но каждый элемент имеет ненулевую меру.
+\end{example}
+
+\begin{theorem}
+  Лебега о разложении. (б/д)
+
+  Пусть $F$ -- функция распределения на $\mathbb{R}$. Тогда $\exists$ разложение вида
+  \[F(x) = \alpha_1F_1(x) + \alpha_2F_2(x) + \alpha_3F_3(x),\, \alpha_i \geq 0,\, \alpha_1 + \alpha_2 + \alpha_3 = 1\]
+  причём $F_1$ -- дискретная функция распределения, $F_2$ -- абсолютно непрерывная, $F_3$ -- сингулярная.
+\end{theorem}
 
 
 \end{document}
