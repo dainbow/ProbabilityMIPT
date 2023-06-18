@@ -870,4 +870,46 @@
   \end{align*}
 \end{theorem}
 
+\section{Совместное распределение\dots}
+\begin{proposition}
+  Если случайные величины $\xi,\,\eta$ -- независимые, то
+  \[P_{(\xi,\,\eta)} = P_\xi \times P_\eta\]
+\end{proposition}
+
+\begin{proof}
+  \[
+    P_{(\xi,\,\eta)}(B_1 \times B_2) = P((\xi,\,\eta) \in B_1 \times B_2) = P(\xi \in B_1,\, \eta \in B_2) \stackrel{\independent}{=} P_\xi(B_1)P_\eta(B_2)
+  \]
+\end{proof}
+
+\begin{lemma}
+  О свёртке распределений.
+
+  Пусть $\xi,\, \eta$ -- это независимые случайные величины с функциями распределения $F_\xi,\, F_\eta$. Тогда $\xi + \eta$ имеет следующую функцию распределения:
+  \[F_{\xi + \eta}(z) = \int_\mathbb{R}F_\xi(z - x)dF_\eta(x) = \int_\mathbb{R}F_\eta(z - x)dF_\xi(x)\]
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    F_{\xi + \eta}(z) = P(\xi + \eta \leq z) = \int_{\mathbb{R}^2}\mathbb{I}\{x + y \leq z\}P_{(\xi,\,\eta)}(dx,\, dy) \stackrel{\text{Фубини}}{=}\\
+    \int_\mathbb{R}\left(\int_\mathbb{R}\mathbb{I}\{x + y \leq z\}P_\xi(dx)\right)P_\eta(dy) = \int_\mathbb{R} F_\xi(z - y)dF_\eta(y)
+  \end{align*}
+\end{proof}
+
+\begin{corollary}
+  Формула свёртки.
+
+  Пусть $\xi \independent \eta$ с плотностями $p_\xi,\, p_\eta$. Тогда $\xi + \eta$ тоже имеет плотность, причём
+  \[p_{\xi + \eta}(z) = \int_\mathbb{R}p_\xi(z - x)p_\eta(x)dx = \int_\mathbb{R} p_\eta(z - x)p_\xi(x)dx\]
+\end{corollary}
+
+\begin{proof}
+  По лемме о свёртке:
+  \begin{align*}
+    F_{\xi + \eta}(z) = \int_\mathbb{R}F_\xi(z - x)dF_\eta(x) = \int_\mathbb{R}\left(\int_{-\infty}^{z - x}p_\xi(y)dy\right)p_\eta(x)dx \stackrel{y' := y + x}{=} \\
+    \int_\mathbb{R} \left(\int_{-\infty}^z p_\xi(y' - x)dy'\right)p\eta(x)dx \stackrel{\text{Фубини}}{=} \int_{-\infty}^z \left(\int_\mathbb{R}p_\xi(y' - x)p_\eta(x)dx\right)dy' = \\
+    \int_{-\infty}^z p_{\xi + \eta}(y')dy'
+  \end{align*}
+\end{proof}
+
 \end{document}
