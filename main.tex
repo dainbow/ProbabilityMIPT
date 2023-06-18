@@ -1081,4 +1081,70 @@
 	\end{enumerate}
 \end{proof}
 
+\section{Достаточное условие сходимости с вероятностью\dots}
+\begin{lemma}
+  Достаточное условие сходимости с вероятностью 1.
+
+  Если 
+  \[\forall \varepsilon > 0:\: \sum_{n = 1}^\infty P(|\xi_n - \xi| \geq \varepsilon) < +\infty\]
+  то $\xi_n \stackrel{\text{п.н.}}{\to} \xi$
+\end{lemma}
+
+\begin{proof}
+  Рассмотрим
+  \begin{align*}
+    P(\sup_{k \geq n}|\xi_k - \xi| > \varepsilon) = P\left(\bigcup_{k = n}^\infty \{|\xi_k - \xi| > \varepsilon\}\right) \leq\\
+    \sum_{k = n}^\infty P(|\xi_k - \xi| > \varepsilon) \leq \sum_{k = n}^\infty P(|\xi_k - \xi| \geq \varepsilon) \stackrel{n \to +\infty}{\to} 0
+  \end{align*}
+  В силу стремления остатка сходящегося ряда к нулю.
+
+  Тогда по критерию $\xi_n \stackrel{\text{п.н.}}{\to} \xi$
+\end{proof}
+
+\begin{corollary}
+  Если $\xi_n \stackrel{P}{\to} \xi$, то $\exists$ подпоследовательность $\{\xi_{n_k},\, k \in \mathbb{N}\}$, такая что
+  \[\xi_{n_k} \stackrel{\text{п.н},\, k \to +\infty}{\to} \xi\]
+\end{corollary}
+
+\begin{proof}
+  Выберем $n_k$ так, чтобы $n_k > n_{k - 1}$ и 
+  \[P(|\xi_{n_k} - \xi| \geq \frac{1}{k}) \leq 2^{-k}\]
+  выбор возможен в силу сходимости по вероятности.
+
+  Проверим достаточное условие: пусть $\varepsilon > 0$, выберем $k_0 > \frac{1}{\varepsilon}$. Тогда
+  \[
+    \sum_{k = k_0}^\infty P(|\xi_{n_k} - \xi| \geq \varepsilon) \leq \sum_{k = k_0}^\infty P(|\xi_{n_k} - \xi| \geq \frac{1}{k}) \leq \sum_{k = k_0}^\infty 2^{-k} < +\infty \Rightarrow \xi_{n_k} \stackrel{\text{п.н.},\, k \to +\infty}{\to} \xi
+  \]
+\end{proof}
+
+\begin{theorem}
+  УЗБЧ в форме Кантелли.
+
+  Пусть $\{\xi_n,\, n \in \mathbb{N}\}$ -- это независимые случайные величины, такие, что
+  \[\exists c > 0 \: \forall n \in \mathbb{N}:\: E(\xi_n - E\xi_n)^4 \leq c\]
+  Обозначим $S_n = \xi_1 + \cdots + \xi_n$. Тогда
+  \[\frac{S_n - ES_n}{n} \stackrel{\text{п.н.},\, n \to +\infty}{\to} 0\]
+\end{theorem}
+
+\begin{proof}
+  Без ограничения общности считаем, что $\forall n \in \mathbb{N}:\: E\xi_n = 0$, иначе рассмотрим
+  \[\xi_n' = \xi_n - E\xi_n\]
+  Хотим проверить достаточное условие. Для $\varepsilon > 0$:
+  \[P\left(\left|\frac{S_n}{n}\right| \geq \varepsilon\right) = P\left(\frac{S_n^4}{n^4} \geq \varepsilon ^4\right) \stackrel{\text{н-во Маркова}}{\leq} \frac{ES_n^4}{\varepsilon^4n^4}\]
+  Но 
+  \[ES_n^4 = \sum_{i,\,j,\,k,\,l = 1}^n E\xi_i\xi_j\xi_k\xi_l = \sum_{i = 1}^n ES_i^4 + 6\sum_{i < j}ES_i^2ES_j^2\]
+  По условию $\forall i \in \mathbb{N}:\: ES_i^4 \leq c \Rightarrow \forall i \in \mathbb{N}:\: E\xi_i^2 \leq \sqrt{E\xi_i^4} \leq \sqrt{c} \Rightarrow$
+  \[ES_n^4 \leq n\cdot c + 6\cdot c\cdot c_n^2 = O(n^2) \Rightarrow \frac{ES_n^4}{\varepsilon^4n^4} = O\left(\frac{1}{n^2}\right)\]
+  Значит ряд сходится и работает достаточно условие сходимости с вероятностью 1.
+\end{proof}
+
+\begin{note}
+  Смысл УЗБЧ.
+
+  Теоретическое обоснование принципа устойчивых частот. Пусть 
+  \[\xi_i = \mathbb{I}\{A \text{ произошло в }i \text{-ом эксперименте}\}\]
+  Тогда частота появления $A$ стремится к:
+  \[\nu_n(A) = \frac{\xi_1 + \cdots + \xi_n}{n} \stackrel{\text{п.н.}}{\to} E\xi_1 = P(A)\]
+\end{note}
+
 \end{document}
