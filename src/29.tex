@@ -1,0 +1,33 @@
+\section{Условное математическое ожидание случайной величины\dots}
+\begin{definition}
+	Пусть $\xi$ -- случайная величина на $(\Omega,\, \mathcal{F},\, P)$, пусть $\mathcal{C} \subset \mathcal{F}$ -- под-$\sigma$-алгебра. Условным математическим ожиданием $\xi$ относительно $\mathcal{C}$ называется случайная величина $E(\xi | \mathcal{C})$, удовлетворяющая двум свойствам:
+	\begin{enumerate}
+		\item Свойство измеримости.
+
+		      $E(\xi | \mathcal{C})$ является $\mathcal{C}$-измеримой
+		\item Интегральное свойство.
+
+		      Для $\forall A \in \mathcal{C}$ выполнено:
+		      \[E(\xi\mathbb{I}_A) = E(E(\xi | \mathcal{C}\mathbb{I}_A))\]
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+	О существовании. (б/д).
+
+	Если $E|\xi| < +\infty$, то для $\forall \mathcal{C} \subset \mathcal{F}:\: E(\xi | \mathcal{C})$ существует и единственна с точностью до равенства почти всюду.
+\end{theorem}
+
+\begin{lemma}
+	Явный вид условного математического ожидания в случае, если $\sigma$-алгебра порождена счётным разбиением.
+
+	Пусть $\mathcal{C}$ порождена разбиением $\{D_n,\, n \in \mathbb{N}\}$ множества $\Omega$. Пусть $\forall n \in \mathbb{N}:\: P(D_n) > 0$. Пусть $E|\xi| < +\infty$. Тогда
+	\[E(\xi | \mathcal{C}) = \sum_{n = 1}^\infty\frac{E(\xi\cdot\mathbb{I}_{D_n})}{P(D_n)}\mathbb{I}_{D_n}\]
+\end{lemma}
+
+\begin{proof}
+	Обозначим $\eta := \sum_{n = 1}^\infty\frac{E(\xi\cdot\mathbb{I}_{D_n})}{P(D_n)}\mathbb{I}_{D_n}$ -- сумма несовместных $\mathcal{C}$-измеримых индикаторов $\Rightarrow \eta$ -- тоже $\mathcal{C}$-измеримая случайная величина.
+
+	Проверим интегральное свойство. Если $A \in \mathcal{C}$, то $A$ -- объединение не более чем счётного числа $D_n \Rightarrow$ достаточно проверить только при $A = D_k,\, k \in \mathbb{N}$:
+	\[E(\eta\mathbb{I}_{D_k}) = E\left(\frac{E\xi\mathbb{I}_{D_k}}{P(D_k)}\mathbb{I}_{D_k}\right) = \frac{E(\xi\mathbb{I}_{D_k})}{P(D_k)}P(D_k) = E(\xi\mathbb{I}_{D_k})\]
+\end{proof}
