@@ -1,0 +1,65 @@
+\section{Центральная предельная теорема\dots}
+\begin{theorem}
+  Центральная предельная теорема для независимых одинаково распределённых случайных величин.
+
+  Пусть $\{\xi_n,\, n \in \mathbb{N}\}$ -- независимые одинаково распределённые случайные величины, $E\xi_1 = a,\, 0 < D\xi_1 < +\infty$. Обозначим $S_n := \xi_1 + \cdots + \xi_n$. Тогда
+  \[\frac{S_n - ES_n}{\sqrt{DS_n}} \stackrel{d}{\to} \mathcal{N}(0,\,1)\]
+\end{theorem}
+
+\begin{proof}
+  Обозначим $T_n := \frac{S_n - ES_n}{\sqrt{DS_n}}$. По теореме непрерывности достаточно проверить, что характеристическая функция $T_n$ сходится к $e^{-\frac{t^2}{2}}$ -- характеристической функции $\mathcal{N}(0,\,1)$.
+
+  Обозначим $\eta_j := \frac{\xi_j - a}{\sigma}$. Тогда $\eta_j$ -- независимые одинаково распределённые случайные величины, причём $E\eta_j = 0,\, D\eta_j = E\eta_j^2 = 1$. Тогда 
+  \[T_n = \frac{S_n - na}{\sqrt{n\sigma^2}} = \frac{\eta_1 + \cdots + \eta_n}{\sqrt{n}}\]
+  Посчитаем хар. функцию $T_n$:
+  \begin{align*}
+    \phi_{T_n}(t) = Ee^{itT_n} = Ee^{i\frac{t}{\sqrt{n}}(\eta_1 + \cdots + \eta_n)} \stackrel{\independent}{=} \prod_{k = 1}^n \phi_{\eta_k}\left(\frac{t}{\sqrt{n}}\right) = \left(\phi_{\eta_1}\left(\frac{t}{\sqrt{n}}\right)\right)^n \stackrel{\text{т. о производных}}{=}\\
+    \left(1 + i\frac{t}{\sqrt{n}} - \frac{t^2}{2n}E\eta_1^2 + \overline{o}\left(\frac{1}{n}\right)\right)^n = \left(1 - \frac{t^2}{2n} + \overline{o}\left(\frac{1}{n}\right)\right)^n \stackrel{n \to +\infty}{\to} e^{-\frac{t^2}{2}}
+  \end{align*}
+\end{proof}
+
+\begin{corollary}
+  В условиях ЦПТ для $\forall x \in \mathbb{R}$:
+  \[P\left(\frac{S_n - ES_n}{\sqrt{DS_n}} \leq x\right) \stackrel{n \to +\infty}{\to} \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}}e^{-\frac{y^2}{2}}dy\]
+\end{corollary}
+
+\begin{proof}
+  Согласно ЦПТ:
+  \[T_n := \frac{S_n - ES_n}{\sqrt{DS_n}} \stackrel{d}{\to} \mathcal{N}(0,\,1) \Leftrightarrow \forall x \in \mathbb{C}(\Phi) :\: F_{T_n}(x) \to \Phi(x)\]
+  где $\Phi$ -- функция распределения стандартного нормального распределения, но $\Phi$ всюду непрерывна, поэтому следствие доказано.
+\end{proof}
+
+\begin{corollary}
+  В условиях ЦПТ обозначим $a = E\xi_1,\, \sigma^2 = D\xi_1$. Тогда
+  \[\sqrt{n}\left(\frac{S_n}{n} - a\right) \stackrel{d}{\to} \mathcal{N}(0,\, \sigma^2)\]
+\end{corollary}
+
+\begin{proof}
+  Заметим, что если $\eta_n \stackrel{d}{\to} \eta$, то  
+  \[\forall c \in \mathbb{R}:\: c\eta_n \stackrel{d}{\to} c\eta\]
+  Тогда
+  \[\sqrt{n}\left(\frac{S_n}{n} - a\right) = \frac{S_n - na}{\sqrt{n}} = \frac{S_n - na}{\sqrt{DS_n}}\cdot\sigma \stackrel{d}{\to} \sigma\cdot\mathcal{N}(0,\,1) = \mathcal{N}(0,\,\sigma^2)\]
+\end{proof}
+
+\begin{note}
+Смысл ЦПТ.
+
+Скорость сходимости в УЗБЧ. УЗБЧ утверждает, что
+\[\frac{S_n}{n} - a \stackrel{\text{п.н.}}{\to} 0\]
+Благодаря ЦПТ можно сказать, что в типичной ситуации ($\sim 0.99$):
+\[\left|\frac{S_n}{n} - a\right| = \underline{O}\left(\frac{1}{\sqrt{n}}\right)\]
+
+\end{note}
+
+\begin{proof}
+  Выберем $u > 0$, такое, что
+  \[P(|\xi| \leq u) = 0.99,\, \xi \sim \mathcal{N}(0,\,\sigma^2) \Rightarrow P\left(\left|\frac{S_n}{n} - a\right| \leq \frac{4}{\sqrt{n}}\right) \stackrel{n \to +\infty}{\to} 0.99\]
+\end{proof}
+
+\begin{theorem}
+  Теорема Берри-Эссеена об оценке скорости сходимости в центральной предельной теореме (б/д).
+
+  Пусть $\{\xi_n,\, n \in \mathbb{N}\}$ -- независимые одинаково распределённые случайные величины, пусть $E|\xi_1 - E\xi_1|^3 < +\infty$. Обозначим $S_n := \xi_1 + \cdots + \xi_n,\, T_n = \frac{S_n - ES_n}{\sqrt{DS_n}}$. Тогда
+  \[\sup_{x \in \mathbb{R}}|F_{T_n}(x) - \Phi(x)| \leq \frac{c \cdot E|\xi_1 - E\xi_1|^3}{\sigma^3\sqrt{n}}\]
+  где $c > 0$ -- абсолютная константа.
+\end{theorem}
