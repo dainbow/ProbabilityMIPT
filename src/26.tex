@@ -1,0 +1,75 @@
+\section{Виды сходимости случайных векторов\dots}
+\begin{definition}
+	Пусть $\{\xi_n,\, n \in \mathbb{N}\},\, \xi$ -- случайные вектора из $\mathbb{R}^m$, на $(\Omega,\, \mathcal{F},\, P)$. Последовательность $\{\xi_n,\, n \in \mathbb{N}\}$ сходится к $\xi$:
+	\begin{enumerate}
+		\item С вероятностью 1 (почти наверное), если
+		      \[P\left(\lim_{n \to +\infty}\xi_n = \xi\right) = 1\]
+		      Обозначение: $\xi_n \stackrel{\text{п.н.}}{\to} \xi$
+		\item По вероятности, если
+		      \[\forall \varepsilon > 0:\: P(\|\xi_n - \xi\|_2 \geq \varepsilon) \stackrel{n \to +\infty}{\to} 0\]
+		      где $\|x\|_2 = \sqrt{x_1^2 + \cdots + x_n^2}$.
+
+		      Обозначение: $\xi_n \stackrel{P}{\to} \xi$
+		\item По распределению, если $\forall f:\: \mathbb{R}^m \to \mathbb{R}$ -- ограниченной непрерывной функции выполнено
+		      \[Ef(\xi_n) \stackrel{n \to +\infty}{\to} Ef(\xi)\]
+	\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+	О связи многомерных сходимостей с одномерными.
+
+	Пусть $\xi_n = (\xi_n^{(1)},\,\cdots,\,\xi_n^{(m)}),\, \xi = (\xi^{(1)},\,\cdots,\,\xi^{(m)})$. Тогда
+	\begin{enumerate}
+		\item $\xi_n \stackrel{\text{п.н.}}{\to} \xi \Leftrightarrow \forall i = \overline{1,\,m}:\: \xi_n^{(i)} \stackrel{\text{п.н.}}{\to} \xi^{(i)}$
+		\item $\xi_n \stackrel{P}{\to} \xi \Leftrightarrow \forall i = \overline{1,\,m}:\: \xi_n^{(i)} \stackrel{P}{\to} \xi^{(i)}$
+		\item $\xi_n \stackrel{d}{\to} \xi \Rightarrow \forall i = \overline{1,\,m} :\: \xi_n^{(i)} \stackrel{d}{\to} \xi^{(i)}$
+	\end{enumerate}
+\end{lemma}
+
+\begin{theorem}
+	О наследовании сходимости.
+
+	Пусть $\{\xi_n,\, n \in \mathbb{N}\},\, \xi$ -- случайные векторы из $\mathbb{R}^m$. Пусть $h:\: \mathbb{R}^m \to \mathbb{R}^k$ непрерывна почти всюду относительно распредления случайного вектора $\xi$ (то есть $\exists B \in \mathcal{B}(\mathbb{R}^m)$, такое, что $h$ -- непрерывна на $B$ и $P(\xi \in B) = 1$). Тогда
+	\begin{enumerate}
+		\item $\xi_n \stackrel{\text{п.н.}}{\to} \xi \Rightarrow h(\xi_n) \stackrel{\text{п.н.}}{\to} h(\xi)$
+		\item $\xi_n \stackrel{P}{\to} \xi \Rightarrow h(\xi_n) \stackrel{P}{\to} h(\xi)$
+		\item $\xi_n \stackrel{d}{\to} \xi \Rightarrow h(\xi_n) \stackrel{d}{\to} h(\xi)$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item $P(h(\xi_n) \to h(\xi)) \geq P(\xi_n \to \xi,\, \xi \in B) = 1$
+		\item Пусть $h(\xi_n) \stackrel{P}{\not\to} h(\xi)$. Тогда
+		      \[\exists \varepsilon > 0 \: \exists \delta > 0 \: \exists \{n_k,\, k \in \mathbb{N}\}:\: \forall k \in \mathbb{N} \: P(\|h(\xi_{n_k}) - h(\xi)\|_2 \geq \varepsilon) \geq \delta > 0\]
+		      Но $\xi_{n_k} \stackrel{P}{\to} \xi \Rightarrow \exists \{n_{k_m},\, m \in \mathbb{N}\} :\: \xi_{n_{k_m}} \stackrel{\text{п.н.},\,m \to +\infty}{\to} \xi$. Согласно предыдущему пункту, $h(\xi_{n_{k_m}}) \stackrel{\text{п.н.}}{\to} h(\xi)$, что есть противоречие.
+		\item Обозначим $Q_n$ -- распределение $h(\xi_n),\, Q$ -- распредление $h(\xi)$. Хотим доказать, что $Q_n \stackrel{W}{\to} Q$. По теореме Александрова достаточно проверить, что
+		      \[\overline{\lim}_n Q_n(F) \leq Q(F),\, \forall F \subset \mathbb{R}^k \text{ -- замкнутого}\]
+		      Проверим это:
+		      \begin{align*}
+			      \overline{\lim}_n Q_n(F) = \overline{\lim}_n P(h(\xi_n) \in F) = \overline{\lim}_n P(\xi_n \in h^{-1}(F)) \leq \\
+			      \overline{\lim}_n P(\xi_n \in \cl (h^{-1}(F)) \leq P(\xi \in \cl(h^{-1}(F))
+		      \end{align*}
+		      Заметим, что в силу замкнутости $F$ и непрерывности $h$ на $B$, выполнено
+		      \[\cl(h^{-1}(F)) \subset \overline{B} \cup h^{-1}(F) \Rightarrow P(\xi \in \cl(h^{-1}(F)) = P(\xi \in h^{-1}(F))\]
+		      В итоге получили, что
+		      \[\overline{\lim}_n Q_n(F) \leq P(\xi \in h^{-1}(F)) = Q(F )\]
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Усиленный закон больших чисел для случайных векторов.
+
+	Пусть $\{\xi_n,\, n \in \mathbb{N}\}$ -- независимые одинаково распределённые случайные векторы из $\mathbb{R}^m$. Пусть $E\xi_1$ конечно. Тогда
+	\[\frac{\xi_1 + \cdots + \xi_n}{n} \stackrel{\text{п.н.},\, n \to +\infty}{\to} E\xi_1\]
+\end{theorem}
+
+\begin{proof}
+	Сразу следует из одномерного случая.
+\end{proof}
+
+\begin{theorem}
+	Многомерная ЦПТ (б/д).
+
+	Пусть $\{\xi_n,\, n \in \mathbb{N}\}$ -- независимые одинаково распределённые случайные векторы из $\mathbb{R}^m,\, a = E\xi_1,\, \Sigma = D\xi_1$ -- конечные. Обозначим $S_n = \xi_1 + \cdots + \xi_n$. Тогда
+	\[\sqrt{n}\left(\frac{S_n}{n} - a\right) \stackrel{d}{\to} \mathcal{N}(0,\, \Sigma)\]
+\end{theorem}
