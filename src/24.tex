@@ -1,0 +1,63 @@
+\section{Три леммы, теорема непрерывности\dots}
+\begin{lemma}
+	Пусть $\{P_n,\, n \in \mathbb{N}\}$ -- последовательность распределений в $\mathbb{R}^m$. Если она плотная и любая слабо сходящаяся подпоследовательность слабо сходится к одной и той же мере $Q$, то
+	\[P_n \stackrel{W}{\to} Q\]
+\end{lemma}
+
+\begin{proof}
+	Пусть $P_n \stackrel{W}{\not\to} Q$. Тогда $\exists f:\: \mathbb{R}^m \to \mathbb{R}$ -- ограниченная непрерывная функция, $\exists \varepsilon > 0$ и подпоследовательность $\{P_{n'}\} \subset \{P_n\}$, такая, что
+	\[\forall n' :\: \left|\int_{\mathbb{R}^m}f(x)P_{n'}(dx) - \int_{\mathbb{R}^m}f(x)Q(dx)\right| \geq \varepsilon\]
+	Но $\{P_{n'}\}$ -- тоже плотная $\Rightarrow$ в ней есть слабо сходящаяся последовательность $\{P_{n''}\} \subset \{P_{n'}\}$. Но по условию $P_{n''} \stackrel{W}{\to} Q$. $\bot$
+\end{proof}
+
+\begin{lemma}
+	Пусть $\{P_n\}$ -- последовательность распределений на $\mathbb{R},\, \{\phi_n,\, n \in \mathbb{N}\}$ -- соответсвующая последовательность характеристических функций. Если $\{P_n\}$ -- плотная, то $\{P_n\}$ слабо сходится $\Leftrightarrow$
+	\[\forall t \in \mathbb{R} :\: \exists\lim_{n \to +\infty}\phi_n(t)\]
+\end{lemma}
+
+\begin{proof}
+	$\Rightarrow$ Если $P_n \stackrel{W}{\to} Q$, то в силу того, что $\sin(tx),\,\cos(tx)$ -- ограниченные функции, получаем
+	\[\phi_n(t) = \int_\mathbb{R}e^{itx}P_n(dx) \stackrel{n \to +\infty}{\to} \int_\mathbb{R}e^{itx}Q(dx) = \phi(t) \text{ -- характеристическая функция меры }Q\]
+	$\Leftarrow$ Пусть $\phi(t) = \lim_n \phi_n(t)$. Выберем в $\{P_n\}$ слабо сходящуюся подпоследовательность $\{P_{n'}\},\, P_{n'} \stackrel{W}{\to} Q$. В силу рассуждений выше
+	\[\phi_{n'}(t) \stackrel{n \to +\infty}{\to} \psi(t) \text{ -- хар. функция }Q \Rightarrow \psi(t) = \phi(t)\]
+	Значит в силу теоремы единственности для характеристических функций все слабо сходящиеся будут иметь один и тот же предел. По лемме 1 $P_n \stackrel{W}{\to} Q$.
+\end{proof}
+
+\begin{lemma}
+	Пусть $\phi(t)$ -- характеристическая функция меры $P$ на $\mathbb{R}$. Тогда
+	\[\forall a > 0 :\: P\left(\mathbb{R} \setminus \left[-\frac{1}{a},\, \frac{1}{a}\right]\right) \leq \frac{7}{a} \int_0^a (1 - \Re\phi(t))dt\]
+\end{lemma}
+
+\begin{proof}
+	Рассмотрим интеграл, являющийся оценкой сверху, более подробно
+	\begin{align*}
+		\frac{1}{a}\int_0^a (1 - \Re\phi(t))dt = \frac{1}{a}\int_0^a \left(\int_\mathbb{R} (1 - \cos(tx))P(dx)\right)dt \stackrel{\text{Фубини}}{=} \\
+		\frac{1}{a}\int_\mathbb{R}\left(\int_0^a (1 - \cos(tx))dt\right)P(dx) = \int_\mathbb{R}\left(1 - \frac{\sin(ax)}{ax}\right)P(dx) \geq       \\
+		\int_{\mathbb{R} \setminus [-\frac{1}{a},\,\frac{1}{a}]}\left(1 - \frac{\sin(ax)}{ax}\right)P(dx) \leq \inf_{|y| \geq 1}\left(1 - \frac{\sin y}{y}\right)P\left(\mathbb{R} \setminus \left[-\frac{1}{a},\,\frac{1}{a}\right]\right) \geq \frac{1}{7}P\left(\mathbb{R} \setminus\left[-\frac{1}{a},\,\frac{1}{a}\right]\right)
+	\end{align*}
+\end{proof}
+
+\begin{theorem}
+	Непрерывности для характеристических функций.
+
+	Пусть $\{P_n,\, n \in \mathbb{N}\}$ -- последовательность распределений на $\mathbb{R}$, $\{\phi_n,\, n \in \mathbb{N}\}$ -- соответствующая последовательность характеристических функций.
+	\begin{enumerate}
+		\item Если $P_n \stackrel{W}{\to} P$, то
+		      \[\forall t \in \mathbb{R} :\: \exists\lim_{n \to +\infty} \phi_n(t) = \phi(t) \text{ -- хар. функция меры }P\]
+		\item Пусть $\forall t \in \mathbb{R} :\: \exists \lim_n \phi_n(t) = \phi(t)$, где $\phi(t)$ непрерывна в нуле. Тогда $\phi(t)$ является характеристической функцией некоторой меры $P$ и $P_n \stackrel{W}{\to} P$
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Следует из определения слабой сходимости
+		\item Проверим, что $\{P_n,\, n \in \mathbb{N}\}$ -- плотная.
+		      Для $\forall n \in \mathbb{N},\, \forall a > 0$:
+		      \[P_n\left(\mathbb{R}\setminus\left[-\frac{1}{a},\,\frac{1}{a}\right]\right) \leq \frac{7}{a}\int_0^a (1 - \Re\phi_n(t))dt \stackrel{\text{т. Лебега}}{\to} \frac{7}{a}\int_0^a(1 - \Re\phi(t))dt\]
+		      Для $\forall \varepsilon > 0 \: \exists a > 0$, такое, что
+		      \[(1 - \Re\phi(t)) \leq \frac{\varepsilon}{14} \Rightarrow \frac{7}{a}\int_0^a (1 - \Re\phi(t))dt \leq \frac{\varepsilon}{2}\]
+		      Значит
+		      \[\exists n_0 \: \forall n > n_0 :\: \frac{7}{a}\int_0^a (1 - \Re\phi_n(t))dt \leq \varepsilon \]
+		      Значит $\{P_n,\, n \in \mathbb{N}\}$ -- относительно компактное $\Leftrightarrow$ плотное. По второй лемме $\exists$ мера $P$, такая, что $P_n \stackrel{W}{\to} P$. По предыдущем пункту получаем, что $\phi(t)$ -- характеристическая функция меры $P$.
+	\end{enumerate}
+\end{proof}
