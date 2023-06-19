@@ -1,0 +1,100 @@
+\section{Основные свойства условного матожидания}
+\begin{enumerate}
+	\item Если $\xi$ -- $\mathcal{C}$-измерима, то
+	      \[E(\xi | \mathcal{C}) = \xi\]
+	      \begin{proof}
+		      Следует из определения, $\xi$ удовлетворяет обоим свойствам
+	      \end{proof}
+	\item Линейность.
+	      \[E(a\xi + b\eta | \mathcal{C}) = aE(\xi | \mathcal{C}) + bE(\eta | \mathcal{C})\]
+	      \begin{proof}
+		      Правая часть -- $\mathcal{C}$-измеримая случайная величина. Проверим интегральное свойство: $A \in \mathcal{C}$
+		      \begin{align*}
+			      E((a\xi + b\eta)\mathbb{I}_A) = aE(\xi\mathbb{I}_A) + bE(\eta\mathbb{I}_A) = \\
+			      aE(E(\xi | \mathcal{C})\mathbb{I}_A) + bE(E(\xi|\mathcal{C})\mathbb{I}_A) = E((aE(\xi|\mathcal{C}) + bE(\eta|\mathcal{C}))\mathbb{I}_A)
+		      \end{align*}
+	      \end{proof}
+	\item Формула полной вероятности.
+	      \[E(E(\xi | \mathcal{C})) = E\xi\]
+	      \begin{proof}
+		      По интегральному свойству $\forall A \in \mathcal{C}$:
+		      \[E(\xi\mathbb{I}_A) = E(E(\xi | \mathcal{C})\mathbb{I}_A)\]
+		      Возьмём $A = \Omega$, получим
+		      \[E(E(\xi | \mathcal{C})) = E\xi\]
+	      \end{proof}
+	\item Если $\xi$ независима $\mathcal{C}$ ($\mathcal{F}_\xi \independent \mathcal{C}$), то $E(\xi | \mathcal{C}) = E\xi$
+	      \begin{proof}
+		      $E\xi$ является $\mathcal{C}$-измеримой случайной величиной. Проверяем интегральное свойство $\forall A \in \mathcal{C}$:
+		      \[E(\xi\cdot\mathbb{I}_A) = E\xi E\mathbb{I}_A = E(E\xi \cdot \mathbb{I}_A)\]
+	      \end{proof}
+	\item Сохранение относительности порядка.
+
+	      Если $\xi \leq \eta$, то $E(\xi | \mathcal{C}) \stackrel{\text{п.н.}}{\leq} E(\eta | \mathcal{C})$
+	      \begin{proof}
+		      Рассмотрим
+		      \[\forall A \in \mathcal{C}:\: \xi\mathbb{I}_A \leq \eta\mathbb{I}_A \Rightarrow E(E(\xi|\mathcal{C})\mathbb{I}_A) = E(\xi\mathbb{I}_A) \leq E(\eta\mathbb{I}_A) = E(E(\eta | \mathcal{C})\mathbb{I}_A)\]
+	      \end{proof}
+	      Раз $E(\xi | \mathcal{C})$ и $E(\eta | \mathcal{C})$ являются $\mathcal{C}$-измеримыми, то по свойству обычного матожидания
+	      \[E(\xi | \mathcal{C}) \stackrel{\text{п.н.}}{\leq} E(\eta | \mathcal{C})\]
+	\item $|E(\xi | \mathcal{C})| \stackrel{\text{п.н.}}{\leq} E(|\xi| | \mathcal{C})$
+	      \begin{proof}
+		      Следует из свойств линейности и сохранения относительного порядка.
+	      \end{proof}
+	\item Телескопическое свойство.
+
+	      Если $\mathcal{C}_1 \subset \mathcal{C}_2 \subset \mathcal{F}$, то
+	      \begin{enumerate}
+		      \item $E(E(\xi | \mathcal{C}_1) | \mathcal{C}_2) = E(\xi | \mathcal{C}_1)$
+		      \item $E(E(\xi | \mathcal{C}_2) | \mathcal{C}_1) = E(\xi | \mathcal{C}_1)$
+	      \end{enumerate}
+	      \begin{proof}
+		      \begin{enumerate}
+			      \item Следует из первого свойства, так как $E(\xi | \mathcal{C_1})$ является $\mathcal{C}_2$-измеримой.
+			      \item $E(\xi | \mathcal{C}_1)$ является $\mathcal{C}_1$-измеримой.
+
+			            Проверим интегральное свойство $\forall A \in \mathcal{C}_1$:
+			            \[E(E(\xi | \mathcal{C}_2)\mathbb{I}_A) \stackrel{A \in \mathcal{C}_2}{=} E(\xi\mathbb{I}_A) \stackrel{A \in \mathcal{C}_1}{=} E(E(\xi | \mathcal{C}_1)\mathbb{I}_A)\]
+		      \end{enumerate}
+	      \end{proof}
+	\item Предельный переход.
+
+	      \begin{enumerate}
+		      \item Если $0 \leq \xi_n \uparrow \xi$, то
+		            \[E(\xi_n | \mathcal{C}) \stackrel{\text{п.н.}}{\uparrow} E(\xi | \mathcal{C})\]
+		      \item Если $\xi_n \stackrel{\text{п.н.}}{\to} \xi$ и $\forall n \in \mathbb{N}:\: |\xi_n| \leq \eta$, где $E\eta < +\infty$, то
+		            \[E(\xi_n | \mathcal{C}) \stackrel{\text{п.н.}}{\to} E(\xi | \mathcal{C})\]
+	      \end{enumerate}
+	      \begin{proof}
+		      \begin{enumerate}
+			      \item По свойству о сохранении относительного порядка:
+			            \[0 \leq E(\xi_n | \mathcal{C}) \leq E(\xi_{n + 1} | \mathcal{C})\]
+			            Обозначим $\eta = \lim_n E(\xi_n | \mathcal{C})$. Проверим, что $\eta$ -- $\mathcal{C}$-измеримая случайная величина, как предел $\mathcal{C}$-измеримых.
+
+			            Проверим интегральное свойство, $\forall A \in \mathcal{C}$:
+			            \[0 \leq \xi_n\mathbb{I}_A \uparrow \xi\mathbb{I}_A,\, 0 \leq E(\xi_n | \mathcal{C})\mathbb{I}_A \uparrow \eta\mathbb{I}_A\]
+			            Тогда по теореме о монотонной сходимости
+			            \[E(\xi\mathbb{I}_A) = \lim_{n \to +\infty} E(\xi_n\mathbb{I}_A) = \lim_{n \to +\infty} E(E(\xi_n | \mathcal{C})\mathbb{I}_A) = E(\eta\mathbb{I}_A)\]
+			      \item Рассмотрим $\eta_n = \sup_{m \geq n}|\xi_m - \xi|$. Тогда $\eta_n \stackrel{\text{п.н.}}{\to} 0,\, |\eta_n| \leq 2\eta$:
+			            \[|E(\xi_n | \mathcal{C}) - E(\xi | \mathcal{C})| \leq E(|\xi_n - \xi| | \mathcal{C}) \leq E(\eta_n | \mathcal{C})\]
+			            По предыдущему свойству $E(\eta_n | \mathcal{C}) \stackrel{\text{п.н.}}{\to} 0$
+		      \end{enumerate}
+	      \end{proof}
+	\item Если $\eta$ -- $\mathcal{C}$-измеримая случайная величина, то
+	      \[E(\xi\eta | \mathcal{C}) = \eta E(\xi | \mathcal{C})\]
+	      \begin{proof}
+		      Правая часть $\mathcal{C}$-измерима. Проверим интегральное свойство. Для $\forall A \in \mathcal{C}$. Пусть сначала $\eta = \mathbb{I}_B,\, B \in \mathcal{C}$. Тогда интегральное свойство выглядит, как
+		      \[E(\xi\mathbb{I}_B\mathbb{I}_A) = E(\xi \mathbb{I}_{A \cap B}) = E(E(\xi | \mathcal{C})\mathbb{I}_{A \cap B}) = E(\mathbb{I}_B E(\xi | \mathcal{C})\mathbb{I}_A)\]
+		      Это равенство линейно по $\eta \Rightarrow$ оно верно для простых случайный величин.
+
+		      Если $\eta$ -- произвольная ,то приближаем простыми и пользуемся предельным переходом.
+	      \end{proof}
+	\item Неравенство Йенсена
+
+	      Если $\phi(x)$ -- выпуклая снизу функция, то
+	      \[E(\phi(\xi) | \mathcal{C}) \stackrel{\text{п.н.}}{\geq} \phi(E(\xi | \mathcal{C}))\]
+	      \begin{proof}
+		      Для $\forall x \in \mathbb{R} \: \exists \lambda(x)$, такая, что \[\forall y \in \mathbb{R} :\: \phi(y) = \phi(x) + \lambda(x)(y - x)\]
+		      Подставляем $y = \xi;\; x = E(\xi | \mathcal{C})$ и берём УМО относительно $\mathcal{C}$ от обеих частей:
+		      \[E(\phi(\xi) | \mathcal{C}) \geq E(\phi(E(\xi | \mathcal{C})) | \mathcal{C}) + E(\lambda(E(\xi | \mathcal{C})) \cdot (\xi - E(\xi | \mathcal{C})) | \mathcal{C}) = \phi(E(\xi | \mathcal{C}))\]
+	      \end{proof}
+\end{enumerate}
