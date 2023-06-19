@@ -1,0 +1,87 @@
+\section{Теорема о производной х-ф\dots}
+\begin{theorem}
+	О производных характеристических функций.
+
+	Пусть $E|\xi|^n < +\infty$ для $n \in \mathbb{N}$. Тогда $\forall s \leq n$:
+	\begin{enumerate}
+		\item $\phi_\xi^{(s)}(t) = E\left((i\xi)^se^{it\xi}\right)$
+		\item $E\xi^s = \frac{\phi^{(s)}_\xi(0)}{i^s}$
+		\item $\phi_\xi(t)$ разлагается в виде:
+		      \[\phi_\xi(t) = \sum_{k = 0}^n \frac{(it)^k}{k!}E\xi^k + \frac{(it)^n}{n!}\varepsilon_n(t)\]
+		      где $|\varepsilon_n(t)| \leq 3E|\xi|^n$ и $\varepsilon_n(t) \stackrel{t \to 0}{\to} 0$
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Рассмотрим $s = 1$:
+		      \[\frac{\phi(t + h) - \phi(t)}{h} = \frac{1}{h}(Ee^{i(t + h)\xi} - Ee^{it\xi}) = E\left[e^{it\xi}\left(\frac{e^{ih\xi} - 1}{h}\right)\right]\]
+		      Заметим, что
+		      \[\forall \omega \in \Omega:\: e^{it\xi}\left(\frac{e^{ih\xi} - 1}{h}\right)\stackrel{h \to 0}{\to} (i\xi)e^{it\xi}\]
+		      Кроме того,
+		      \[|e^{ih\xi} - 1| = |\cos(h\xi) - 1 + i\sin(h\xi)| \leq 2|\xi h| \Rightarrow  \left|e^{it\xi}\left(\frac{e^{ih\xi} - 1}{h}\right)\right| = \left|\frac{e^{ih\xi} - 1}{h}\right| \leq 2|\xi|\]
+		      По теореме Лебега:
+		      \[Ee^{it\xi}\left(\frac{e^{ih\xi} - 1}{h}\right) \stackrel{h \to 0}{\to} E(i\xi)e^{it\xi}\]
+		      Случай $s \geq 2$ полностью аналогичен и доказывается по индукции.
+		\item Сразу следует из подстановки $t = 0$ в предыдущую формулу.
+		\item Рассмотрим
+		      \[e^{iy} = \sum_{k = 0}^{n - 1}\frac{(iy)^k}{k!} + \frac{(iy)^n}{n!}(\cos\theta_1(y) + i\sin\theta_2(y))\]
+		      где $|\theta_1(y)||\theta_2(y)| \leq y$
+
+		      Подставляем $y = t\xi$ и берём $E$:
+		      \[\phi(t) = \sum_{k = 0}^{n - 1}\frac{(it)^k}{k!}E\xi^k + \frac{(it)^n}{n!}E\xi^n(\cos\theta_1(t\xi) + i\sin\theta_2(t\xi)) = \sum_{k = 0}^n \frac{(it)^k}{k!}E\xi^k + \frac{(it)^n}{n!}\varepsilon_n(t)\]
+		      где $\varepsilon_n(t) = E[\xi^n(\cos\theta_1(t\xi) + i\sin\theta_2(t\xi) - 1)]$.
+
+		      Значит $|\varepsilon_n(t)| \leq 3E|\xi|^n$. Также
+		      \[\forall \omega \in \Omega:\: \cos\theta_1(t\xi) + i\sin\theta_2(t\xi) - 1 \stackrel{t \to 0}{\to} 0\]
+		      Кроме того,
+		      \[|\xi^n( \cos\theta_1(t\xi) + i\sin\theta_2(t\xi) - 1)| \leq 3|\xi|^n\]
+		      По теореме Лебега $\varepsilon_n(t) \stackrel{t \to 0}{\to} 0$.
+	\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+	Если $\phi(t)$ -- характеристическая функция случайной величины $\xi$ и $E|\xi|^2 < +\infty$, то
+	\[\phi(t) = 1 + (it)E\xi - \frac{t^2}{2}E\xi^2 + \overline{o}(t^2),\, t \to 0\]
+\end{corollary}
+
+\begin{theorem}
+	Критерий независимости компонент случайного вектора в терминах характеристических функций.
+
+	Случайная величины $\xi_1,\,\cdots,\,\xi_n$ независимы в совокупность $\Leftrightarrow$
+	\[\phi_\xi(t_1,\,\cdots,\,t_n) = \prod_{k = 1}^n \phi_{\xi_k}(t_k)\]
+	где $\xi = (\xi_1,\,\cdots,\,\xi_n)$ -- случайный вектор.
+\end{theorem}
+
+\begin{proof}
+	$\Rightarrow$:
+	\[
+		\phi_\xi(t_1,\,\cdots,\,t_n) = Ee^{i\langle\xi,\, t\rangle} = Ee^{i\sum_{k = 1}^n t_k\xi_k} = E\left[\prod_{k = 1}^n e^{it_k\xi_k}\right] \stackrel{\independent}{=} \prod_{k = 1}^n Ee^{it_k\xi_k} = \prod_{k = 1}^n \phi_{\xi_k}(t_k)
+	\]
+  $\Leftarrow$: Рассмотрим $F_1,\,\cdots,\,F_n$ -- функции распределения случайный величин $\xi_1,\,\cdots,\,\xi_n$. Составим функцию распределения $G(x_1,\,\cdots,\,x_n) = \prod_{i = 1}^nF_i(x_i)$. 
+  
+  Рассмотрим случайный вектор $\eta = (\eta_1,\,\cdots,\,\eta_n)$ с функцией распределения $G$. Тогда $\eta_j$ имеет функцию распределения $F_j$ и $\eta_1,\,\cdots,\,\eta_n$ -- независимые случайные величины.
+  \[\phi_\eta(t) = \prod_{k = 1}^n \phi_{\eta_k}(t_k) \stackrel{\eta_k \stackrel{d}{=} \xi_k}{=} \prod_{k = 1}^n \phi_{\xi_k}(t_k) \stackrel{\text{по условию}}{=} \phi_\xi(t)\]
+  По теореме о единственности функций распределения $\xi,\, \eta$ совпадают $\Rightarrow$
+  \[F_\xi(x_1,\,\cdots,\,x_n) = \prod_{k = 1}^n F_k(x_k)\]
+  Значит $\xi_1,\,\cdots,\,\xi_n$ -- независимы в совокупности. 
+\end{proof}
+
+\begin{definition}
+  Функция $f(t),\, t \in \mathbb{R},\, f(t) \in \mathbb{C}$ называется неорицательно определённой, если
+  \[\forall n \in \mathbb{N} \: \forall t_1,\,\cdots,\,t_n \in \mathbb{R} \: \forall z_1,\,\cdots,\,z_n \in \mathbb{C} :\: \sum_{i,\,j = 1}^n f(t_i - t_j)z_i\overline{z_j} \geq 0\]
+\end{definition}
+
+\begin{theorem}
+  Бохнера-Хинчина. (д-во только необходимости)
+
+  Пусть $\phi(t),\, t \in \mathbb{R}$, такова, что $\phi(0) = 1$ и $\phi(t)$ непрерывна в нуле. Тогда $\phi(t)$ является характеристической функцией распределения $\Leftrightarrow \phi(t)$ неотрицательно определена.
+\end{theorem}
+
+\begin{proof}
+  $\Rightarrow$ Пусть $\phi(t)$ -- характеристическая функция $\xi$. Пусть $t_1,\,\cdots,\,t_n \in \mathbb{R}$; $z_1,\,\cdots,\,z_n \in \mathbb{C}$. Тогда
+  \begin{align*}
+    \sum_{k,\,j = 1}^n \phi_\xi(t_k - t_j)z_k\overline{z_j} = \sum_{k,\, j = 1}^n Ee^{i(t_k - t_j)\xi}z_k\overline{z_j} = E\sum_{k,\, j = 1}^n e^{i(t_k - t_j)\xi}z_k\overline{z_j} = \\
+    E\sum_{k,\, j = 1}^n (z_ke^{it_k\xi})\overline{(z_je^{it_j\xi})} = E\left|\sum_{k = 1}^n z_ke^{it_k\xi}\right|^2 \geq 0 
+  \end{align*}
+\end{proof}
