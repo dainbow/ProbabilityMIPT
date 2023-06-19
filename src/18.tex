@@ -1,23 +1,83 @@
 \section{Леммы Теплица и Кронекера\dots}
 \begin{lemma}
-  Тёплица (б/д)
+	Тёплица (б/д)
 
-  Пусть $\{a_n,\, n \in \mathbb{N}\}$ -- положительные числа, $X_n \to X,\, b_n = \sum_{j = 1}^n a_j  \uparrow +\infty$. Тогда
-  \[\frac{1}{b_n}\sum_{j = 1}^n a_jx_j \stackrel{n \to +\infty}{\to} X\]
+	Пусть $\{a_n,\, n \in \mathbb{N}\}$ -- положительные числа, $X_n \to X,\, b_n = \sum_{j = 1}^n a_j  \uparrow +\infty$. Тогда
+	\[\frac{1}{b_n}\sum_{j = 1}^n a_jx_j \stackrel{n \to +\infty}{\to} X\]
 \end{lemma}
 
 \begin{lemma}
-  Кронекера (б/д)
+	Кронекера (б/д)
 
-  Пусть $b_n > 0$ и $b_n \uparrow +\infty$, пусть $\sum_x x_n$ сходится. Тогда
-  \[\frac{1}{b_n}\sum_{j = 1}^n b_jx_j \stackrel{n \to +\infty}{\to} 0\]
+	Пусть $b_n > 0$ и $b_n \uparrow +\infty$, пусть $\sum_x x_n$ сходится. Тогда
+	\[\frac{1}{b_n}\sum_{j = 1}^n b_jx_j \stackrel{n \to +\infty}{\to} 0\]
 \end{lemma}
 
 \begin{definition}
-  Пусть $\{A_n,\, n \in \mathbb{N}\}$ -- последовательность событий. Событием $\{A_n \text{ б.ч.}\}$ называется
-  \[\{A_n \text{ б.ч.}\} = \bigcap_{n = 1}^\infty \bigcup_{m \geq n} A_m\]
-  Это событие состоит в том, что произошло бесконечное число событий $A_n$.
+	Пусть $\{A_n,\, n \in \mathbb{N}\}$ -- последовательность событий. Событием $\{A_n \text{ б.ч.}\}$ называется
+	\[\{A_n \text{ б.ч.}\} = \bigcap_{n = 1}^\infty \bigcup_{m \geq n} A_m\]
+	Это событие состоит в том, что произошло бесконечное число событий $A_n$.
 \end{definition}
 
+\begin{lemma}
+	Бореля-Кантелли.
+
+	\begin{enumerate}
+		\item Если $\sum_n P(A_n) < +\infty$, то $P(A_n \text{ б.ч.}) = 0$
+		\item Если $\sum_n P(A_n) = +\infty$ и события $\{A_n,\, n \in \mathbb{N}\}$ независимы в совокупности, то $P(A_n \text{ б.ч.}) = 1$
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Распишем более подробно исследуемую меру:
+		      \[P(A_n \text{ б.ч.}) = P\left(\bigcap_{n = 1}^\infty \bigcup_{k \geq n} A_k\right) = \lim_{n \to +\infty} P\left(\bigcup_{k \geq n}A_k\right) \leq \lim_{n \to +\infty} \sum_{k = n}^\infty P(A_k) = 0\]
+		      Так как ряд $\sum_n P(A_n)$ сходится
+		\item Мы уже знаем, что
+		      \begin{align*}
+			      P(A_n \text{ б.ч.}) = \lim_{n \to +\infty} P\left(\bigcup_{k \geq n} A_k\right) = 1 - \lim_{n \to +\infty}P\left(\bigcap_{k = n}^\infty \overline{A_k}\right) = \\
+			      1 - \lim_{n \to +\infty}\lim_{N \to +\infty} P(\bigcap_{k = n}^N \overline{A_k})
+		      \end{align*}
+		      Рассмотрим предел
+		      \begin{align*}
+			      \lim_{N \to +\infty}P\left(\bigcap_{k = n}^N \overline{A_k}\right) = \lim_{N \to +\infty} \prod_{k = n}^N P\left(\overline{A_k}\right) = \lim_{N \to +\infty} \prod_{k = n}^N 1 - P(A_k) \leq \lim_{N \to +\infty} \prod_{k = n}^N e^{-P(A_k)} = \\
+			      \lim_{N \to +\infty} e^{-\sum_{k = n}^N P(A_k)} = e^{-\sum_{k = n}^\infty P(A_k)} = 0
+		      \end{align*}
+		      Последний переход верен, так как ряд $\sum_n P(A_n)$ расходится. $\Rightarrow P(A_n \text{ б.ч.}) = 1$
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	УЗБЧ в форме Колмогорова
+
+	Пусть $\{\xi_n,\, n \in \mathbb{N}\}$ -- независимые одинаково распределённые случайные величины. Пусть $E\xi_1$ конечно. Обозначим $S_n = \xi_1 + \cdots + \xi_n$. Тогда
+	\[\frac{S_n}{n} \stackrel{\text{п.н.}}{\to} E\xi_1\]
+\end{theorem}
+
+\begin{proof}
+	Без ограничения общности считаем, что $E\xi_1 = 0$. Иначе перейдём к случайным величинам $\xi_n - E\xi_1$. Тогда
+	\[E|\xi_1| < +\infty \Rightarrow \sum_n P(|\xi_1| \geq n) < +\infty \stackrel{\text{один.распр.}}{\Leftrightarrow} \sum_n P(|\xi_n| \geq n) < +\infty\]
+	По лемме Бареля-Кантелли $P((A:= \{|\xi_m| \geq n\}) \text{ б.ч.}) = 0$, то есть с вероятностью 1 выполняется:
+	\[\xi_n = \overline{\xi}_n = \xi_n\mathbb{I}\{|\xi_n| < n\}\]
+	начиная с некоторого номера $n_0 = n_0(\omega)$.
+
+	Тем самым $\forall \omega \not\in A$:
+	\[\frac{\xi_1(\omega) + \cdots + \xi_n(\omega)}{n} \to 0 \Leftrightarrow \frac{\overline{\xi}_1(\omega) + \cdots + \overline{\xi}_n(\omega)}{n} \to 0\]
+	Остаётся доказать, что $\frac{\overline{\xi}_1 + \cdots + \overline{\xi}_n}{n} \stackrel{\text{п.н.}}{\to} 0$.
+
+	Рассмотрим $E\overline{\xi}_n$:
+	\[E\overline{\xi}_n = E\xi_n\mathbb{I}\{|\xi_n| < n\} \stackrel{\text{один.распр.}}{=} E\xi_1\mathbb{I}\{|\xi_1| < n\} \stackrel{\text{т. Лебега}}{\to} E\xi_1 = 0\]
+	По лемме Тёплица $\frac{E\overline{\xi}_1 + \cdots + E\overline{\xi}_n}{n} \to 0$. Тогда
+	\[\frac{\overline{\xi}_1(\omega) + \cdots + \overline{\xi}_n(\omega)}{n} \to 0 \Leftrightarrow \frac{\overline{\xi}_1(\omega) - E\overline{\xi}_1 + \cdots + \overline{\xi}_n(\omega) - E\overline{\xi}_n}{n} \to 0\]
+	Остаётся проверить, что ряд $\sum_n \frac{\overline{\xi}_n - E\overline{\xi}_n}{n}$ сходится почти наверное. Почему? Мы применим лемму Кронекера, взяв $x_n = \frac{\overline{\xi}_n}{n},\, b_n = n$.
+
+	А для этого достаточно проверить, что $\sum_{k = 1}^\infty D\left(\frac{\overline{\xi}_k}{k}\right) < +\infty$. Рассмотрим
+	\begin{align*}
+		\sum_{k = 1}^\infty D\left(\frac{\overline{\xi}_k}{k}\right) = \sum_{k = 1}^\infty \frac{D\overline{\xi}_k}{k^2} \leq \sum_{k = 1}^\infty \frac{E\overline{\xi}_k^2}{k^2} = \sum_{k = 1}^\infty \frac{E\xi_k^2\mathbb{I}\{|\xi_k| < k\}}{k^2} \stackrel{\text{один.распр.}}{=} \\
+		\sum_{k = 1}^\infty \frac{E\xi_1^2\mathbb{I}\{|\xi_1| < k\}}{k^2} = \sum_{k = 1}^\infty \frac{1}{k^2}\sum_{i = 1}^k E\left(\xi_1^2\mathbb{I}\{i - 1 \leq |\xi_1| < i\}\right) =                                                                                                \\
+		\sum_{i = 1}^\infty E\left(\xi_1^2\mathbb{I}\{i - 1 \leq |\xi_1| < i\}\right) \sum_{k = i}^\infty \frac{1}{k^2} \leq 2\sum_{i = 1}^\infty E\left(\frac{\xi_1^2}{i}\mathbb{I}\{i - 1 \leq |\xi_1| < i\}\right) \leq                                                             \\
+		2 \sum_{i = 1}^\infty E(|\xi_1|\mathbb{I}\{i - 1 \leq \xi_1 < i\}) \stackrel{\text{т. о мон-й сх-ти}}{=} 2E|\xi_1| < +\infty
+	\end{align*}
+\end{proof}
 
 

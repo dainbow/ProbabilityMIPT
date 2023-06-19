@@ -19,14 +19,14 @@
 \end{proof}
 
 \begin{theorem}
-	Неравенство Колмогорова. 
+	Неравенство Колмогорова.
 
 	Пусть $\xi_1,\,\cdots,\,\xi_n$ -- независимые случайные величины, $E\xi_k = 0,\, E\xi_k^2 < +\infty,\, \forall k = \overline{1,\,n}$. Обозначим $S_k = \xi_1 + \cdots + \xi_k$. Тогда
 	\[\forall \varepsilon > 0:\: P\left(\max_{1 \leq k \leq n} |S_k| \geq \varepsilon\right) \leq \frac{ES_n^2}{\varepsilon^2}\]
 \end{theorem}
 
 \begin{proof}
-	Введём обозначения 
+	Введём обозначения
 	\[A := \{\max_{1 \leq k \leq n} |S_k| \geq \varepsilon\};\; A_k := \{|S_k| \geq \varepsilon,\, |S_i| < \varepsilon \: \forall i = \overline{1,\,k-1}\}\]
 	Тогда $A = \sqcup_{i = 1}^n A_i$. Продолжим рассуждения:
 	\begin{align*}
@@ -49,7 +49,7 @@
 	Распишем меру этого события более подробно:
 	\begin{align*}
 		P\left(\sup_{k \geq n} |S_k - S_n| > \varepsilon\right) = P\left(\bigcup_{k \geq n}\{|S_k - S_n| > \varepsilon\}\right) = \lim_{N \to +\infty} P\left(\bigcup_{k = n}^N \{|S_k - S_n| > \varepsilon\}\right) = \\
-		\lim_{N \to +\infty} P\left(\max_{1 \leq k \leq N - n} |S_{n + k} - S_n| > \varepsilon\right) \stackrel{\text{н-во Колмогорова}}{\leq} \lim_{N \to +\infty} \frac{E|S_N - S_n|^2}{\varepsilon^2} =\\
+		\lim_{N \to +\infty} P\left(\max_{1 \leq k \leq N - n} |S_{n + k} - S_n| > \varepsilon\right) \stackrel{\text{н-во Колмогорова}}{\leq} \lim_{N \to +\infty} \frac{E|S_N - S_n|^2}{\varepsilon^2} =             \\
 		\lim_{N \to +\infty} \frac{D(\xi_{n + 1} + \cdots + \xi_N)}{\varepsilon^2} = \lim_{N \to +\infty} \frac{1}{\varepsilon^2}\sum_{k = n + 1}^N D\xi_k = \frac{1}{\varepsilon^2} \sum_{k = n + 1}^\infty D\xi_k \stackrel{n \to +\infty}{\to} 0
 	\end{align*}
 	Последний переход обусловлен тем, что остаток сходящегося ряда стремится к нулю.
