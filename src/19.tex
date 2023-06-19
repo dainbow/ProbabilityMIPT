@@ -1,0 +1,82 @@
+\section{Слабая сходимость и сходимость в основном\dots}
+\begin{definition}
+  Пусть $\{F_n,\, n \in \mathbb{N}\},\, F$ -- функции распределения на $\mathbb{R}$. Последовательность $\{F_n\}$ слабо сходится к $F$, если $\forall f:\: \mathbb{R} \to \mathbb{R}$ -- непрерывной ограниченной функции, выполнено
+  \[\int_\mathbb{R}f(x)dF_n(x) \stackrel{n \to +\infty}{\to} \int_\mathbb{R}f(x)dF(x)\]
+  Обозначение: $F_n \stackrel{W}{\to} F$
+\end{definition}
+
+\begin{definition}
+  Последовательность $\{F_n,\, n \in \mathbb{N}\}$ функций распределения на $\mathbb{R}$ сходится в основном к функции распределения $F$, если 
+  \[\forall x \in \mathbb{C}(F):\: F_n(x) \stackrel{n \to +\infty}{\to} F(x)\]
+  где $\mathbb{C}(F)$ -- точки непрерывности функции $F$.
+
+  Обозначение: $F_n \Rightarrow F$
+\end{definition}
+
+\begin{definition}
+  Пусть $\{P_n,\, n \in \mathbb{N}\},\, P$ -- вероятностные меры на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$. Тогда последовательность $\{P_n,\, n \in \mathbb{N}\}$ сходится к $P$, если $\forall f:\: \mathbb{R}^m \to \mathbb{R}$ -- ограниченной непрерывной функции выполнено
+  \[\int_{\mathbb{R}^m}f(x)P_n(dx) \stackrel{n \to +\infty}{\to} \int_{\mathbb{R}^m}f(x)P(dx)\]
+  Обозначение: $P_n \stackrel{W}{\to} P$
+\end{definition}
+
+\begin{definition}
+  Последовательность $\{P_n,\, n \in \mathbb{N}\}$ сходится к $P$ в основном, если
+  \[\forall B \in \mathcal{B}(\mathbb{R}^m):\: P_n(B) \stackrel{n \to +\infty}{\to} P(B)\]
+  с условием $P(\partial B) = 0$
+\end{definition}
+
+\begin{theorem}
+  Александрова (б/д).
+
+  Пусть $\{P_n,\, n \in \mathbb{N}\},\, P$ -- вероятностные меры на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$. Тогда следующие условия эквивалентны:
+  \begin{enumerate}
+    \item $P_n \stackrel{W}{\to} P$
+    \item $\overline{\lim}_{n \to +\infty} P_n(F) \leq P(F),\, \forall F$ -- замкнутых.
+    \item $\underline{\lim}_{n \to +\infty}P_n(G) \geq P(G),\, \forall G$ -- открытых.
+    \item $P_n \Rightarrow P$
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  Об эквивалентности сходимостей.
+
+  Пусть $\{P_n,\, n \in \mathbb{N}\},\, P$ -- вероятностные меры на $(\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, а $\{F_n,\, n \in \mathbb{N}\},\, F$ -- соответствующие им функции распределения. Тогда следующие условия эквивалентны:
+  \begin{enumerate}
+    \item $P_n \stackrel{W}{\to} P$
+    \item $P_n \Rightarrow P$
+    \item $F_n \stackrel{W}{\to} F$
+    \item $F_n \Rightarrow F$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  $1 \Leftrightarrow 2$ по теореме Александрова. $1 \Leftrightarrow 3$ по определению.
+
+  Для $2 \Rightarrow 4$ рассмотрим $B = (-\infty,\, x]$. Тогда $\partial B = \{x\}$. Если $x$ -- точка непрерывности $F$, то $P(\{x\}) = 0 \Rightarrow P(\partial B) = 0$. Значит, в силу сходимости в основном плотностей:
+  \[F_n(x) = P_n((-\infty,\, x]) \stackrel{n \to +\infty}{\to} P((-\infty,\, x]) = F(x) \Rightarrow F_n \Rightarrow F\]
+  Для $4 \Rightarrow 2$ пусть $F_n \Rightarrow F$. По теореме Александрова достаточно проверить, что $\forall$ открытых $G$ выполнено
+  \[\underline{\lim}_{n \to +\infty}P_n(G) \geq P(G)\]
+  Раз $G \subset \mathbb{R}$, то $G$ представимо в виде конечного или счётного числа непересекающихся интервалов:
+  \[G = \bigsqcup_{k = 1}^\infty (a_k,\, b_k)\]
+  Зафиксируем $\forall \varepsilon > 0$. Для $\forall k \in \mathbb{N}$ подберём полуинтервал $(a_k',\, b_k'] \subset (a_k,\, b_k)$, такой, что
+  \[P((a_k,\,b_k)) \leq P((a_k',\, b_k']) + \frac{\varepsilon}{2^k}\]
+  и $a_k',\, b_k'$ -- точки непрерывности $F$.
+
+  Такой выбор возможен в силу непрерывности вероятностной меры и того факта, что множество точек разрыва $F$ не более чем счётно. Далее:
+  \begin{align*}
+    \underline{\lim}_{n}P_n(G) = \underline{\lim}_{n} \sum_{k = 1}^\infty P_n((a_k,\, b_k)) \stackrel{\forall N > 0}{\geq} \underline{\lim}_n \sum_{k = 1}^N P_n((a_k,\, b_k) \geq \sum_{k = 1}^N \underline{\lim}_n P_n((a_k,\, b_k)) \geq\\
+    \sum_{k = 1}^N \underline{\lim}_n P_n((a_k',\, b_k']) = \sum_{k = 1}^n \underline{\lim}_n (F_n(b_k') - F_n(a_k')) \stackrel{F_n \Rightarrow F}{=} \sum_{k = 1}^N (F(b_k') - F(a_k')) = \sum_{k = 1}^N P((a_k',\, b_k']) \geq\\
+    \sum_{k = 1}^N P((a_k,\, b_k)) - \varepsilon
+  \end{align*}
+  Устремляя $N \to +\infty$, получаем
+  \[\underline{\lim}_{n}P_n(G) \geq \sum_{k = 1}^\infty P((a_k,\,b_k)) - \varepsilon = P(G) - \varepsilon\]
+  В силу произвольного $\varepsilon > 0$:
+  \[\underline{\lim}_{n}P_n(G) \geq P(G)\]
+  Благодаря теореме Александрова, всё доказали.
+\end{proof}
+
+\begin{corollary}
+  Пусть $\{\xi_n,\, n \in \mathbb{N}\},\, \xi$ -- случайные величины. Тогда
+  \[\xi_n \stackrel{d}{\to} \xi \Leftrightarrow \forall x \in \mathbb{C}(F_\xi) :\: F_{\xi_n}(x) \to F_\xi(x)\]
+\end{corollary}
+
