@@ -1,0 +1,93 @@
+\section{Условное матожидание при условии другой случайной величины\dots}
+\begin{definition}
+	Пусть $\xi,\, \eta$ -- случайные величины. Тогда
+	\[E(\xi | \eta) := E(\xi | \mathcal{F}_\eta)\]
+	условное матожидание $\xi$ относительно $\eta$.
+\end{definition}
+
+\begin{definition}
+	Условным математическим ожиданием $E(\xi | \eta = y)$ называется такая борелевская функция $\phi(y)$, удовлетворяющая свойству:
+	\[\forall B \in \mathcal{B}(\mathbb{R}):\: E(\xi\mathbb{I}\{\eta \in B\}) = \int_B \phi(y)P_\eta(dy)\]
+\end{definition}
+
+\begin{theorem}
+	Существование условного матожидания (б/д).
+
+	Если $E|\xi| < +\infty$, то $E(\xi | \eta = y)$ сущестует и единственно $P_\eta$ -- почти наверное.
+\end{theorem}
+
+\begin{lemma}
+	Свойства $E(\xi | \eta = y)$ (б/д):
+	\begin{enumerate}
+		\item Линейность
+		\item Сохранение относительного порядка
+		\item Предельный переход
+	\end{enumerate}
+\end{lemma}
+
+\begin{proposition}
+	Связь с $E(\xi | \eta)$.
+
+	\[E(\xi | \eta = y) = \phi(y) \Leftrightarrow E(\xi | \eta) = \phi(\eta)\]
+\end{proposition}
+
+\begin{proof}
+	\begin{align*}
+		E(E(\xi | \eta)\mathbb{I}\{\eta \in B\}) = E(\xi\mathbb{I}\{\eta \in B\}) = \int_B \phi(y)P_\eta(dy) = E(\phi(\eta)\mathbb{I}\{\eta \in B\}) \Leftrightarrow \\
+		E(\xi | \eta) = \phi(\eta)
+	\end{align*}
+\end{proof}
+
+\begin{definition}
+	Условным распределением случайной величины $\xi$ относительно случайной величины $\eta$ называется функция $P(B,\, y),\, B \in \mathcal{B}(\mathbb{R}),\, y \in \mathbb{R}$, которая удовлетворяет свойствам:
+	\begin{enumerate}
+		\item $P(\cdot,\, y)$ является борелевской функцией от $y$.
+		\item $P(B,\, \cdot)$ является вероятностной мерой на $(\mathbb{R},\, \mathcal{B}(\mathbb{R}))$
+		\item Для $\forall A,\, B \in \mathcal{B}(\mathbb{R})$:
+		      \[P(\xi \in B,\, \eta \in A) = \int_AP(B,\,y)P_\eta(dy)\]
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Функция $f_{\xi | \eta}(x | y)$ называется условной плотностью случайной величины $\xi$ относительно случайной величины $\eta$ (по мере $\mu$), если $f \geq 0,\, \forall B \in \mathcal{B}(\mathbb{R})$:
+	\[P(\xi \in B | \eta = y) = \int_B f_{\xi | \eta}(x | y)\mu(dx)\]
+\end{definition}
+
+\begin{theorem}
+	О вычислении УМО.
+
+	Если $\exists$ условная плотность $f_{\xi | \eta}(x | y)$, то для $\forall$ борелевской функции $g(x)$:
+	\[E(g(\xi) | \eta = y) = \int_\mathbb{R}g(x)f_{\xi | \eta}(x | y)\mu(dx)\]
+\end{theorem}
+
+\begin{proof}
+	Пусть сначала $g(x) = \mathbb{I}\{x \in B\},\, B \in \mathcal{B}(\mathbb{R})$. Тогда
+	\[E(g(\xi) | \eta = y) = P(g(\xi) \in B | \eta = y) = \int_B f_{\xi | \eta}(x | y)\mu(dx) = \int_\mathbb{R} g(x)f_{\xi | \eta}(x | y) \mu(dx)\]
+	Доказываемое равенство линейно по функции $g \Rightarrow$ она верна для простых функций. Для произвольных $g(x)$ используем предельный переход.
+\end{proof}
+
+\begin{theorem}
+	О достаточном условии существования условной плотности.
+
+	Пусть $(\xi,\, \eta)$ такова, что $\exists$ совместная плотность $f_{\xi,\, \eta}(x,\, y)$ по мере $\mu \times \lambda$ на $\mathbb{R}^2$. Тогда функция
+	\[
+		f_{\xi | \eta}(x | y) =
+		\begin{cases}
+			\frac{f_{\xi,\, \eta}(x,\,y)}{f_\eta(y)},\, f_\eta(y) > 0 \\
+			0,\, else
+		\end{cases}
+	\]
+	является условной плотностью $\xi$ относительно $\eta$ (по мере $\mu$). Здесть $f_\eta(y)$ -- плотность $\eta$ по мере $\lambda$.
+\end{theorem}
+
+\begin{proof}
+	Надо проверить, что
+	\[Q(B,\, y) = \int_Bf_{\xi | \eta}(x|y)\mu(dx)\]
+	есть условное распределение $\xi$ относительно $\eta$. Первые два свойства выполнены из свойств интеграла Лебега.
+
+	Проверим третье свойство:
+	\begin{align*}
+		P(\xi \in B,\, \eta \in A) = \iint_{B \times A} f_{\xi,\, \eta}(x,\, y)\mu(dx)\lambda(dy) \stackrel{\text{Фубини}}{=} \int_A\left(\int_B f_{\xi,\, \eta}(x,\,y)\mu(dx)\right)\lambda(dy) = \\
+		\int_A\left(\int_B f_{\xi | \eta}(x | y)\mu(dx)\right)\lambda(dy) = \int_A Q(B,\,y)P_\eta(dy)
+	\end{align*}
+\end{proof}
