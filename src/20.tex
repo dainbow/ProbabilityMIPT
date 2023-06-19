@@ -1,0 +1,75 @@
+\section{Характеристические функции\dots}
+\begin{definition}
+	Пусть $\xi$ -- случайная величина. Характеристической функцией случаной величины $\xi$ называется
+	\[\phi_\xi(t) = Ee^{i\xi t},\, t \in \mathbb{R}\]
+\end{definition}
+
+\begin{definition}
+	Пусть $\xi$ -- случайный вектор из $\mathbb{R}^n$. Характеристической функцией $\xi$ называется
+	\[\phi_\xi(t) = Ee^{i\langle\xi,\,t\rangle},\, t \in \mathbb{R}^n\]
+\end{definition}
+
+\begin{definition}
+	Пусть $P$ -- вероятностная мера на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$. Характеристической функцией меры $P$ называется
+	\[\phi(t) = \int_{\mathbb{R}^m}e^{i\langle x,\, t\rangle}P(dx)\]
+\end{definition}
+
+\begin{example}
+	Вычисление характеристической функции для стандартного нормального распределения.
+
+	Пусть $\xi \equiv \mathcal{N}(0,\, 1)$. Тогда
+	\[\phi_\xi(t) = Ee^{it\xi} = \int_\mathbb{R}e^{itx}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx = \int_\mathbb{R}\cos(tx)\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx\]
+	Имеем право рассмотреть производную характеристической функции:
+	\[\phi'_\xi(t) = \int_\mathbb{R} \sin(tx)(-x)\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx = \sin(tx)\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}|_{-\infty}^{+\infty} - t\int_\mathbb{R}\cos(tx)\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx\]
+	Получили диффур вида
+	\[\phi'_\xi(t) = (-t) \cdot \phi_\xi(t)\]
+	Решая его, получим, что
+	\[\phi_\xi(t) = Ce^{-\frac{t^2}{2}}\]
+	Из начальных условий, $C = 1$ (т.к. $\forall \xi:\: \phi_\xi(0) = 1$).
+
+	Значит $\phi_\xi(t) = e^{-\frac{t^2}{2}}$.
+\end{example}
+
+\subsubsection*{Свойства характеристических функций случайных величин}
+\begin{enumerate}
+	\item Если $\phi(t)$ -- характеристическая функция случайной величины $\xi$, то
+	      \[\forall t \in \mathbb{R} :\: |\phi(t)| \leq \phi(0) = 1\]
+	      \begin{proof}
+		      \[|\phi(t)| = |Ee^{i\xi t}| \leq E\stackrel{= 1}{|e^{i\xi t}|} = 1 = \phi(0)\]
+	      \end{proof}
+	\item Если $\phi_\xi(t)$ -- характеристическая функция случайной величины $\xi,\, \eta = a\xi + b,\, a,\, b \in \mathbb{R}$, то
+	      \[\phi_\eta(t) = e^{itb}\phi_\xi(at)\]
+	      \begin{proof}
+		      \[\phi_\eta(t) = Ee^{i\eta t} = Ee^{i(a\xi + b)t} = e^{itb}Ee^{i\xi(at)} = e^{itb}\phi_\xi(at)\]
+	      \end{proof}
+	\item Если $\phi(t)$ -- характеристическая функция случайной величины $\xi$, то $\phi(t)$ равномерно непрерывна на $\mathbb{R}$.
+	      \begin{proof}
+		      Рассмотрим
+		      \[|\phi(t + h) - \phi(t)| = |Ee^{i(t + h)\xi} - Ee^{it\xi}| = |Ee^{it\xi}(e^{ih\xi} - 1)| \leq E|e^{it\xi}||e^{ih\xi} - 1| = E|e^{ih\xi} - 1|\]
+		      Заметим, что $|e^{ih\xi} - 1| \stackrel{\forall \omega \in \Omega}{\to} 0$ при $h \to 0$. Также, оценив $|e^{ih\xi} - 1| \leq 2$ сможем применить теорему Лебега и получить:
+		      \[E|e^{ih\xi} - 1| \stackrel{h \to 0}{\to} 0\]
+	      \end{proof}
+	\item Пусть $\phi(t)$ -- характеристическая функция случайной величины $\xi$. Тогда
+	      \[\forall t \in \mathbb{R}:\: \phi(t) = \overline{\phi(-t)}\]
+	      \begin{proof}
+		      \[\phi(t) = Ee^{it\xi} = E\cos(t\xi) + iE\sin(t\xi) = E\cos(-t\xi) - iE\sin(-i\xi) = \overline{E^{i(-t)\xi}} = \overline{\phi(-t)}\]
+	      \end{proof}
+	\item Единственность (б/д)
+	      Пусть $\xi,\, \eta$ -- случайные величины. Тогда
+	      \[\phi_\xi(t) = \phi_\eta(t) \Leftrightarrow \xi \stackrel{d}{=} \eta \: (\text{одинаково распределены})\]
+	\item Пусть $\phi(t)$ -- характеристическая функция случайной величины $\xi$. Тогда
+	      \[\forall t:\: \phi(t) \in \mathbb{R} \Leftrightarrow \xi \stackrel{d}{=} -\xi\]
+	      то есть распределение $\xi$ симметрично:
+	      \[\forall B \in \mathcal{B}(\mathbb{R}^n) :\: P(\xi \in B) = P(\xi \in -B)\]
+	      \begin{proof}
+		      $\Rightarrow$:
+		      \[\phi_{-\xi}(t) = \phi_\xi(-t) = \overline{\phi_\xi(t)} = \phi_\xi(t)\Rightarrow \xi \stackrel{d}{=} - \xi\]
+		      $\Leftarrow$:
+		      \[\phi_\xi(t) = \phi_{-\xi}(t) = \phi_\xi(-t) = \overline{\phi_\xi(t)} \Rightarrow \forall t:\: \phi_\xi(t) \in \mathbb{R}\]
+	      \end{proof}
+	\item Пусть $\xi_1,\,\cdots,\,\xi_n$ -- независимые случайные величины. Тогда
+	      \[\phi_{\xi_1 + \cdots + \xi_n}(t) = \prod_{k = 1}^n \phi_{\xi_k}(t)\]
+	      \begin{proof}
+          \[\phi_{\xi_1 + \cdots + \xi_n}(t) = Ee^{it(\xi_1 + \cdots + \xi_n)} \stackrel{\independent}{=} E\prod_{k = 1}^n e^{it\xi_k} = \prod_{k = 1}^n Ee^{it\xi_k} = \prod_{k = 1}^n \phi_{\xi_k}(t)\]
+	      \end{proof}
+\end{enumerate}
