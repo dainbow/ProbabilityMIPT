@@ -31,21 +31,20 @@
 \end{proof}
 
 \begin{example}
-  Построение асимптотически доверительного интервала для параметра в схеме Бернулли.
+	Построение асимптотически доверительного интервала для параметра в схеме Бернулли.
 
-  Пусть $X_1,\,\cdots,\,X_n$ -- независимые одинаково распределённые случайные величины. Причём $X_i \sim$ Bin($1,\,p$).
+	Пусть $X_1,\,\cdots,\,X_n$ -- независимые одинаково распределённые случайные величины. Причём $X_i \sim$ Bin($1,\,p$).
 \end{example}
 
 \begin{proof}
-  Обозначим $\overline{X} = \frac{1}{n}\sum_{i = 1}^n X_i$. Согласно ЦПТ
-  \[\sqrt{n}(\overline{X} - p) \stackrel{d}{\to} \mathcal{N}(0,\, p(1 - p))\]
-  или же
-  \[\frac{\sqrt{n}(\overline{X} - p)}{\sqrt{p(1 - p)}} \stackrel{d}{\to} \mathcal{N}(0,\,1)\]
-  Заметим, что по УЗБЧ $\overline{X} \stackrel{\text{п.н.}}{\to} p$ и по теореме о наследовании сходимости
-  \[\sqrt{\overline{X}(1 - \overline{X})} \stackrel{\text{п.н.}}{\to} \sqrt{p(1 - p)}\]
-  Тогда
-  \[\frac{\sqrt{n}(\overline{X} - p)}{\sqrt{\overline{X}(1 - \overline{X})}} = \frac{\sqrt{n}(\overline{X} - p)}{\sqrt{p(1 - p)}}\cdot\frac{\sqrt{p(1 - p)}}{\sqrt{\overline{X}(1 - \overline{X})}} \stackrel{\text{л.Слуцкого},\, d}{\to}\mathcal{N}(0,\,1)\]
-  Значит
-  \[P\left(\left|\frac{\sqrt{n}(\overline{X} - p)}{\sqrt{\overline{X}(1 - \overline{X})}}\right| \leq 2.807\right) \to 0.99\]
+	Обозначим $\overline{X} = \frac{1}{n}\sum_{i = 1}^n X_i$. Согласно ЦПТ
+	\[\sqrt{n}(\overline{X} - p) \stackrel{d}{\to} \mathcal{N}(0,\, p(1 - p))\]
+	или же
+	\[\frac{\sqrt{n}(\overline{X} - p)}{\sqrt{p(1 - p)}} \stackrel{d}{\to} \mathcal{N}(0,\,1)\]
+	Заметим, что по УЗБЧ $\overline{X} \stackrel{\text{п.н.}}{\to} p$ и по теореме о наследовании сходимости
+	\[\sqrt{\overline{X}(1 - \overline{X})} \stackrel{\text{п.н.}}{\to} \sqrt{p(1 - p)}\]
+	Тогда
+	\[\frac{\sqrt{n}(\overline{X} - p)}{\sqrt{\overline{X}(1 - \overline{X})}} = \frac{\sqrt{n}(\overline{X} - p)}{\sqrt{p(1 - p)}}\cdot\frac{\sqrt{p(1 - p)}}{\sqrt{\overline{X}(1 - \overline{X})}} \stackrel{\text{л.Слуцкого},\, d}{\to}\mathcal{N}(0,\,1)\]
+	Значит
+	\[P\left(\left|\frac{\sqrt{n}(\overline{X} - p)}{\sqrt{\overline{X}(1 - \overline{X})}}\right| \leq 2.807\right) \to 0.99\]
 \end{proof}
-

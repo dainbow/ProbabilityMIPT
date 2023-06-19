@@ -1,0 +1,96 @@
+\section{Гауссовсские случайные векторы\dots}
+\begin{definition}
+	Случайный вектор $\xi = (\xi_1,\,\cdots,\,\xi_n)$ называется гауссовским (или нормальным), если его характеристическая функция имеет следующий вид:
+	\[\phi(t) = e^{i\langle a,\, t\rangle - \frac{1}{2}\langle\Sigma t,\, t\rangle}\]
+	где $a \in \mathbb{R}^n,\, \Sigma \in M_{n \times n}$ -- симметричная и неотрицательно определённая.
+
+	Обозначение: $\xi \sim \mathcal{N}(a,\, \Sigma)$
+\end{definition}
+
+\begin{theorem}
+	О трёх эквивалентных определениях.
+
+	Следующие определения эквивалентны:
+	\begin{enumerate}
+		\item $\xi = (\xi_1,\,\cdots,\,\xi_n)$ -- гауссовский вектор
+		\item $\xi \stackrel{\text{п.н.}}{=} A\eta + a$, где $\eta = (\eta_1,\,\cdots,\,\eta_m),\, \eta_j \sim \mathcal{N}(0,\,1)$ -- независимые, $a \in \mathbb{R}^n,\, A \in M_{n \times m}$
+		\item Для $\forall \tau \in \mathbb{R}^n$ случайная величина $\langle \tau,\, \xi\rangle$ имеет одномерное нормальное распределение (или константа).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	$1 \Rightarrow 2$. Пусть $\xi \sim \mathcal{N}(a,\, \Sigma),\, \Sigma$ -- симметричная и неотрицательно определённая, тогда $\exists C$ -- ортогональное преобразование, такое, что
+	\[C\Sigma C^T = D\]
+	где $D$ -- диагональная матрица
+	\[
+		D =
+		\begin{pmatrix}
+			d_1 \cdots 0 \cdots 0      \\
+			\vdots \ddots d_m \cdots 0 \\
+			0 \cdots 0 \cdots 0        \\
+		\end{pmatrix},\, d_i > 0,\, i = \overline{1,\,m}
+	\]
+	Рассмотрим вектор $\xi' = C(\xi - a)$ и найдём его характеристическую функцию:
+	\begin{align*}
+		\phi_{\xi'}(t) = Ee^{i\langle\xi',\, t\rangle} = Ee^{i\langle C\xi,\,  t\rangle}\cdot e^{-\langle Ca,\,t\rangle} = Ee^{i\langle\xi,\, C^Tt\rangle} = \phi_\xi(C^Tt)\cdot e^{-i\langle a,\, C^Tt\rangle} = \\
+		e^{i\langle a,\, C^Tt\rangle - \frac{1}{2}\langle\Sigma C^T t,\, C^T t\rangle}\cdot e^{-i\langle a,\, C^Tt\rangle} = e^{-\frac{1}{2}\langle C\Sigma C^Tt,\, t\rangle} = e^{-\frac{1}{2}\sum_{k = 1}^n d_kt_k^2} = \prod_{k = 1}^n e^{-\frac{1}{2}d_kt_k^2}
+	\end{align*}
+	Значит компоненты $\xi'$ независимы в совокупности, причём
+	\[\xi_j' \sim \mathcal{N}(0,\, d_j),\, j = \overline{1,\,m};\;\;\; \xi'_j \stackrel{\text{п.н.}}{=} 0,\, j = \overline{m + 1,\,n}\]
+	Обозначим $\eta_j = \frac{\xi_j'}{\sqrt{d_j}},\, j = \overline{1,\,m}$. Тогда $\eta_1,\,\cdots,\,\eta_m$ -- независимые с $\mathcal{N}(0,\,1)$ и
+	\[
+		\xi' =
+		\begin{pmatrix}
+			\sqrt{d_1} &        & 0          \\
+			           & \ddots &            \\
+			0          &        & \sqrt{d_m} \\
+			0          & \cdots & 0          \\
+			\vdots     & \ddots & \vdots     \\
+			0          & \cdots & 0
+		\end{pmatrix}\eta =: B\eta \Rightarrow \xi = C^T\xi' + a \stackrel{\text{п.н.}}{=} (C^TB)\eta + a
+	\]
+	$2 \Rightarrow 3$. Пусть $\tau \in \mathbb{R}^n$. Тогда
+	\[\langle\tau,\, \xi\rangle \stackrel{\text{п.н.}}{=} \langle\tau,\, A\eta + a\rangle = \langle\tau,\, a\rangle + \langle A^T\tau,\, \eta\rangle = \langle\tau,\, a\rangle + \sum_{k = 1}^n (A^T\tau)_k\cdot\eta_k\]
+	Что тоже нормальная случайная величина, как сумма независимых нормальных случайных величин.
+
+	$3 \Rightarrow 1$ Любая линейная комбинация компонент $\xi$ -- нормальная случайная величина $\Rightarrow \xi_1,\,\cdots,\,\xi_n$ -- нормальная случайная величина, то есть у них конечные $E\xi_i,\, E\xi_i^2$.
+
+	Пусть $\tau \in \mathbb{R}^n$. Тогда
+	\[\langle\tau,\, \xi\rangle \sim \mathcal{N}(a_\tau,\, \sigma^2_\tau)\]
+	где $a_\tau = E\langle\tau,\, \xi\rangle = \langle\tau,\, E\xi\rangle$, а
+	\begin{align*}
+		\sigma_\tau^2 = D\langle\tau,\, \xi\rangle = E(\langle\tau,\, \xi\rangle - \langle\tau,\, E\xi\rangle)^2 = E(\langle\tau,\, \xi - E\xi\rangle)^2 = E\sum_{i,\, j = 1}^n \tau_i\tau_j(\xi_i - E\xi_i)(\xi_j - E\xi_j) = \\
+		\sum_{i,\, j = 1}^n\text{cov }(\xi_i,\,\xi_j)\tau_i\tau_j = \langle D\xi\cdot\tau,\, \tau\rangle
+	\end{align*}
+	Обозначим $\Sigma = D\xi$. Тогда
+	\[\phi_\xi(\tau) = Ee^{i\langle\xi,\, t\rangle} = \phi_{\langle\xi,\, \tau\rangle}(1) = e^{ia_\tau - \frac{1}{2}\sigma_\tau^2} = e^{i\langle a,\,\tau\rangle - \frac{1}{2}\langle\Sigma\tau,\, \tau\rangle}\]
+	, где $\Sigma$ -- симметрическая, неотрицательно определённая.
+\end{proof}
+
+\begin{corollary}
+	Если $\xi \sim \mathcal{N}(a,\,\Sigma)$, то
+	\[a = E\xi;\;\;\; \Sigma = D\xi\]
+\end{corollary}
+
+\begin{corollary}
+	Линейной (афинное) преобразование гауссовского вектора -- тоже гауссовский вектор.
+\end{corollary}
+
+\begin{proof}
+	Пусть $\xi$ -- гауссовский вектор, $\zeta = B\xi + b$ -- его линейное преобразование. Тогда согласно второму определению
+	\[\xi \stackrel{\text{п.н.}}{=} A\eta + a\]
+	где $\eta_1,\,\cdots,\,\eta_m \sim \mathcal{N}(0,\,1)$ -- независимые. $\Rightarrow$
+	\[\zeta \stackrel{\text{п.н.}}{=} (BA)\eta + (Ba + b)\]
+\end{proof}
+
+\begin{corollary}
+	Пусть $\xi = (\xi_1,\,\cdots,\,\xi_n)$ -- гауссовский вектор. Тогда $\xi_1,\,\cdots,\,\xi_n$ -- независимы в совокупности $\Leftrightarrow$ они попарно некоррелированы.
+\end{corollary}
+
+\begin{proof}
+	$\Rightarrow$ верно для любых случайных векторов с конечными дисперсиями.
+
+	$\Leftarrow$ Если $\xi_1,\,\cdots,\,\xi_n$ -- попарно некоррелированы, то $D\xi$ -- диагональная, пусть $\xi \sim \mathcal{N}(a,\, \Sigma)$:
+	\[\phi_\xi(t) = e^{i\langle a,\,t\rangle - \frac{1}{2}\langle\Sigma t,\, t\rangle} = \prod_{k = 1}^n e^{ia_kt_k - \frac{1}{2}\sigma_{kk}t_k^2} = \prod_{k = 1}^n \phi_{\xi_k}(t)\]
+	По критерию независимости для характеристических функций получаем, что $\xi_1,\,\cdots,\,\xi_n$ будут независимы в совокупности.
+\end{proof}
