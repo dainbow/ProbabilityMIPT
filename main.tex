@@ -130,7 +130,7 @@
 
 	$\Leftarrow$ Проверим сначала, что $\mathcal{F}$ -- алгебра. Свойства $1),\,3)$ уже есть. По свойству $2)$ $\lambda$-системы $\overline{A} = \Omega \setminus A \in \mathcal{F}$, если $A \in \mathcal{F}$. Значит $\mathcal{F}$ -- алгебра.
 
-	Пусть $\{A_n,\, n \in \mathbb{N}\},\, \forall n \: A_n \in \mathcal{F},\, \forall i \neq j \: A_i \cap A_j = \emptyset$. Рассмотрим $B_n = \sqcup_{m = 1}^n A_m \in \mathcal{F}$. Тогда $B_n \subset B_{n + 1}$ и $\cup_{n = 1}^\infty B_n = \sqcup_{n = 1}^\infty A_n \Rightarrow$ по $3)$ свойству $\lambda$-системы: $B_n \uparrow \sqcup_{n = 1}^\infty A_n \in \mathcal{F}$.
+	Пусть $\{A_n,\, n \in \mathbb{N}\},\, A_n \in \mathcal{F}$. Рассмотрим $B_n : B_1 = A_1, B_i = A_i \setminus \left(\cup_{k = 1}^{i} A_k\right)$. Тогда: $\forall n \: B_n \in \mathcal{F},\, \forall i \neq j \: B_i \cap B_j = \emptyset$. Рассмотрим $C_n = \sqcup_{m = 1}^n B_m \in \mathcal{F}$. Тогда $C_n \subset C_{n + 1}$ и $\cup_{n = 1}^\infty C_n = \sqcup_{n = 1}^\infty B_n \Rightarrow$ по $3)$ свойству $\lambda$-системы: $C_n \uparrow \sqcup_{n = 1}^\infty B_n \in \mathcal{F}$.
 \end{proof}
 
 \begin{lemma}
