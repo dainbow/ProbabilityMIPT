@@ -1,0 +1,73 @@
+\section{Единственность характеристических функций\dots}
+\begin{theorem}
+	Единственности.
+
+	Пусть $\xi,\, \eta$ -- случайные величины. Тогда
+	\[\forall t \in \mathbb{R}:\: \phi_\xi(t) = \phi_\eta(t) \Leftrightarrow \xi \stackrel{d}{=} \eta\]
+\end{theorem}
+
+\begin{proof}
+	$\Leftarrow$ Очевидно из формулы вычисления матожидания.
+
+	$\Rightarrow$ Для $a < b$ и малого $\varepsilon > 0$ рассмотрим функцию $f_\varepsilon(x)$:
+	\[
+		f_\varepsilon(x) =
+		\begin{cases}
+			0,\, x \in (-\infty,\, a] \cup [b + \varepsilon,\, +\infty) \\
+			\frac{x - a}{\varepsilon},\, x \in [a,\, a + \varepsilon]   \\
+			1,\, x \in [a + \varepsilon,\, b]                           \\
+			\frac{b + \varepsilon - x}{\varepsilon},\, x \in [b,\, b + \varepsilon]
+		\end{cases}
+	\]
+	Докажем, что $\forall \varepsilon > 0$ достаточно малого:
+	\[Ef_\varepsilon(\xi) = Ef_\varepsilon(\eta)\]
+	Возьмём большое $n \in \mathbb{N}$, такое что $[-n,\, n] \supset [a,\, b + \varepsilon]$. Тогда $\forall n$ по т. Вейшерштрасса $\exists$ функция $f_\varepsilon^{(n)}(x)$ на $[-n,\,n]$ вида
+	\[f_\varepsilon^{(n)}(x) = \sum_{k \in K}c_ke^{\frac{i\pi kx}{n}}\]
+	где $K \subset \mathbb{Z}$ -- конечное множество. Причём
+	\[\forall x \in [-n,\, n] :\: |f^{(n)}_\varepsilon(x) - f_\varepsilon(x)| \leq \frac{1}{n}\]
+	Очевидно, $f^{(n)}_\varepsilon(x)$ периодическая с периодом $2n$, продолжим её на $\mathbb{R}$ той же формулой. Заметим, что
+	\[\forall x \in [-n,\,n]:\: |f^{(n)}_\varepsilon(x)| \leq 2 \Rightarrow \forall x \in \mathbb{R}:\: |f^{(n)}_\varepsilon(x)| \leq 2\]
+	Рассмотрим
+	\[|Ef_\varepsilon(\xi) - Ef_\varepsilon(\eta)| \leq |Ef_\varepsilon(\xi) - Ef^{(n)}_\varepsilon(\xi)| + |Ef_\varepsilon(\eta) - Ef^{(n)}_\varepsilon(\eta)| + |Ef_\varepsilon^{(n)}(\xi) - Ef_\varepsilon^{(n)}(\eta)|\]
+	Последнее слагаемое равно нулю, так как $f_\varepsilon^{(n)}(\xi),\, f_\varepsilon^{(n)}(\eta)$ -- это какие-то линейная комбинация характеристических функций $\xi,\, \eta$ с одинаковыми коэффициентами, которые равны по условию.
+
+	Далее,
+	\begin{align*}
+		|E(f_\varepsilon(\xi) - f_\varepsilon^{(n)}(\xi))| \leq E\left(|f_\varepsilon(\xi) - f\varepsilon^{(n)}(\xi)|\cdot\mathbb{I}\{|\xi| \leq n\}\right) + \left(|f_\varepsilon(\xi) - f\varepsilon^{(n)}(\xi)|
+		\cdot\mathbb{I}\{|\xi| > n\}\right) \leq \\
+		\frac{1}{n} + 2P(|\xi| > n)
+	\end{align*}
+	В итоге получим, что
+	\[|Ef_\varepsilon(\xi) - Ef_\varepsilon(\eta)| \leq \frac{2}{n} + 2P(|\xi| > n) + 2P(|\eta| > n) \stackrel{n \to +\infty}{\to} 0 \Rightarrow Ef_\varepsilon(\xi) = Ef_\varepsilon(\eta)\]
+	Заметим, что
+	\[\forall \omega \in \Omega:\: f_\varepsilon(\xi) \stackrel{\varepsilon \to 0}{\to} \mathbb{I}\{\xi \in (a,\,b]\},\, |f_\varepsilon(\xi)| \leq 1 \stackrel{\text{т.Лебега}}{\Rightarrow} Ef_\varepsilon(\xi) \stackrel{\varepsilon \to 0}{\to} E\mathbb{I}\{\xi \in (a,\,b]\} = F_\xi(b) - F_\xi(a)\]
+	Итоговый результат
+	\[\forall a < b:\: F_\xi(b) - F_\xi(a) = F_\eta(b) - F_\eta(a)\]
+	Устремляя $a \to -\infty$:
+	\[F_\xi(b) = F_\eta(b) \Rightarrow \xi \stackrel{d}{=} \eta\]
+\end{proof}
+
+\begin{example}
+	Вычисление распределения суммы независимых нормальных случайных величин.
+
+	Пусть $\xi_1,\, \xi_2$ -- независимые случайные величины, $\xi_i \sim \mathcal{N}(a_i,\, \sigma_i^2),\, i = 1,\, 2$. Требуется найти распределение $\xi_1 + \xi_2$.
+\end{example}
+
+\begin{proof}
+	Найдём характеристическую функцию $\xi_j$: заметим, что
+	\[\eta := \frac{\xi_j - a_j}{\sigma_j} \sim \mathcal{N}(0,\,1) \Rightarrow \phi_{\xi_j}(t) = e^{ita_j}\phi_\eta(\sigma_j t) = e^{ia_jt - \frac{\sigma_j^2t^2}{2}}\]
+	Тогда
+	\[\phi_{\xi_1 + \xi_2}(t) \stackrel{\independent}{=} \phi_{\xi_1}(t)\phi_{\xi_2}(t) = e^{it(a_1 + a_2) - \frac{(\sigma_1^2 + \sigma_2^2)t^2}{2}} \Rightarrow \xi_1 + \xi_2 \sim \mathcal{N}(a_1 + a_2,\, \sigma_1^2 + \sigma_2^2)\]
+\end{proof}
+
+\begin{theorem}
+	Формула обращения (б/д).
+
+	Пусть $\phi(t)$ -- характеристическая функция случайной величины $\xi$ с функцией распределения $F_\xi$
+	\begin{enumerate}
+		\item Для $\forall a < b,\, a,\, b \in \mathbb{F_\xi}$ выполнено
+		      \[F_\xi(b) - F_\xi(a) = \frac{1}{2\pi}\lim_{C \to +\infty}\int_{-C}^C \frac{e^{-ita} - e^{-itb}}{it}\phi(t)dt\]
+		\item Если $\int_\mathbb{R}|\phi(t)|dt < +\infty$, то случайная величина $\xi$ имеет плотность
+		      \[p(x) = \frac{1}{2\pi}\int_\mathbb{R}e^{-itx}\phi(t)dt\]
+	\end{enumerate}
+\end{theorem}
