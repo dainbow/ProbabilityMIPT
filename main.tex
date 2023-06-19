@@ -1147,4 +1147,61 @@
   \[\nu_n(A) = \frac{\xi_1 + \cdots + \xi_n}{n} \stackrel{\text{п.н.}}{\to} E\xi_1 = P(A)\]
 \end{note}
 
+\section{Фундаментальность с вероятностью 1}
+\begin{definition}
+	Последовательность случайных величин $\{\xi_n,\, n \in \mathbb{N}\}$ фундаментальна с вероятностью 1, если
+	\[P(\{\xi_n,\, n \in \mathbb{N}\} \text{ фундаментальна}) = 1\]
+\end{definition}
+
+\begin{proposition}
+	Последовательность $\{\xi_n,\, n \in \mathbb{N}\}$ сходится почти наверное $\Leftrightarrow$ она фундаментальна с вероятностью 1.
+\end{proposition}
+
+\begin{proof}
+	$\Rightarrow$ Пусть $\xi_n \stackrel{\text{п.н.}}{\to} \xi$, тогда
+	\[P(\{\xi_n,\, n \in \mathbb{N}\} \text{ фундаментальна}) \geq P(\xi_n \to \xi) = 1\]
+	$\Leftarrow$ Обозначим $A = \{\{\xi_n,\, n \in \mathbb{N}\} \text{ фундаментальна}\}$. Тогда $\forall \omega \in A:\: \{\xi_n(\omega),\, n \in \mathbb{N}\}$ имеет предел $\xi(\omega)$. Положим $\xi(\omega) = 0,\, \forall \omega \not\in A$. Тогда
+	\[\forall \omega \in \Omega:\: \xi(\omega) = \lim_{n \to +\infty}(\xi_n(\omega)\mathbb{I}_A(\omega))\]
+	Причём $\xi$ -- это случайная величина, как предел случайных величин.
+
+	Наконец, $P(\xi_n \to \xi) \geq P(A) = 1$
+\end{proof}
+
+\begin{theorem}
+	Неравенство Колмогорова. 
+
+	Пусть $\xi_1,\,\cdots,\,\xi_n$ -- независимые случайные величины, $E\xi_k = 0,\, E\xi_k^2 < +\infty,\, \forall k = \overline{1,\,n}$. Обозначим $S_k = \xi_1 + \cdots + \xi_k$. Тогда
+	\[\forall \varepsilon > 0:\: P\left(\max_{1 \leq k \leq n} |S_k| \geq \varepsilon\right) \leq \frac{ES_n^2}{\varepsilon^2}\]
+\end{theorem}
+
+\begin{proof}
+	Введём обозначения 
+	\[A := \{\max_{1 \leq k \leq n} |S_k| \geq \varepsilon\};\; A_k := \{|S_k| \geq \varepsilon,\, |S_i| < \varepsilon \: \forall i = \overline{1,\,k-1}\}\]
+	Тогда $A = \sqcup_{i = 1}^n A_i$. Продолжим рассуждения:
+	\begin{align*}
+		ES_n^2 \geq E(S_n^2 \cdot\mathbb{I}_A) = \sum_{k = 1}^n E(S_n^2\mathbb{I}_{A_k}) = \sum_{k = 1}^n E((S_k + \xi_{k + 1} + \cdots + \xi_n)^2\mathbb{I}_{A_k}) = \\
+		\sum_{k = 1}^n \left[ES_k^2\cdot\mathbb{I}_{A_k} + E\left((\xi_{k + 1} + \cdots + \xi_n)^2\cdot\mathbb{I}_{A_k}\right) + 2E(S_k\cdot\mathbb{I}_{A_k}(\xi_{k + 1} + \cdots + \xi_n)) \right]
+	\end{align*}
+	Причём последнее слагаемое будет равно нулю, так как $(S_k\mathbb{I}_{A_k}) \independent (\xi_{k + 1} + \cdots + \xi_n)$, как функции от неперескающихся наборов независимых случайных величин, и $E(\xi_{k + 1} + \cdots + \xi_n) = 0$. Но $S_k^2\mathbb{I}_{A_k} \geq \varepsilon^2\mathbb{I}_{A_k}$. Тогда получим
+	\[ES_n^2 \geq \sum_{k = 1}^n\varepsilon^2E\mathbb{I}_{A_k} = \varepsilon^2 \sum_{k = 1}^n P(A_k) = \varepsilon^2 P(A)\]
+\end{proof}
+
+\begin{theorem}
+	Колмогорова-Хинчин о сходимости почти наверное ряда из случайных величин.
+
+	Пусть $\{\xi_n,\, n \in \mathbb{N}\}$ -- независимые случайные величины, $E\xi_n = 0,\, D\xi_n < +\infty,\, \forall n \in \mathbb{N}$. Если $\sum_{n = 1}^\infty D\xi_n < +\infty$, то ряд $\sum_{n = 1}^\infty \xi_n$ сходится почти наверное.
+\end{theorem}
+
+\begin{proof}
+	Введём $S_n := \xi_1 + \cdots + \xi_n$. Используя критерий сходимости почти наверное, хотим получить
+	\[\forall \varepsilon > 0:\: P\left(\sup_{k \geq n} |S_k - S_n| > \varepsilon\right) \stackrel{n \to +\infty}{\to} 0\]
+	Распишем меру этого события более подробно:
+	\begin{align*}
+		P\left(\sup_{k \geq n} |S_k - S_n| > \varepsilon\right) = P\left(\bigcup_{k \geq n}\{|S_k - S_n| > \varepsilon\}\right) = \lim_{N \to +\infty} P\left(\bigcup_{k = n}^N \{|S_k - S_n| > \varepsilon\}\right) = \\
+		\lim_{N \to +\infty} P\left(\max_{1 \leq k \leq N - n} |S_{n + k} - S_n| > \varepsilon\right) \stackrel{\text{н-во Колмогорова}}{\leq} \lim_{N \to +\infty} \frac{E|S_N - S_n|^2}{\varepsilon^2} =\\
+		\lim_{N \to +\infty} \frac{D(\xi_{n + 1} + \cdots + \xi_N)}{\varepsilon^2} = \lim_{N \to +\infty} \frac{1}{\varepsilon^2}\sum_{k = n + 1}^N D\xi_k = \frac{1}{\varepsilon^2} \sum_{k = n + 1}^\infty D\xi_k \stackrel{n \to +\infty}{\to} 0
+	\end{align*}
+	Последний переход обусловлен тем, что остаток сходящегося ряда стремится к нулю.
+\end{proof}
+
 \end{document}
