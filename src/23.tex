@@ -1,0 +1,59 @@
+\section{Плотность и относительная компактность семейств вероятностных мер\dots}
+Пусть $\{P_\alpha,\, \alpha \in \mathfrak{A}\}$ -- семейство распределений на $(\mathbb{R}^m,\, \mathcal{B}(\mathbb{R}^m))$.
+\begin{definition}
+  Семейство $\{P_\alpha,\, \alpha \in \mathfrak{A}\}$ называется относительно компактным, если из любой последовательности
+  \[\{P_{\alpha_n},\, n \in \mathbb{N}\} \subset \{P_\alpha,\, \alpha \in \mathfrak{A}\}\]
+  можно выбрать слабо сходящуюся подпоследовательность.
+\end{definition}
+
+\begin{definition}
+  Семейство $\{P_\alpha,\, \alpha \in \mathfrak{A}\}$ называется плотным, если
+  \[\forall \varepsilon > 0 \: \exists K \subset \mathbb{R}^m\text{ -- компакт} :\: \sup_{\alpha \in \mathfrak{A}}P_\alpha(\mathbb{R}^m \setminus K) \leq \varepsilon\]
+\end{definition}
+
+\begin{theorem}
+  Прохорова. (док-во только для $\mathbb{R}$)
+
+  Семейство относительно компактно $\Leftrightarrow$ оно плотно.
+\end{theorem}
+
+\begin{proof}
+  $\Rightarrow$ пусть $\{P_\alpha,\, \alpha \in \mathfrak{A}\}$ неплотно. Тогда
+  \[\exists \varepsilon > 0 \: \forall K \subset \mathbb{R} \text{ -- компакт}:\: \sup_{\alpha \in \mathfrak{A}}P_\alpha(\mathbb{R} \setminus K) > \varepsilon\]
+  Выберем подпоследовательность $\{\alpha_n,\, n \in \mathbb{N}\}$, такую, что
+  \[\forall n \in \mathbb{N} :\: P_{\alpha_n}(\mathbb{R} \setminus [-n,\, n]) > \varepsilon\]
+  В силу относительной компактности из $\{P_{\alpha_n}\}$ можно извлечь слабо сходящуюся подпоследовательность:
+  \[P_{\alpha_{n_k}} \stackrel{W}{\to} Q,\, k \to +\infty\]
+  Но тогда по теореме Александрова
+  \[\varepsilon \leq \overline{\lim}_{k \to +\infty}P_{\alpha_{n_k}}(\mathbb{R}\setminus(-n,\,n)) \leq Q(\mathbb{R} \setminus(-n,\,n))\]
+  верно для $\forall n \in \mathbb{N}$. Но
+  \[\lim_{n \to +\infty} Q(\mathbb{R} \setminus (-n,\, n)) = 0 \Rightarrow \bot\]
+  $\Leftarrow$ Пусть $\{P_{\alpha_n},\, n \in \mathbb{N}\}$ -- подпоследовательность в семействе. Пусть $F_n$ -- функция распределения $P_{\alpha_n}$. Занумеруем $\mathbb{Q} = \{q_1,\,q_2,\,\cdots\}$.
+
+  Тогда последовательность $\{F_n(q_1),\, n \in \mathbb{N}\}$ -- ограничена $\Rightarrow \exists$ сходящаяся подпоследовательность $n^{(1)} = (n^{(1)}_1,\,n^{(1)}_2,\,\cdots)$, такая, что $\exists\lim_j F_{n^{(1)}_j}(q_1)$. 
+  
+  Последовательность $\{F_{n^{(1)}_m}(q_2),\, m \in \mathbb{N}\}$ -- ограничена $\Rightarrow \exists$ подпоследовательность $n^{(1)} \supset n^{(2)} = (n^{(2)}_1,\,n^{(2)}_2,\,\cdots)$, такая, что $\exists \lim_m F_{n_m^{(2)}}(q_2)$. И т.д. строим $n^{(j)} = (n^{(j)}_1,\,n^{(j)}_2,\,\cdots)$, такую, что 
+  \[\exists \lim_{m \to +\infty}F_{n^{(j)}_m}(q_i),\, \forall i = \overline{1,\,j}\]
+  Тогда диагональная последовательность $n^1 = (n^{(1)}_1,\,n^{(2)}_2,\, n^{(3)}_3,\,\cdots)$ будет такова, что
+  \[\exists \lim_{m \to +\infty}F_{n^1_m}(q_i),\, \forall i \in \mathbb{N}\]
+  Обозначим для $x \in \mathbb{Q}$:
+  \[G(x) := \lim_{m \to +\infty}F_{n^{(m)}_m}(x)\]
+  Заметим, что $G(x)$ не убывает на $\mathbb{Q}$ по построению. Положим для $x \in \mathbb{R} \setminus \mathbb{Q}$:
+  \[G(x) = \inf_{y > x,\, y \in \mathbb{Q}}G(y)\]
+  Из построения сразу следует, что $G(x)$ не убывает и непрерывность справа. Проверим, что 
+  \[\forall x \in \mathbb{C}(G):\: \lim_{m \to +\infty}F_{n^{(m)}_m}(x) = G(x)\]
+  Пусть $x_0 \in \mathbb{C}(G)$. Возьмём $y > x_0,\, y \in \mathbb{Q}$. Тогда
+  \[\overline{\lim}_{m \to +\infty}F_{n^{(m)}_m}(x_0) \leq \overline{\lim}_mF_{n^{(m)}_m}(y) = G(y) \Rightarrow \overline{\lim}_m F_{n^{(m)}_m}(x_0) \leq \inf_{y > x_0,\, y \in \mathbb{Q}}G(y) = G(x_0)\]
+  Возьмём $x_1 < y < x_0,\, y \in \mathbb{Q}$. Тогда
+  \[G(x_1) \leq G(y) = \underline{\lim}_mF_{n^{(m)}_m}(y) \leq \underline{\lim}_m F_{n^{(m)}_m}(x_0)\]
+  Устремляя $x_1 \to x_0 - 0$. В силу неубывания $G(x)$ получаем
+  \[G(x_0 - 0) \leq \underline{\lim}_m F_{n^{(m)}_m}(x_0)\]
+  Если $x_0 \in \mathbb{C}(G)$, то $G(x_0 - 0) = G(x_0) \Rightarrow$
+  \[\exists \lim_{m \to +\infty}F_{n^{(m)}_m}(x_0) = G(x_0)\]
+  Остаётся проверить, что $G(x)$ -- настоящая функция распределения. В силу плотности:
+  \[\forall \varepsilon > 0 \: \exists K = (a,\,b],\, a,\, b \in \mathbb{C}(G):\: \forall \alpha \in \mathfrak{A} \: P_\alpha(K) \geq 1 - \varepsilon\]
+  Но тогда
+  \[G(b) - G(a) = \lim_{m \to +\infty}\left(F_{n^{(m)}_m}(b) - F_{n^{(m)}_m}(a)\right) = \lim_{m \to +\infty} P_{n^{(m)}_m}((a,\,b]) \geq 1 - \varepsilon\]
+  Значит разность $G(b) - G(a)$ может быть сколь угодно близкой к 1. Тогда устремляя $b \to +\infty,\, a \to -\infty$ получим, что
+  \[\lim_{x \to +\infty}G(x) = 1;\;\;\; \lim_{x \to -\infty}G(x) = 0\]
+\end{proof}
