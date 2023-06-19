@@ -1,0 +1,30 @@
+\section{Вторая теорема о $\pi$- и $\lambda$-системах. Следствия из неё.}
+\begin{theorem} \label{SECOND_SYSTEM_TH}
+	Вторая теорема о $\pi$-$\lambda$-системах.
+
+	Если $\mathcal{M}$ -- это $\pi$-система подмножеств в $\Omega$, то $\sigma(\mathcal{M}) = \lambda(\mathcal{M})$
+\end{theorem}
+
+\begin{proof}
+	Заметим, что $\sigma(\mathcal{M})$ -- $\lambda$-система, содержащая $\mathcal{M} \Rightarrow \lambda(\mathcal{M}) \subset \sigma(\mathcal{M})$.
+
+	Проверим, что $\lambda(\mathcal{M})$ -- это $\sigma$-алгебра. Раз $\lambda(\mathcal{M})$ -- это $\lambda$-система, то по (\ref{FIRST_SYSTEM_TH}) достаточно проверить, что $\lambda(\mathcal{M})$ -- это $\pi$-система.
+
+	Рассмотрим $\mathcal{M}_1 = \{B \in \lambda(\mathcal{M}):\: \forall A \in \mathcal{M},\, A \cap B \in \lambda(\mathcal{M})\}$. Заметим, что $\mathcal{M} \subset \mathcal{M}_1$. Проверим, что $\mathcal{M}_1$ -- это $\lambda$-система:
+	\begin{enumerate}
+		\item $\Omega \in \mathcal{M}_1$ -- очевидно
+		\item Пусть $B,\, C \in \mathcal{M}_1,\, C \subset B$, пусть $A \in \mathcal{M}$. Заметим, что $B \setminus C \in \lambda(\mathcal{M})$ и
+		      \[(B \setminus C) \cap A = \stackrel{\in \lambda(\mathcal{M})}{(B \cap A)} \setminus \stackrel{\in \lambda(\mathcal{M})}{(C \cap A)}\]
+		      Значит по второму свойству $\lambda$-систем $(B \setminus C) \cap A \in \lambda(\mathcal{M})$
+		\item Пусть $B_n \uparrow B,\, B_n \in \mathcal{M}_1,\, A \in \mathcal{M} \Rightarrow$
+		      \[\stackrel{\in \lambda(\mathcal{M})}{B_n \cap A}\: \uparrow B \cap A\]
+		      Тогда по третьем свойству $\lambda$-систем $B \cap A \in \lambda(\mathcal{M})$. Но $B_n \in \lambda(\mathcal{M}) \Rightarrow$ по третьему свойству $\lambda$-системы получаем, что $B \in \lambda(\mathcal{M}) \Rightarrow B \in \mathcal{M}_1$.
+	\end{enumerate}
+	По условию $\mathcal{M} \subset \mathcal{M}_1 \Rightarrow$ в силу минимальности $\lambda(\mathcal{M}) \subset \mathcal{M}_1$. По построению $\mathcal{M}_1 \subset \lambda(\mathcal{M}) \Rightarrow \lambda(\mathcal{M}) = \mathcal{M}_1$, то есть $\forall B \in \lambda(\mathcal{M}) \: \forall A \in \mathcal{M} :\: A \cap B \in \lambda(\mathcal{M})$.
+
+	Далее рассмотрим $\mathcal{M}_2 = \{B \in \lambda(\mathcal{M}):\: \forall A \in \lambda(\mathcal{M}) \: A \cap B \in \lambda(\mathcal{M})\}$. В силу доказанного $\mathcal{M} \subset \mathcal{M}_2$. Совершенно аналогично с $\mathcal{M}_1$ проверяем, что $\mathcal{M}_2$ -- это $\lambda$-система. Тогда $\lambda(\mathcal{M}) \subset \mathcal{M}_2$. По построению $\mathcal{M}_2 \subset \lambda(\mathcal{M}) \Rightarrow \lambda(\mathcal{M}) = \mathcal{M}_2 \Rightarrow \lambda(\mathcal{M})$ -- это $\pi$-система.
+\end{proof}
+
+\begin{corollary}
+	Пусть $\mathcal{M}$ -- это $\pi$-система на $\Omega$, и $\mathcal{L}$ -- это $\lambda$-система на $\Omega$ и $\mathcal{M} \subset \mathcal{L}$. Тогда $\lambda(\mathcal{M}) \subset \mathcal{L}$
+\end{corollary}

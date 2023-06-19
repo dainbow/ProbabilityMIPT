@@ -1,0 +1,32 @@
+\section{Теорема о математическом ожидании произведения независимых случайных величин с конечными математическими ожиданиями}
+\begin{theorem}
+	О математическом ожидании произведения независимых случайных величин с конечными математическими ожиданиями.
+
+	Пусть $\xi,\, \eta$ -- независимые случайные величины, $E\xi,\, E\eta$ -- конечные. Тогда $E\xi\eta$ тоже конечно, причём $E\xi\eta = E\xi\cdot E\eta$.
+\end{theorem}
+
+\begin{proof}
+	Пусть сначала $\xi,\, \eta$ -- простые случайные величины, то есть
+	\[\xi = \sum_{i = 1}^n x_i\mathbb{I}\{\xi = x_i\};\; \eta = \sum_{j = 1}^m y_j\mathbb{I}\{\eta = y_j\}\]
+	где $x_1,\,\cdots,\,x_n$ -- значения $\xi$, а $y_1,\,\cdots,\,y_j$ -- значения $\eta$. Тогда
+	\[\xi\eta = \sum_{i = 1}^n\sum_{j = 1}^m x_iy_j \mathbb{I}\{\xi = x_i,\, \eta = y_j\}\]
+	Берём $E$ от обеих частей:
+	\begin{align*}
+		E\xi\eta = \sum_{i = 1}^n\sum_{j = 1}^m x_iy_j P(\xi = x_i,\, \eta = y_j) \stackrel{\independent}{=} \sum_{i = 1}^n\sum_{j = 1}^m x_iy_j P(\xi = x_i)P(\eta = y_j) = \\
+		\left(\sum_{i = 1}x_iP(\xi = x_i)\right)\left(\sum_{j = 1}^my_jP(\eta = y_j)\right) = E\xi\cdot E\eta
+	\end{align*}
+	Далее, пусть $\xi,\,\eta \geq 0$ -- неотрицательные случайные величины. Тогда рассмотрим последовательности простых случайных величин $\{\xi_n,\, n \in \mathbb{N}\},\, \{\eta_m,\, m \in \mathbb{N}\}$, такие что
+	\[0 \leq \xi_n \uparrow \xi ;\;\;\; 0 \leq \eta_m \uparrow \eta\]
+	и $\forall n \in \mathbb{N}:\: \xi_n$ является $\mathcal{F}_\xi$-измеримой, $\eta_n$ -- $\mathcal{F}_\eta$-измеримой.
+
+	Следовательно, $0 \leq \xi_n\eta_n \uparrow \xi\eta$ и $\forall n \in \mathbb{N}:\: \xi_n \independent \eta_n$. По определению мат. ожидания:
+	\[E\xi\eta = \lim_{n \to +\infty} E\xi_n\eta_n \stackrel{\independent}{=} \lim_{n \to +\infty}E\xi_n\cdot \lim_{n \to +\infty}E\eta_n = E\xi\cdot E\eta\]
+	Теперь пусть $\xi,\, \eta$ -- произвольные случайные величины. Тогда $\xi^\pm \independent \eta^\pm$, как функции от независимых случайных величин. Причём
+	\[(\xi\eta)^+ = \xi^+\eta^+ + \xi^-\eta^- ;\;\;\; (\xi\eta)^- = \xi^+\eta^- + \xi^-\eta^+\]
+	По определению
+	\begin{align*}
+		E\xi\eta = E(\xi\eta)^+ - E(\xi\eta)^- = E\xi^+\eta^+ + E\xi^-\eta^- - E\xi^+\eta^- - E\xi^-\eta^+ \stackrel{\independent}{=}   \\
+		E\xi^+\cdot E\eta^+ + E\xi^-\cdot E\eta^- - E\xi^+ \cdot E\eta^- - E\xi^-\cdot E\eta^+ = (E\xi^+ - E\xi^-)(E\eta^+ - E\eta^-) = \\
+		E\xi \cdot E\eta
+	\end{align*}
+\end{proof}

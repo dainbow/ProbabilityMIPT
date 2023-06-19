@@ -1,0 +1,90 @@
+\section{Классификация вероятностных мер}
+\begin{definition}
+	Пусть $P$ -- вероятностная мера на $(\mathbb{R},\, \mathcal{B}(\mathbb{R}))$. Она называется дискретной, если $\exists$ не более чем счётное множество $X \subset \mathbb{R}$, такое, что
+	\[P(\mathbb{R} \setminus X) = 0,\, \forall x \in X:\: P(\{x\}) > 0\]
+	Говорят, что $P$ сосредоточена на $X$.
+
+	Пусть $X = (x_k,\, k \in \mathbb{N})$, обозначим $p_k = P(\{x_k\})$. Набор $(p_1,\,p_2,\,\cdots)$ образует распределение вероятностей на $X$.
+
+	Как выглядит функция распределения?
+	\[F(x) = \sum_{x_k \leq x}P(\{x_k\})\]
+	Она меняется скачками в точках $x_k$, в них значение увеличивается на
+	\[p_k = P(\{x_k\}) = \Delta F(x_k) = F(x_k) - F(x_k - 0)\]
+\end{definition}
+
+\begin{example}
+	Дискретные распределения:
+	\begin{enumerate}
+		\item Константы.
+		      \[X = \{x\};\; P(\{x\}) = 1\]
+		\item Распределение Бернулли, Bern($p$), $p \in [0,\,1]$:
+		      \[X = \{0,\, 1\};\; p_0 = 1 - p,\, p_1 = p\]
+		\item Биномиальное распределение, Bin($n,\,p$), $n \in \mathbb{N},\, p \in [0,\,1]$:
+		      \[X = \{0,\,\cdots,\,n\};\; p_k = C_n^k p^k (1-p)^{n - k};\; k = \overline{0,\,n}\]
+		\item Пуассоновское распределение, Pois($\lambda$), $\lambda > 0$
+		      \[X = \mathbb{Z}_+;\; p_k = \frac{\lambda^k}{k!}e^{-\lambda},\, k \in \mathbb{Z}_+\]
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Пусть $P$ -- вероятностная мера на $(\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, а $F$ -- её функция распределения. Она называется абсолютно непрерывной, если $\exists p(t) \geq 0$, такая что
+	\[\int_\mathbb{R}p(t)dt = 1;\; \forall x \in \mathbb{R} :\: F(x) = \int_{-\infty}^x p(t)dt\]
+	В этом случае $p(t)$ называется плотностью функции распределения $F$ и меры $P$.
+\end{definition}
+
+\begin{note}
+	Интегралы понимаются, как интегралы Лебега.
+\end{note}
+
+\begin{example}
+	\begin{enumerate}
+		\item Равномерное распределение, U($a,\,b$), $a < b$
+		      \[
+			      p(x) = \frac{1}{b - a}\cdot\mathbb{I}_{\{x \in [a,\,b]\}}(x);\; F(x) = \begin{cases}
+				      0,\, x < a                           \\
+				      \frac{x - a}{b - a},\, x \in [a,\,b] \\
+				      1,\, x > b
+			      \end{cases}
+		      \]
+		\item Нормальное (гауссовское) распределение, $\mathcal{N}(a,\,\sigma^2),\, a \in \mathbb{R},\, \sigma > 0$
+		      \[p(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x - a)^2}{2\sigma^2}};\; \Phi_{a,\,\sigma^2}(x) = \int_{-\infty}^x p(t)dt\]
+		\item Экспоненциальное (показательное) распределение, Exp($\alpha$), $\alpha > 0$.
+		      \[
+			      p(x) = \alpha e^{-\alpha x}\cdot\mathbb{I}\{x > 0\};\; F(x) = \begin{cases}
+				      0,\, x \leq 0 \\
+				      1 - e^{-\alpha x},\, x > 0
+			      \end{cases}
+		      \]
+		\item Гамма-распределение, $\Gamma(\alpha,\, \lambda),\, \alpha,\, \lambda > 0$
+		      \[
+			      p(x) = \frac{x^{\alpha - 1}\alpha^\lambda}{\Gamma(\lambda)}e^{-\lambda x}\mathbb{I}_{\{x > 0\}}(x);\; \Gamma(\lambda) = \int_0^{+\infty} x^{\lambda - 1}e^{-x}dx,\, \lambda > 0
+		      \]
+		\item Распределение Коши, $K(\sigma),\, \sigma > 0$
+		      \[p(x) = \frac{\sigma}{\pi(x^2 + \sigma^2)};\; F(x) = \frac{1}{2} + \frac{1}{\pi}\arctg\frac{x}{\sigma}\]
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+	Пусть $F$ -- функция распределения на $\mathbb{R}$.
+
+	Точка $x$ является точкой роста $F$, если
+	\[\forall \varepsilon > 0 :\: F(x + \varepsilon) - F(x - \varepsilon) > 0\]
+\end{definition}
+
+\begin{definition}
+	Функция распределения $F$ (и соответствующая ей мера $P$) называется сингулярной, если $F$ непрерывна и множество её точек роста имеет лебегову норму нуль.
+\end{definition}
+
+\begin{example}
+	Канторова лестница.
+
+	Мера $P$ сосредоточена на канторовом множестве, оно не счётное, но каждый элемент имеет ненулевую меру.
+\end{example}
+
+\begin{theorem}
+	Лебега о разложении. (б/д)
+
+	Пусть $F$ -- функция распределения на $\mathbb{R}$. Тогда $\exists$ разложение вида
+	\[F(x) = \alpha_1F_1(x) + \alpha_2F_2(x) + \alpha_3F_3(x),\, \alpha_i \geq 0,\, \alpha_1 + \alpha_2 + \alpha_3 = 1\]
+	причём $F_1$ -- дискретная функция распределения, $F_2$ -- абсолютно непрерывная, $F_3$ -- сингулярная.
+\end{theorem}

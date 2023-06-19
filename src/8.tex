@@ -1,0 +1,87 @@
+\section{Характеристики случайной величины и случайного вектора}
+\begin{definition}
+	Распределением случайной величины (вектора) $\xi$ называется вероятностная мера $P_\xi$ на $(\mathbb{R},\,\mathcal{B}(\mathbb{R}))$ ($(\mathbb{R}^n,\,\mathcal{B}(\mathbb{R}^n))$), определённая по правилу:
+	\[P_\xi(B) = P(\xi \in B),\, B \in \mathcal{B}(\mathbb{R}) \; (\mathbb{R}^n)\]
+\end{definition}
+
+\begin{definition}
+	Функцией распределения случайной величины $\xi$ называется
+	\[F_\xi(x) = P(\xi \leq x) = P_\xi((-\infty,\, x])\]
+\end{definition}
+
+\begin{note}
+	\[P(\xi_1 \leq x_1,\, \xi_2 \leq x_2) := P(\{\xi_1 \leq x_1\} \cap \{\xi_2 \leq x_2\})\]
+\end{note}
+
+\begin{definition}
+	Если $\xi = (\xi_1,\,\cdots,\,\xi_n)$ -- случайный вектор, то его функцией распределения называется
+	\[F_\xi(x_1,\,\cdots,\,x_n) = P_\xi((-\infty,\,x_1]\times\cdots\times (-\infty,\,x_n]) = P(\xi_1 \leq x_1,\, \cdots,\, \xi_n \leq x_n)\]
+\end{definition}
+
+\begin{definition}
+	Случайная величина является
+	\begin{itemize}
+		\item Дискретной, если таково её распределение
+		\item Абсолютно-непрерывной, если таково её распределение
+
+		      В этом случае $\xi$ имеет плотность $p_\xi(t) \geq 0$:
+		      \[F_\xi(x) = \int_{-\infty}^x p_\xi(t)dt\]
+		\item Сингулярной, если таково её распределение
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+	Случайная величина $\xi$ называется простой, если она принимает конечное число значений. В этом случае $\xi$ имеет вид:
+	\[\xi = \sum_{k = 1}^n x_k \mathbb{I}_{A_k}\]
+	где $x_1,\,\cdots,\,x_n$ -- различные числа, $A_1,\,\cdots,\,A_n$ -- разбиение $\Omega$.
+\end{definition}
+
+\begin{definition}
+	Пусть $\xi$ -- случайная величина (вектор) на $(\Omega,\, \mathcal{F},\,P)$. Сигма-алгеброй, порождённой $\xi$, называется
+	\[\mathcal{F}_\xi = \{\{\xi \in B\} :\: B \in \mathcal{B}(\mathbb{R})\} \: (\mathbb{R}^n)\]
+	Заметим, что $\mathcal{F}_\xi \subset \mathcal{F}$
+\end{definition}
+
+\begin{definition}
+	Случайная величина (вектор) $\eta$ является $\mathcal{F}_\xi$-измеримое, если $\mathcal{F}_\eta \subset \mathcal{F}_\xi$
+\end{definition}
+
+\begin{definition}
+	Если $\xi$ -- это случайная величина, то положим
+	\[\xi^+ := \max(\xi,\, 0);\;\;\; \xi^- := \max(-\xi,\, 0)\]
+	Тогда, $\xi = \xi^+ - \xi^-$
+\end{definition}
+
+\begin{definition}
+	Функция $\phi:\: \mathbb{R}^n \to \mathbb{R}^m$ называется борелевской, если
+	\[\forall B \in \mathcal{B}(\mathbb{R}^m) :\: \phi^{-1}(B) = \{x :\: \phi(x) \in B\} \in \mathcal{B}(\mathbb{R}^n)\]
+\end{definition}
+
+\begin{lemma} \label{BOREL_MEASURE}
+	$\eta$ является $\mathcal{F}_\xi$-измеримой $\Leftrightarrow \exists$ борелевская функция $\phi$, такая что $\eta = \phi(\xi)$.
+\end{lemma}
+
+\begin{proof}
+	$\Leftrightarrow$ Пусть $\eta = \phi(\xi)$ и $B \in \mathcal{B}(\mathbb{R})$. Тогда
+	\[\{\eta \in B\} = \{\xi \in \stackrel{\in \mathcal{B}(\mathbb{R})}{\phi^{-1}(B)}\} \in \mathcal{F}_\xi \Rightarrow \mathcal{F}_\eta \subset \mathcal{F}_\xi\]
+\end{proof}
+
+\begin{theorem}
+	О приближении простыми.
+
+	\begin{enumerate}
+		\item Пусть $\xi \geq 0$. Тогда $\exists$ последовательность $\mathcal{F}_\xi$-измеримых случайных величин $\{\xi_n,\, n \in \mathbb{N}\}$, такая что
+		      \[0 \leq \xi_n \uparrow \xi\]
+		\item Если $\xi$ -- произвольная случайная величина, то $\exists$ последовательность $\mathcal{F}_\xi$ измеримых простых случайных величин $\{\xi_n,\, n \in \mathbb{N}\}$, такая что
+		      \[\forall n \in \mathbb{N}:\: |\xi_n| \leq |\xi|,\, \lim_{n \to +\infty}\xi_n = \xi\]
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Предъявим $\xi_n$ в явном виде:
+		      \[\xi_n = \sum_{k = 1}^{n2^n}\frac{k - 1}{2^n}\mathbb{I}_{\{\frac{k - 1}{2^n} \leq \xi < \frac{k}{2^n}\}}\]
+		      Легко видеть, что $0 \leq \xi_n \leq \xi_{n + 1}$ и $\xi = \lim\limits_{n \to +\infty} \xi_n$. Кроме того, $\forall n:\: \xi_n$ -- борелевская функция от $\xi \Rightarrow \xi_n$ -- по (\ref{BOREL_MEASURE}) это $\mathcal{F}_\xi$-измеримая случайная величина.
+		\item Приближаем $\xi^+$ и $\xi^-$ по предыдущему пункту, затем берём разность
+	\end{enumerate}
+\end{proof}

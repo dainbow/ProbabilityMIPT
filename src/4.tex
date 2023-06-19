@@ -1,0 +1,75 @@
+\section{Функция распределения вероятностной меры}
+\begin{definition}
+	Функцией распределения вероятностной меры $P$ на $\mathbb{R}$ называется
+	\[F(x) = P((-\infty,\, x]),\, x \in \mathbb{R}\]
+\end{definition}
+
+\begin{lemma}
+	Свойства функции распределения.
+
+	\begin{enumerate}
+		\item $F(x)$ не убывает
+		\item $F(+\infty) = 1,\, F(-\infty) = 0$
+		\item $F(x)$ непрерывна справа
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Пусть $y > x$. Тогда
+		      \[(-\infty,\, x] \subset (-\infty,\, y] \Rightarrow F(x) = P((-\infty,\, x]) \leq P((-\infty,\, y]) = F(y)\]
+		\item Если $x_n \uparrow +\infty$, то $(-\infty,\, x_n] \uparrow \mathbb{R}$. Тогда в силу непрерывности меры
+		      \[F(x_n) = P((-\infty,\, x_n]) \stackrel{n \to +\infty}{\to} P(\mathbb{R}) = 1\]
+		      Если $x_n \downarrow -\infty$, то $(-\infty,\, x_n] \downarrow \emptyset$. Тогда в силу непрерывности меры
+		      \[F(x_n) = P((-\infty,\, x_n]) \stackrel{n \to +\infty}{\to} P(\emptyset) = 0\]
+		\item Если $x_n \downarrow x$, то $(-\infty,\, x_n] \downarrow (-\infty,\, x]$. Тогда в силу непрерывности меры
+		      \[F(x_n) = P((-\infty,\, x_n]) \stackrel{n \to +\infty}{\to} P((-\infty,\, x]) = F(x)\]
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Эквивалентное определение функции распределения.
+
+	Функция, удовлетворяющая свойствам $1-3$ из предыдущей леммы, называется функцией распределения на $P$.
+\end{definition}
+
+\begin{theorem} \label{MEASURE_EXTEND_TH}
+	О продолжении меры (б/д)
+
+	Пусть $\mathcal{A}$ -- алгебра подмножеств $\Omega$. Пусть $P_0 :\: \mathcal{A} \to [0,\,1]$ с условием, $P_0(\Omega) = 1$ и $P_0$ счётно-аддитивна на $\mathcal{A}$. Тогда $\exists!$ продолжение меры $P_0$ на $\sigma(A)$
+\end{theorem}
+
+\begin{theorem}
+	О взаимной однозначности функции распределения и вероятностной меры.
+
+	Пусть $F(x),\, x \in \mathbb{R}$ -- функция распределения на $\mathbb{R}$. Тогда $\exists!$ вероятностная мера $P$ на $(\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, для которой $F$ является функцией распределения, то есть
+	\[\forall x \in \mathbb{R} :\: F(x) = P((-\infty,\,x])\]
+\end{theorem}
+
+\begin{proof}
+	Рассмотрим на $\mathbb{R}$ алгебру $\mathcal{A}$, состоящую из конечных объединений непересекающихся интервалов:
+	\[\forall A \in \mathcal{A}:\: A = \bigsqcup_{k = 1}^n (a_k,\,b_k],\, -\infty \leq a_1 < b_1 < a_2 < b_2 < \cdots < b_n \leq +\infty\]
+	Зададим на $\mathcal{A}$ меру $P_0$:
+	\[\forall A \in \mathcal{A}:\: P_0(A) = \sum_{k = 1}^n (F(b_k) - F(a_k))\]
+	где $F(-\infty) = 0,\, F(+\infty) = 1$.
+
+	По построению $P_0(\mathbb{R}) = 1$ и $P_0$ будет конечно аддитивна на $\mathcal{A}$. Если мы проверим, что $P_0$ счётно аддитивна на $\mathcal{A}$, то по (\ref{MEASURE_EXTEND_TH}) $\exists!$ продолжение $P$ меры $P_0$ на $\sigma(A) = \mathcal{B}(\mathbb{R})$. Это и есть искомая мера $P$, причём
+	\[P((-\infty,\, x]) = P_0((-\infty,\, x]) = F(x)\]
+	По теореме о непрерывности вероятностной меры, достаточно проверить, что $P_0$ непрерывна в нуле.
+
+	Пусть $A_n \downarrow \emptyset,\, \forall n :\: A_n \in \mathcal{A}$. Хотим проверить, что $P(A_n) \stackrel{n \to +\infty}{\to} 0$. В силу $2-3$ свойств функции распределения:
+	\[\forall A \in \mathcal{A} \: \forall \varepsilon > 0 \: \exists B \in A :\: \cl B \subset A,\, P_0(A \setminus B) \leq \varepsilon\]
+	Если $(a,\,b]$ является частью $A$, то для некоторого $a' > a$ будет выполнено
+	\[P_0((a,\, a']) \leq \varepsilon\]
+	Зафиксировав $\forall \varepsilon > 0$, выберем $B_n \: \forall n \in \mathbb{N}:\: B_n \in A$, такой что $\cl B_n \subset A_n$ и $P_0(A_n \setminus B_n) \leq \frac{\varepsilon}{2^n}$.
+
+	Пусть сначала все $A_n$ лежат внутри $[-N,\,N]$. Заметим, что раз $\cap_n A_n = \emptyset$, то $\cap_n \cl B_n = \emptyset$. В силу компактости $\exists n_0$:
+	\[\bigcap_{n = 1}^{n_0} \cl B_n = \emptyset \Rightarrow \bigcap_{n = 1}^{n_0} B_n = \emptyset\]
+	Рассмотрим
+	\begin{align*}
+		P_0(A_{n_0}) = P_0\left(A_{n_0} \setminus \bigcup_{n = 1}^{n_0}B_n\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_{n_0}\setminus B_n)\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_n \setminus B_n)\right) \leq \\
+		\sum_{n = 1}^{n_0}P_0(A_n \setminus B_n) \leq \sum_{n = 1}^{n_0}\frac{\varepsilon}{2^n} \leq \varepsilon \Rightarrow P(A_n) \stackrel{n \to +\infty}{\to} 0
+	\end{align*}
+	Если $A$ бесконечно, то возьмём $N$, такой что $P_0(\mathbb{R} \setminus (-N,\, N]) \leq \frac{\varepsilon}{2}$. Рассмотрим $A_n' = A_n \cap (-N,\, N]$. Тогда по доказанному выше $P_0'(A_n') \stackrel{n \to +\infty}{\to} 0 \Rightarrow$ с некоторого $n_0$:
+	\[P_0(A_n) \leq P(A_n') + P_0(\mathbb{R}\setminus (-N,\, N]) \leq \varepsilon\]
+\end{proof}

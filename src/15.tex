@@ -1,0 +1,75 @@
+\section{Сходимости случайных величин}
+\begin{definition}
+	Последовательность случайных величин $\{\xi_n,\, n \in \mathbb{N}\}$ сходится к случайной величине $\xi$:
+	\begin{enumerate}
+		\item С вероятностью 1 (почти наверное), если
+		      \[P\left(\lim_{n \to +\infty}\xi_n = \xi\right) = 1\]
+		      Обозначение: $\xi_n \stackrel{\text{п.н.}}{\to} \xi$
+
+		\item По вероятности, если:
+		      \[\forall \varepsilon > 0 :\: P(|\xi_n - \xi| \geq \varepsilon) \stackrel{n \to +\infty}{\to} 0\]
+		      Обозначение: $\xi_n \stackrel{P}{\to} \xi$
+
+		\item В среднем порядка $p > 0$ (в $L^p$), если
+		      \[E|\xi_n - \xi|^p \stackrel{n \to +\infty}{\to} 0 \]
+		      Обозначение: $\xi_n \stackrel{L^p}{\to} \xi$
+
+		\item По распределению, если $\forall f:\: \mathbb{R} \to \mathbb{R}$ -- непрерывных ограниченных функций выполнено
+		      \[Ef(\xi_n) \stackrel{n \to +\infty}{\to} Ef(\xi)\]
+		      Обозначение: $\xi_n \stackrel{d}{\to} \xi$
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem}
+	Критерий сходимости с вероятностью 1.
+
+	Случайные величины $\xi_n \stackrel{\text{п.н.}}{\to} \xi \Leftrightarrow$
+	\[\forall \varepsilon > 0:\: P\left(\sup_{k \geq n} |\xi_k - \xi| > \varepsilon\right) \stackrel{n \to +\infty}{\to} 0\]
+\end{theorem}
+
+\begin{proof}
+	Рассмотрим
+	\[A_k^\varepsilon = \bigcup_{k \geq n}\{|\xi_k - \xi| > \varepsilon\} = \{\sup_{k \geq n} |\xi_k - \xi| > \varepsilon \}\]
+	Тогда
+	\[\{\xi_n \not\to \xi\} = \bigcup_{m = 1}^\infty \bigcap_{n = 1}^\infty A_n^{\frac{1}{m}}\]
+	Значит
+	\begin{align*}
+		P(\xi_n \not\to \xi) = 0 \Leftrightarrow P\left(\bigcup_{m = 1}^\infty \bigcap_{n = 1}^\infty A_n^{\frac{1}{m}}\right) = 0 \Leftrightarrow \forall m \in \mathbb{N} :\: P\left(\bigcap_{n = 1}^\infty A_n^{\frac{1}{m}}\right) = 0 \Leftrightarrow \\
+		\forall m \in \mathbb{N}:\: \lim_{n \to +\infty} P\left(A_n^{\frac{1}{m}}\right) = 0 \Leftrightarrow \forall \varepsilon > 0:\: \lim_{n \to +\infty}P(A_n^\varepsilon) = 0
+	\end{align*}
+\end{proof}
+
+\begin{theorem}
+	О взаимоотношении различных видов сходимостей.
+
+	\begin{enumerate}
+		\item $\xi_n \stackrel{\text{п.н.}}{\to} \xi \Rightarrow \xi_n \stackrel{P}{\to} \xi$
+		\item $\xi_n \stackrel{L^p}{\to} \xi \Rightarrow \xi_n \stackrel{P}{\to} \xi$
+		\item $\xi_n \stackrel{P}{\to} \xi \Rightarrow \xi_n \stackrel{d}{\to} \xi$
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $\forall \varepsilon > 0$ выполняется:
+		      \[P(|\xi_n - \xi| \geq \varepsilon) \leq P\left(|\xi_n - \xi| > \frac{\varepsilon}{2}\right) \leq P\left(\sup_{k \geq n}|\xi_k - \xi| > \frac{\varepsilon}{2}\right) \stackrel{n \to +\infty}{\to} 0\]
+		      в силу критерия сходимости с вероятностью $1$.
+
+		\item $\forall \varepsilon > 0$ выполняется:
+		      \[P(|\xi_n - \xi| \geq \varepsilon) = P(|\xi_n - \xi|^p \geq \varepsilon^p) \stackrel{\text{н-во Маркова}}{\leq} \frac{E|\xi_n - \xi|^p}{\varepsilon^p} \stackrel{n \to +\infty}{\to} 0\]
+
+		\item Пусть $f:\: \mathbb{R} \to \mathbb{R}$ -- произвольная ограниченная непрерывная функция. Возьмём $\varepsilon > 0$.  Пусть $|f(x)| \leq M,\, \forall x \in \mathbb{R}$. Пусть $N > 0$ таково, что $P(|\xi| > N) \leq \frac{\varepsilon}{2}$. В силу равномерной непрерывности $f$ на отрезках выберем $\delta > 0$, такое, что
+		      \[\forall x \in [-N,\, N] \: \forall y,\, |x - y| < \delta:\: |f(x) - f(y)| \leq \frac{\varepsilon}{4M}\]
+		      Рассмотрим разбиение $\Omega$:
+		      \[A_1 = \{|\xi_n - \xi| \leq \delta,\, |\xi| \leq N\};\;\;\; A_2 = \{|\xi_n - \xi| \leq \delta,\, |\xi| > N\};\;\;\; A_3 = \{|\xi_n - \xi| > \delta\}\]
+		      Значит можем оценить
+		      \[|Ef(\xi_n) - Ef(\xi)| \leq E|f(\xi_n) - f(\xi)| = \sum_{i = 1}^3 E(|f(\xi_n) - f(\xi)|\cdot\mathbb{I}_{A_i})\]
+		      На $A_1$ выполнено $|f(\xi_n) - f(\xi)| \leq \frac{\varepsilon}{2} \Rightarrow E|f(\xi_n) - f(\xi)|\mathbb{I}_A \leq \frac{\varepsilon}{2}$. На $A_2,\, A_3$ выполнено $|f(\xi_n) - f(\xi)| \leq 2M$. Тогда
+		      \[\sum_{i = 2}^3 E|f(\xi_n) - f(\xi)|\mathbb{I}_{A_i} \leq 2M(P(A_2) + P(A_3)) \leq 2M(P(|\xi| > N) + P(|\xi_n - \xi| > \delta)) \leq \varepsilon\]
+		      в силу сходимости по вероятности.
+
+		      В итоге получили, что
+		      \[\overline{\lim_{n \to +\infty}}|Ef(\xi_n) - Ef(\xi)| \leq \varepsilon\]
+		      В силу произвольности $\varepsilon > 0$ получаем, что $Ef(\xi_n) \stackrel{n \to +\infty}{\to} Ef(\xi)$
+	\end{enumerate}
+\end{proof}

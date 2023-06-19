@@ -1,0 +1,45 @@
+\section{Независимость событий и систем событий}
+\begin{definition}
+	События $A,\, B$ независимые, если
+	\[P(A \cap B) = P(A) \cdot P(B)\]
+\end{definition}
+
+\begin{definition}
+	События $A_1,\,\cdots,\,A_n$ называются независимыми в совокупности, если \[\forall k \leq n \: \forall 1 \leq i_1 < \cdots < i_k \leq n :\: P\left(\bigcap_{j = 1}^k A_{i_j}\right) = \prod_{j = 1}^k P(A_{i_k}) \]
+\end{definition}
+
+\begin{definition}
+	Пусть $\mathcal{M}_1,\,\cdots,\,\mathcal{M}_n$ -- системы событий на $(\Omega,\, \mathcal{F},\, P)$. Они называются независимыми в совокупности, если
+	\[\forall A_1 \in \mathcal{M}_1,\, \cdots,\, A_n \in \mathcal{M}_n:\: A_1,\,\cdots,\,A_n - \text{ независимы в совокупности}\]
+\end{definition}
+
+\begin{lemma} \label{INDEPENDENCE_CRIT}
+	Критерий независимости $\sigma$-алгебр.
+
+	Пусть $\mathcal{M}_1,\,\cdots,\,\mathcal{M}_n$ -- это $\pi$-системы событий на $(\Omega,\, \mathcal{F},\,P)$. Тогда $\mathcal{M}_1,\,\cdots,\,\mathcal{M}_n$ -- независимы в совокупности $\Leftrightarrow \sigma(\mathcal{M}_1),\,\cdots,\,\sigma(\mathcal{M}_n)$ -- независимы в совокупности.
+\end{lemma}
+
+\begin{proof}
+	$\Leftarrow$ очевидно.
+
+	Докажем только для $n = 2$, для $n > 2$ всё аналогично.
+
+	Рассмотрим $\mathcal{L}_1 = \{A \in \sigma(\mathcal{M}_2):\: A \independent \mathcal{M}_1\}$. Проверим, что $\mathcal{L}_1$ -- это $\lambda$-система:
+	\begin{enumerate}
+		\item $\forall B \in \mathcal{M}_1 :\: \Omega \independent B \Rightarrow \Omega \in \mathcal{L}_1$
+		\item Пусть $C \in \mathcal{M}_1$, тогда
+		      \begin{align*}
+			      P((B \setminus A) \cap C) = P((B \cap C) \setminus (A \cap C)) = P(B \cap C) - P(A \cap C) = \\
+			      P(C)(P(B) - P(A)) = P(B \setminus A)P(C) \Rightarrow B \setminus A \in \mathcal{L}_1
+		      \end{align*}
+		\item Пусть $A_n \uparrow A,\, A_n \in \mathcal{L}_1$. По определению $\sigma$-алгебры замечаем, что $A \in \sigma(\mathcal{M}_2)$. Пусть $C \in \mathcal{M}_1$. Рассмотрим
+		      \[P(A \cap C) = \lim_{n \to +\infty} P(A_n \cap C) = P(C)\lim_{n \to +\infty}P(A_n) = P(C)P(A) \Rightarrow A \in \mathcal{L}_1\]
+	\end{enumerate}
+	Раз $\mathcal{L}_1$ -- это $\lambda$-система и $\mathcal{M}_2 \subset \mathcal{L}_1$, по условию, то по (\ref{SECOND_SYSTEM_TH}) получим, что $\sigma(\mathcal{M}_2) \subset \mathcal{L}_1 \Rightarrow \sigma(\mathcal{M}_2) \independent \mathcal{M}_1$.
+
+	Рассмотрим $\mathcal{L}_2 = \{A \in \sigma(\mathcal{M}_1):\: A \independent \sigma(\mathcal{M}_2)\}$. Точно так же доказывается, что $\mathcal{L}_2$ -- это $\lambda$-система, $\mathcal{M}_1 \subset \mathcal{L}_2$ по доказанному $\Rightarrow \sigma(\mathcal{M}_1) \subset \mathcal{L}_2 \Rightarrow \sigma(M_1) \independent \sigma(M_2)$
+\end{proof}
+
+\begin{definition}
+	Пусть $\{M_\alpha,\, \alpha \in \mathfrak{A}\}$ -- набор систем событий. Он называется независимым в совокупности, если независим в совокупности $\forall$ конечный поднабор.
+\end{definition}

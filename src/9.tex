@@ -1,0 +1,65 @@
+\section{Независимости произвольного набора случайных величин}
+\begin{definition}
+	Случайные векторы $\{\xi_\alpha,\, \alpha \in \mathfrak{A}\}$ называются независимыми в совокупности, если независимы в совокупности порождённые ими $\sigma$-алгебры.
+\end{definition}
+
+\begin{corollary}
+	Случайные векторы $\xi_1,\,\cdots,\,\xi_n,\, \xi_i \in \mathbb{R}^{k_i},\, i = \overline{1,\,n}$ независимы в совокупности $\Leftrightarrow$
+	\[\forall B_1,\,\cdots,\,B_n \in \mathcal{B}(\mathbb{R}^{k_i}) :\: P(\xi_1 \in B_1,\,\cdots,\,\xi_n \in B_n) = \prod_{i = 1}^n P(\xi_i \in B_i)\]
+\end{corollary}
+
+\begin{lemma}
+	Критерий независимости в терминах функций распределения
+
+	Случайные величины $\xi_1,\,\cdots,\,\xi_n$ независимы в совокупности $\Leftrightarrow$
+	\[\forall x_1,\,\cdots,\,x_n \in \mathbb{R} :\: P(\xi_1 \leq x_1,\,\cdots,\,\xi_n \leq x_n) = \prod_{i = 1}^n P(\xi_i \leq x_i)\]
+	То есть функция распределения вектора распадается в произведение функций распределения компонент.
+\end{lemma}
+
+\begin{proof}
+	$\Rightarrow$ очевидно из следствия выше.
+
+	$\Leftarrow$ Проверим $\mathcal{M}_j = \{\{\xi_j \leq x\}:\: x \in \mathbb{R}\}$ -- подходящая $\pi$-система. Очевидно, что $\mathcal{M}_j$ -- это $\pi$-система и $\sigma(\mathcal{M}_j) \subset \mathcal{F}_{\xi_j}$.
+
+	Тогда $\forall A \in \mathcal{M}_j$ имеет вид
+	\[A = \{\xi_j \in B\},\, B \in \mathcal{B}(\mathbb{R})\]
+	Тогда введём
+	\[\mathcal{D} := \{B \in \mathcal{B}(\mathbb{R}) :\: \{\xi_j \in B\} \in \sigma(\mathcal{M}_j)\}\]
+	Тогда $\mathcal{D}$ -- это тоже $\sigma$-алгебра:
+	\begin{enumerate}
+		\item \[\{\xi_j \in \mathbb{R}\} = \Omega \in \sigma(\mathcal{M}_j) \Rightarrow \mathbb{R} \in \mathcal{D}\]
+		\item \[\{\xi_j \in B_1 \cap B_2\} = \{\xi_j \in B_1\} \cap \{\xi_j \in B_2\} \in \sigma(\mathcal{M}_j) \Rightarrow B_1 \cap B_2 \in \mathcal{D}\]
+		\item Аналогично
+		      \[B \in \mathcal{D} \Rightarrow \overline{B} \in \mathcal{D}\]
+		\item Аналогично
+		      \[B_i \in \mathcal{D},\, i \in \mathbb{N} \Rightarrow \bigcup_{i = 1}^\infty B_i \in \mathcal{D}\]
+	\end{enumerate}
+	По построению все полуинтервалы $(-\infty,\, x] \in \mathcal{D} \Rightarrow \mathcal{B}(\mathbb{R}) \subset \mathcal{D}$. Значит, $\sigma(M_j) = \mathcal{F}_{\xi_j}$. Тогда, применяя (\ref{INDEPENDENCE_CRIT}), получим требуемое.
+\end{proof}
+
+\begin{note}
+	То же самое верно и для случайных векторов.
+
+	$\xi_1,\,\cdots,\,\xi_n$ независимы в совокупности $\Leftrightarrow$
+	\[\forall \vec{x}_1,\,\cdots,\,\vec{x}_n :\: P(\xi_1 \leq \vec{x}_1,\,\cdots,\,\xi_n \leq \vec{x}_n) = \prod_{k = 1}^n P(\xi_1 \leq \vec{x}_1)\]
+\end{note}
+
+\begin{lemma}
+	О независимости борелевских функций от независимых случайных величин.
+
+	Пусть $\xi_1,\,\cdots,\,\xi_n$ -- независимые случайные векторы, $\xi_i \in \mathbb{R}^{k_i},\, k_i \in \mathbb{N},\, i = \overline{1,\,n}$. Пусть $f_i:\: \mathbb{R}^{k_i} \to \mathbb{R}^{m_i},\, i = \overline{1,\,n}$ -- борелевские функции. Положим $\eta_i = f_i(\xi_i)$. Тогда $\eta_1,\,\cdots,\,\eta_n$ -- независимые в совокупности.
+\end{lemma}
+
+\begin{proof}
+	$\eta_1,\,\cdots,\,\eta_n$ независимы в совокупности $\Leftrightarrow \mathcal{F}_{\eta_1},\,\cdots,\,\mathcal{F}_{\eta_n}$ независимы в совокупности.
+
+	Но $\mathcal{F}_{\eta_i} \subset \mathcal{F}_{\xi_i} \Rightarrow \mathcal{F}_{\eta_1},\,\cdots,\,\mathcal{F}_{\eta_n}$ независимы как подсистемы в независимых $\sigma$-алгебрах.
+\end{proof}
+
+\begin{corollary}
+	$[\xi_1,\,\cdots,\,\xi_{n_1}],\, [\xi_{n_1 + 1},\,\cdots,\,\xi_{n_1 + n_2}],\,\cdots,\, [\xi_{n_1 + \cdots + n_{k - 1} + 1},\,\cdots,\, \xi_{n_1 + \cdots + n_k}]$ -- независимые блоки случайных величин. Пусть $f_j :\: \mathbb{R}^{n_j} \to \mathbb{R},\, j = \overline{1,\,k}$ -- борелевские функции. Тогда $f_1(\xi_1,\,\cdots,\,\xi_{n_1}),\, f_2(\xi_{n_1 + 1},\,\cdots,\,\xi_{n_1 + n_2}),\,\cdots,\, f_k(\xi_{n_1 + \cdots + n_{k - 1} + 1},\,\cdots,\, \xi_{n_1 + \cdots + n_k})$ -- независимые в совокупности случайные величины.
+\end{corollary}
+
+\begin{proof}
+	Пускай $\eta_1 := (\xi_1,\,\cdots,\,\xi_{n_1}),\, \cdots,\, \eta_k := (\xi_{n_1 + \cdots + n_{k - 1} + 1},\,\cdots,\, \xi_{n_1 + \cdots + n_k})$. По предыдущей лемме $\eta_i,\, i = \overline{1,\,k}$ будут независимы в совокупности.
+\end{proof}
