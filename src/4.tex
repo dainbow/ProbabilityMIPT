@@ -61,7 +61,7 @@
 	\[\forall A \in \mathcal{A} \: \forall \varepsilon > 0 \: \exists B \in \mathcal{A} :\: \cl B \subset A,\, P_0(A \setminus B) \leq \varepsilon\]
 	Если $(a,\,b]$ является частью $A$, то для некоторого $a' > a$ будет выполнено
 	\[P_0((a,\, a']) \leq \varepsilon\]
-	Зафиксировав $\forall \varepsilon > 0$, выберем $B_n \: \forall n \in \mathbb{N}:\: B_n \in A$, такой что $\cl B_n \subset A_n$ и $P_0(A_n \setminus B_n) \leq \frac{\varepsilon}{2^n}$.
+	Зафиксировав $\forall \varepsilon > 0$, выберем $B_n \: \forall n \in \mathbb{N}:\: B_n \in \mathcal{A}$, такой что $\cl B_n \subset A_n$ и $P_0(A_n \setminus B_n) \leq \frac{\varepsilon}{2^n}$.
 
 	Пусть сначала все $A_n$ лежат внутри $[-N,\,N]$. Заметим, что раз $\cap_n A_n = \emptyset$, то $\cap_n \cl B_n = \emptyset$. В силу компактости $\exists n_0$:
 	\[\bigcap_{n = 1}^{n_0} \cl B_n = \emptyset \Rightarrow \bigcap_{n = 1}^{n_0} B_n = \emptyset\]
