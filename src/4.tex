@@ -58,7 +58,7 @@
 	По теореме о непрерывности вероятностной меры, достаточно проверить, что $P_0$ непрерывна в нуле.
 
 	Пусть $A_n \downarrow \emptyset,\, \forall n :\: A_n \in \mathcal{A}$. Хотим проверить, что $P(A_n) \stackrel{n \to +\infty}{\to} 0$. В силу $2-3$ свойств функции распределения:
-	\[\forall A \in \mathcal{A} \: \forall \varepsilon > 0 \: \exists B \in A :\: \cl B \subset A,\, P_0(A \setminus B) \leq \varepsilon\]
+	\[\forall A \in \mathcal{A} \: \forall \varepsilon > 0 \: \exists B \in \mathcal{A} :\: \cl B \subset A,\, P_0(A \setminus B) \leq \varepsilon\]
 	Если $(a,\,b]$ является частью $A$, то для некоторого $a' > a$ будет выполнено
 	\[P_0((a,\, a']) \leq \varepsilon\]
 	Зафиксировав $\forall \varepsilon > 0$, выберем $B_n \: \forall n \in \mathbb{N}:\: B_n \in A$, такой что $\cl B_n \subset A_n$ и $P_0(A_n \setminus B_n) \leq \frac{\varepsilon}{2^n}$.
