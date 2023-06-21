@@ -38,8 +38,9 @@
 
 \begin{definition}
 	Пусть $\xi$ -- случайная величина (вектор) на $(\Omega,\, \mathcal{F},\,P)$. Сигма-алгеброй, порождённой $\xi$, называется
-	\[\mathcal{F}_\xi = \{\{\xi \in B\} :\: B \in \mathcal{B}(\mathbb{R})\} \: (\mathbb{R}^n)\]
-	Заметим, что $\mathcal{F}_\xi \subset \mathcal{F}$
+	\[\mathcal{F}_\xi = \{\xi^{-1}(B) :\: B \in \mathcal{B}(\mathbb{R})\} \: (\mathbb{R}^n)\]
+	Это --- наименьшая сигма-алгебра на пространстве $\Omega$, относительно которой случайная величина $\xi$ всё ещё остаётся измеримой.
+	Заметим, что $\mathcal{F}_\xi \subset \mathcal{F}$.
 \end{definition}
 
 \begin{definition}
@@ -53,7 +54,7 @@
 \end{definition}
 
 \begin{definition}
-	Функция $\phi:\: \mathbb{R}^n \to \mathbb{R}^m$ называется борелевской, если
+	Функция $\phi:\: \mathbb{R}^n \to \mathbb{R}^m$ называется борелевской, если прообраз любого борелевского множества есть борелевское множество:
 	\[\forall B \in \mathcal{B}(\mathbb{R}^m) :\: \phi^{-1}(B) = \{x :\: \phi(x) \in B\} \in \mathcal{B}(\mathbb{R}^n)\]
 \end{definition}
 
