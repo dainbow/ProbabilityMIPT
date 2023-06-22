@@ -4,7 +4,7 @@
 	\[P(\mathbb{R} \setminus X) = 0,\, \forall x \in X:\: P(\{x\}) > 0\]
 	Говорят, что $P$ сосредоточена на $X$.
 
-	Пусть $X = (x_k,\, k \in \mathbb{N})$, обозначим $p_k = P(\{x_k\})$. Набор $(p_1,\,p_2,\,\cdots)$ образует распределение вероятностей на $X$.
+	Пусть $X = \{x_k,\, k \in \mathbb{N}\}$, обозначим $p_k = P(\{x_k\})$. Набор $(p_1,\,p_2,\,\cdots)$ образует распределение вероятностей на $X$.
 
 	Как выглядит функция распределения?
 	\[F(x) = \sum_{x_k \leq x}P(\{x_k\})\]
@@ -50,7 +50,7 @@
 		      \[p(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x - a)^2}{2\sigma^2}};\; \Phi_{a,\,\sigma^2}(x) = \int_{-\infty}^x p(t)dt\]
 		\item Экспоненциальное (показательное) распределение, Exp($\alpha$), $\alpha > 0$.
 		      \[
-			      p(x) = \alpha e^{-\alpha x}\cdot\mathbb{I}\{x > 0\};\; F(x) = \begin{cases}
+			      p(x) = \alpha e^{-\alpha x}\cdot\mathbb{I}_{\{x > 0\}}(x);\; F(x) = \begin{cases}
 				      0,\, x \leq 0 \\
 				      1 - e^{-\alpha x},\, x > 0
 			      \end{cases}

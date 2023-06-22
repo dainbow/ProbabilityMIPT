@@ -14,7 +14,7 @@
 	Посчитаем хар. функцию $T_n$:
 	\begin{align*}
 		\phi_{T_n}(t) = Ee^{itT_n} = Ee^{i\frac{t}{\sqrt{n}}(\eta_1 + \cdots + \eta_n)} \stackrel{\independent}{=} \prod_{k = 1}^n \phi_{\eta_k}\left(\frac{t}{\sqrt{n}}\right) = \left(\phi_{\eta_1}\left(\frac{t}{\sqrt{n}}\right)\right)^n \stackrel{\text{т. о производных}}{=} \\
-		\left(1 + i\frac{t}{\sqrt{n}} - \frac{t^2}{2n}E\eta_1^2 + \overline{o}\left(\frac{1}{n}\right)\right)^n = \left(1 - \frac{t^2}{2n} + \overline{o}\left(\frac{1}{n}\right)\right)^n \stackrel{n \to +\infty}{\to} e^{-\frac{t^2}{2}}
+		\left(1 + i\frac{t}{\sqrt{n}}E\eta_1 - \frac{t^2}{2n}E\eta_1^2 + \overline{o}\left(\frac{1}{n}\right)\right)^n = \left(1 - \frac{t^2}{2n} + \overline{o}\left(\frac{1}{n}\right)\right)^n \stackrel{n \to +\infty}{\to} e^{-\frac{t^2}{2}}
 	\end{align*}
 \end{proof}
 

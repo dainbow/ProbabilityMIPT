@@ -77,7 +77,7 @@
 			0,\, else
 		\end{cases}
 	\]
-	является условной плотностью $\xi$ относительно $\eta$ (по мере $\mu$). Здесть $f_\eta(y)$ -- плотность $\eta$ по мере $\lambda$.
+	является условной плотностью $\xi$ относительно $\eta$ (по мере $\mu$). Здесь $f_\eta(y)$ -- плотность $\eta$ по мере $\lambda$.
 \end{theorem}
 
 \begin{proof}
@@ -88,6 +88,6 @@
 	Проверим третье свойство:
 	\begin{align*}
 		P(\xi \in B,\, \eta \in A) = \iint_{B \times A} f_{\xi,\, \eta}(x,\, y)\mu(dx)\lambda(dy) \stackrel{\text{Фубини}}{=} \int_A\left(\int_B f_{\xi,\, \eta}(x,\,y)\mu(dx)\right)\lambda(dy) = \\
-		\int_A\left(\int_B f_{\xi | \eta}(x | y)\mu(dx)\right)\lambda(dy) = \int_A Q(B,\,y)P_\eta(dy)
+		\int_A\left(\int_B f_{\xi | \eta}(x | y)\mu(dx)\right)f_\eta(y)\lambda(dy) = \int_A Q(B,\,y)P_\eta(dy)
 	\end{align*}
 \end{proof}

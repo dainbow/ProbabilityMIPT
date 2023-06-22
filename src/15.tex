@@ -64,7 +64,7 @@
 		      \[A_1 = \{|\xi_n - \xi| \leq \delta,\, |\xi| \leq N\};\;\;\; A_2 = \{|\xi_n - \xi| \leq \delta,\, |\xi| > N\};\;\;\; A_3 = \{|\xi_n - \xi| > \delta\}\]
 		      Значит можем оценить
 		      \[|Ef(\xi_n) - Ef(\xi)| \leq E|f(\xi_n) - f(\xi)| = \sum_{i = 1}^3 E(|f(\xi_n) - f(\xi)|\cdot\mathbb{I}_{A_i})\]
-		      На $A_1$ выполнено $|f(\xi_n) - f(\xi)| \leq \frac{\varepsilon}{2} \Rightarrow E|f(\xi_n) - f(\xi)|\mathbb{I}_A \leq \frac{\varepsilon}{2}$. На $A_2,\, A_3$ выполнено $|f(\xi_n) - f(\xi)| \leq 2M$. Тогда
+		      На $A_1$ выполнено $|f(\xi_n) - f(\xi)| \leq \frac{\varepsilon}{2} \Rightarrow E|f(\xi_n) - f(\xi)|\mathbb{I}_{A_1} \leq \frac{\varepsilon}{2}$. На $A_2,\, A_3$ выполнено $|f(\xi_n) - f(\xi)| \leq 2M$. Тогда
 		      \[\sum_{i = 2}^3 E|f(\xi_n) - f(\xi)|\mathbb{I}_{A_i} \leq 2M(P(A_2) + P(A_3)) \leq 2M(P(|\xi| > N) + P(|\xi_n - \xi| > \delta)) \leq \varepsilon\]
 		      в силу сходимости по вероятности.
 
