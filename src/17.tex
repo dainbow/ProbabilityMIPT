@@ -33,7 +33,7 @@
 		ES_n^2 \geq E(S_n^2 \cdot\mathbb{I}_A) = \sum_{k = 1}^n E(S_n^2\mathbb{I}_{A_k}) = \sum_{k = 1}^n E((S_k + \xi_{k + 1} + \cdots + \xi_n)^2\mathbb{I}_{A_k}) = \\
 		\sum_{k = 1}^n \left[ES_k^2\cdot\mathbb{I}_{A_k} + E\left((\xi_{k + 1} + \cdots + \xi_n)^2\cdot\mathbb{I}_{A_k}\right) + 2E(S_k\cdot\mathbb{I}_{A_k}(\xi_{k + 1} + \cdots + \xi_n)) \right]
 	\end{align*}
-	Причём последнее слагаемое будет равно нулю, так как $(S_k\mathbb{I}_{A_k}) \independent (\xi_{k + 1} + \cdots + \xi_n)$, как функции от неперескающихся наборов независимых случайных величин, и $E(\xi_{k + 1} + \cdots + \xi_n) = 0$. Но $S_k^2\mathbb{I}_{A_k} \geq \varepsilon^2\mathbb{I}_{A_k}$. Тогда получим
+	Причём последнее слагаемое будет равно нулю, так как $(S_k\mathbb{I}_{A_k}) \independent (\xi_{k + 1} + \cdots + \xi_n)$, как функции от неперескающихся наборов независимых случайных величин, и $E(\xi_{k + 1} + \cdots + \xi_n) = 0$. Второе же слагаемое просто оценим снизу нулём. Но $S_k^2\mathbb{I}_{A_k} \geq \varepsilon^2\mathbb{I}_{A_k}$. Тогда получим
 	\[ES_n^2 \geq \sum_{k = 1}^n\varepsilon^2E\mathbb{I}_{A_k} = \varepsilon^2 \sum_{k = 1}^n P(A_k) = \varepsilon^2 P(A)\]
 \end{proof}
 
