@@ -67,7 +67,7 @@
 	\[\bigcap_{n = 1}^{n_0} \cl B_n = \emptyset \Rightarrow \bigcap_{n = 1}^{n_0} B_n = \emptyset\]
 	Рассмотрим
 	\begin{align*}
-		P_0(A_{n_0}) = P_0\left(A_{n_0} \setminus \bigcup_{n = 1}^{n_0}B_n\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_{n_0}\setminus B_n)\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_n \setminus B_n)\right) \leq \\
+		P_0(A_{n_0}) = P_0\left(A_{n_0} \setminus \bigcap_{n = 1}^{n_0}B_n\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_{n_0}\setminus B_n)\right) \leq P_0\left(\bigcup_{n = 1}^{n_0}(A_n \setminus B_n)\right) \leq \\
 		\sum_{n = 1}^{n_0}P_0(A_n \setminus B_n) \leq \sum_{n = 1}^{n_0}\frac{\varepsilon}{2^n} \leq \varepsilon \Rightarrow P(A_n) \stackrel{n \to +\infty}{\to} 0
 	\end{align*}
 	Если $A$ бесконечно, то возьмём $N$, такой что $P_0(\mathbb{R} \setminus (-N,\, N]) \leq \frac{\varepsilon}{2}$. Рассмотрим $A_n' = A_n \cap (-N,\, N]$. Тогда по доказанному выше $P_0'(A_n') \stackrel{n \to +\infty}{\to} 0 \Rightarrow$ с некоторого $n_0$:

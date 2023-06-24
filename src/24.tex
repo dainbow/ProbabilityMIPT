@@ -7,7 +7,7 @@
 \begin{proof}
 	Пусть $P_n \stackrel{W}{\not\to} Q$. Тогда $\exists f:\: \mathbb{R}^m \to \mathbb{R}$ -- ограниченная непрерывная функция, $\exists \varepsilon > 0$ и подпоследовательность $\{P_{n'}\} \subset \{P_n\}$, такая, что
 	\[\forall n' :\: \left|\int_{\mathbb{R}^m}f(x)P_{n'}(dx) - \int_{\mathbb{R}^m}f(x)Q(dx)\right| \geq \varepsilon\]
-	Но $\{P_{n'}\}$ -- тоже плотная $\Rightarrow$ в ней есть слабо сходящаяся последовательность $\{P_{n''}\} \subset \{P_{n'}\}$. Но по условию $P_{n''} \stackrel{W}{\to} Q$. $\bot$
+	Но $\{P_{n'}\}$ -- тоже плотная $\Rightarrow$ в ней есть слабо сходящаяся последовательность $\{P_{n''}\} \subset \{P_{n'}\}$. Но по условию $P_{n''} \stackrel{W}{\not\to} Q$. $\bot$
 \end{proof}
 
 \begin{lemma}
@@ -33,7 +33,7 @@
 	\begin{align*}
 		\frac{1}{a}\int_0^a (1 - \Re\phi(t))dt = \frac{1}{a}\int_0^a \left(\int_\mathbb{R} (1 - \cos(tx))P(dx)\right)dt \stackrel{\text{Фубини}}{=} \\
 		\frac{1}{a}\int_\mathbb{R}\left(\int_0^a (1 - \cos(tx))dt\right)P(dx) = \int_\mathbb{R}\left(1 - \frac{\sin(ax)}{ax}\right)P(dx) \geq       \\
-		\int_{\mathbb{R} \setminus [-\frac{1}{a},\,\frac{1}{a}]}\left(1 - \frac{\sin(ax)}{ax}\right)P(dx) \leq \inf_{|y| \geq 1}\left(1 - \frac{\sin y}{y}\right)P\left(\mathbb{R} \setminus \left[-\frac{1}{a},\,\frac{1}{a}\right]\right) \geq \frac{1}{7}P\left(\mathbb{R} \setminus\left[-\frac{1}{a},\,\frac{1}{a}\right]\right)
+		\int_{\mathbb{R} \setminus [-\frac{1}{a},\,\frac{1}{a}]}\left(1 - \frac{\sin(ax)}{ax}\right)P(dx) \geq \inf_{|y| \geq 1}\left(1 - \frac{\sin y}{y}\right)P\left(\mathbb{R} \setminus \left[-\frac{1}{a},\,\frac{1}{a}\right]\right) \geq \frac{1}{7}P\left(\mathbb{R} \setminus\left[-\frac{1}{a},\,\frac{1}{a}\right]\right)
 	\end{align*}
 \end{proof}
 
