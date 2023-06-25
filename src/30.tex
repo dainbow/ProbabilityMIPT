@@ -11,7 +11,7 @@
 		      Правая часть -- $\mathcal{C}$-измеримая случайная величина. Проверим интегральное свойство: $A \in \mathcal{C}$
 		      \begin{align*}
 			      E((a\xi + b\eta)\mathbb{I}_A) = aE(\xi\mathbb{I}_A) + bE(\eta\mathbb{I}_A) = \\
-			      aE(E(\xi | \mathcal{C})\mathbb{I}_A) + bE(E(\xi|\mathcal{C})\mathbb{I}_A) = E((aE(\xi|\mathcal{C}) + bE(\eta|\mathcal{C}))\mathbb{I}_A)
+			      aE(E(\xi | \mathcal{C})\mathbb{I}_A) + bE(E(\eta|\mathcal{C})\mathbb{I}_A) = E((aE(\xi|\mathcal{C}) + bE(\eta|\mathcal{C}))\mathbb{I}_A)
 		      \end{align*}
 	      \end{proof}
 	\item Формула полной вероятности.
@@ -22,7 +22,7 @@
 		      Возьмём $A = \Omega$, получим
 		      \[E(E(\xi | \mathcal{C})) = E\xi\]
 	      \end{proof}
-	\item Если $\xi$ независима $\mathcal{C}$ ($\mathcal{F}_\xi \independent \mathcal{C}$), то $E(\xi | \mathcal{C}) = E\xi$
+	\item Если $\xi$ независима с $\mathcal{C}$ ($\mathcal{F}_\xi \independent \mathcal{C}$), то $E(\xi | \mathcal{C}) = E\xi$
 	      \begin{proof}
 		      $E\xi$ является $\mathcal{C}$-измеримой случайной величиной. Проверяем интегральное свойство $\forall A \in \mathcal{C}$:
 		      \[E(\xi\cdot\mathbb{I}_A) = E\xi E\mathbb{I}_A = E(E\xi \cdot \mathbb{I}_A)\]
@@ -49,7 +49,7 @@
 	      \end{enumerate}
 	      \begin{proof}
 		      \begin{enumerate}
-			      \item Следует из первого свойства, так как $E(\xi | \mathcal{C_1})$ является $\mathcal{C}_2$-измеримой.
+			      \item Следует из первого свойства, так как $E(\xi | \mathcal{C}_1)$ является $\mathcal{C}_2$-измеримой.
 			      \item $E(\xi | \mathcal{C}_1)$ является $\mathcal{C}_1$-измеримой.
 
 			            Проверим интегральное свойство $\forall A \in \mathcal{C}_1$:

@@ -63,12 +63,12 @@
   Рассмотрим случайный вектор $\eta = (\eta_1,\,\cdots,\,\eta_n)$ с функцией распределения $G$. Тогда $\eta_j$ имеет функцию распределения $F_j$ и $\eta_1,\,\cdots,\,\eta_n$ -- независимые случайные величины.
   \[\phi_\eta(t) = \prod_{k = 1}^n \phi_{\eta_k}(t_k) \stackrel{\eta_k \stackrel{d}{=} \xi_k}{=} \prod_{k = 1}^n \phi_{\xi_k}(t_k) \stackrel{\text{по условию}}{=} \phi_\xi(t)\]
   По теореме о единственности функций распределения $\xi,\, \eta$ совпадают $\Rightarrow$
-  \[F_\xi(x_1,\,\cdots,\,x_n) = \prod_{k = 1}^n F_k(x_k)\]
+  \[F_\xi(x_1,\,\cdots,\,x_n) = \prod_{k = 1}^n F_{\xi_k}(x_k)\]
   Значит $\xi_1,\,\cdots,\,\xi_n$ -- независимы в совокупности. 
 \end{proof}
 
 \begin{definition}
-  Функция $f(t),\, t \in \mathbb{R},\, f(t) \in \mathbb{C}$ называется неорицательно определённой, если
+  Функция $f(t),\, t \in \mathbb{R},\, f(t) \in \mathbb{C}$ называется неотрицательно определённой, если
   \[\forall n \in \mathbb{N} \: \forall t_1,\,\cdots,\,t_n \in \mathbb{R} \: \forall z_1,\,\cdots,\,z_n \in \mathbb{C} :\: \sum_{i,\,j = 1}^n f(t_i - t_j)z_i\overline{z_j} \geq 0\]
 \end{definition}
 

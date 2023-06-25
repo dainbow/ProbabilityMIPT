@@ -35,7 +35,7 @@
 	По лемме о свёртке:
 	\begin{align*}
 		F_{\xi + \eta}(z) = \int_\mathbb{R}F_\xi(z - x)dF_\eta(x) = \int_\mathbb{R}\left(\int_{-\infty}^{z - x}p_\xi(y)dy\right)p_\eta(x)dx \stackrel{y' := y + x}{=}                   \\
-		\int_\mathbb{R} \left(\int_{-\infty}^z p_\xi(y' - x)dy'\right)p\eta(x)dx \stackrel{\text{Фубини}}{=} \int_{-\infty}^z \left(\int_\mathbb{R}p_\xi(y' - x)p_\eta(x)dx\right)dy' = \\
+		\int_\mathbb{R} \left(\int_{-\infty}^z p_\xi(y' - x)dy'\right)p_\eta(x)dx \stackrel{\text{Фубини}}{=} \int_{-\infty}^z \left(\int_\mathbb{R}p_\xi(y' - x)p_\eta(x)dx\right)dy' = \\
 		\int_{-\infty}^z p_{\xi + \eta}(y')dy'
 	\end{align*}
 \end{proof}

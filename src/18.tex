@@ -2,8 +2,8 @@
 \begin{lemma}
 	Тёплица (б/д)
 
-	Пусть $\{a_n,\, n \in \mathbb{N}\}$ -- положительные числа, $X_n \to X,\, b_n = \sum_{j = 1}^n a_j  \uparrow +\infty$. Тогда
-	\[\frac{1}{b_n}\sum_{j = 1}^n a_jx_j \stackrel{n \to +\infty}{\to} X\]
+	Пусть $\{a_n,\, n \in \mathbb{N}\}$ -- положительные числа, $x_n \to x,\, b_n = \sum_{j = 1}^n a_j  \uparrow +\infty$. Тогда
+	\[\frac{1}{b_n}\sum_{j = 1}^n a_jx_j \stackrel{n \to +\infty}{\to} x\]
 \end{lemma}
 
 \begin{lemma}
@@ -57,8 +57,8 @@
 \begin{proof}
 	Без ограничения общности считаем, что $E\xi_1 = 0$. Иначе перейдём к случайным величинам $\xi_n - E\xi_1$. Тогда
 	\[E|\xi_1| < +\infty \Rightarrow \sum_n P(|\xi_1| \geq n) < +\infty \stackrel{\text{один.распр.}}{\Leftrightarrow} \sum_n P(|\xi_n| \geq n) < +\infty\]
-	По лемме Бареля-Кантелли $P((A:= \{|\xi_m| \geq n\}) \text{ б.ч.}) = 0$, то есть с вероятностью 1 выполняется:
-	\[\xi_n = \overline{\xi}_n = \xi_n\mathbb{I}\{|\xi_n| < n\}\]
+	По лемме Бореля-Кантелли $P((A:= \{|\xi_n| \geq n\}) \text{ б.ч.}) = 0$, то есть с вероятностью 1 выполняется:
+	\[\xi_n \stackrel{\text{п.н.}}{=} \overline{\xi}_n := \xi_n\mathbb{I}\{|\xi_n| < n\}\]
 	начиная с некоторого номера $n_0 = n_0(\omega)$.
 
 	Тем самым $\forall \omega \not\in A$:
@@ -67,13 +67,13 @@
 
 	Рассмотрим $E\overline{\xi}_n$:
 	\[E\overline{\xi}_n = E\xi_n\mathbb{I}\{|\xi_n| < n\} \stackrel{\text{один.распр.}}{=} E\xi_1\mathbb{I}\{|\xi_1| < n\} \stackrel{\text{т. Лебега}}{\to} E\xi_1 = 0\]
-	По лемме Тёплица $\frac{E\overline{\xi}_1 + \cdots + E\overline{\xi}_n}{n} \to 0$. Тогда
+	По лемме Тёплица ($x_n = E\overline{\xi}_n,\, a_n = 1$) $\frac{E\overline{\xi}_1 + \cdots + E\overline{\xi}_n}{n} \to 0$. Тогда
 	\[\frac{\overline{\xi}_1(\omega) + \cdots + \overline{\xi}_n(\omega)}{n} \to 0 \Leftrightarrow \frac{\overline{\xi}_1(\omega) - E\overline{\xi}_1 + \cdots + \overline{\xi}_n(\omega) - E\overline{\xi}_n}{n} \to 0\]
-	Остаётся проверить, что ряд $\sum_n \frac{\overline{\xi}_n - E\overline{\xi}_n}{n}$ сходится почти наверное. Почему? Мы применим лемму Кронекера, взяв $x_n = \frac{\overline{\xi}_n}{n},\, b_n = n$.
+	Остаётся проверить, что ряд $\sum_n \frac{\overline{\xi}_n - E\overline{\xi}_n}{n}$ сходится почти наверное. Почему? Мы применим лемму Кронекера, взяв $x_n = \frac{\tilde{\xi}_n}{n},\, b_n = n$, где $\tilde{\xi}_n := \overline{\xi}_n - E\overline{\xi}_n$.
 
-	А для этого достаточно проверить, что $\sum_{k = 1}^\infty D\left(\frac{\overline{\xi}_k}{k}\right) < +\infty$. Рассмотрим
+	А для этого достаточно проверить, что $\sum_{k = 1}^\infty D\left(\frac{\tilde{\xi}_k}{k}\right) < +\infty$. Рассмотрим
 	\begin{align*}
-		\sum_{k = 1}^\infty D\left(\frac{\overline{\xi}_k}{k}\right) = \sum_{k = 1}^\infty \frac{D\overline{\xi}_k}{k^2} \leq \sum_{k = 1}^\infty \frac{E\overline{\xi}_k^2}{k^2} = \sum_{k = 1}^\infty \frac{E\xi_k^2\mathbb{I}\{|\xi_k| < k\}}{k^2} \stackrel{\text{один.распр.}}{=} \\
+		\sum_{k = 1}^\infty D\left(\frac{\tilde{\xi}_k}{k}\right) = \sum_{k = 1}^\infty \frac{D\tilde{\xi}_k}{k^2} \leq \sum_{k = 1}^\infty \frac{E\tilde{\xi}_k^2}{k^2} = \sum_{k = 1}^\infty \frac{E\xi_k^2\mathbb{I}\{|\xi_k| < k\}}{k^2} \stackrel{\text{один.распр.}}{=} \\
 		\sum_{k = 1}^\infty \frac{E\xi_1^2\mathbb{I}\{|\xi_1| < k\}}{k^2} = \sum_{k = 1}^\infty \frac{1}{k^2}\sum_{i = 1}^k E\left(\xi_1^2\mathbb{I}\{i - 1 \leq |\xi_1| < i\}\right) =                                                                                                \\
 		\sum_{i = 1}^\infty E\left(\xi_1^2\mathbb{I}\{i - 1 \leq |\xi_1| < i\}\right) \sum_{k = i}^\infty \frac{1}{k^2} \leq 2\sum_{i = 1}^\infty E\left(\frac{\xi_1^2}{i}\mathbb{I}\{i - 1 \leq |\xi_1| < i\}\right) \leq                                                             \\
 		2 \sum_{i = 1}^\infty E(|\xi_1|\mathbb{I}\{i - 1 \leq \xi_1 < i\}) \stackrel{\text{т. о мон-й сх-ти}}{=} 2E|\xi_1| < +\infty
