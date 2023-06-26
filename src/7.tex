@@ -1,24 +1,24 @@
 \section{Случайные элементы, случайные величины и векторы на вероятностном пространстве}
-Пусть $(\Omega,\, \mathcal{F},\, P)$ -- вероятностное пространство, а $(E,\, \xi)$ -- измеримое пространство.
+Пусть $(\Omega,\, \mathcal{F},\, P)$ -- вероятностное пространство, а $(E,\, \mathcal{E})$ -- измеримое пространство.
 
 \begin{definition}
 	Отображение $X:\: \Omega \to E$ называтся случайным элементом, если оно измеримо, то есть
-	\[\forall B \in \xi:\: X^{-1}(B) = \{\omega :\: X(\omega) \in B\} \in \mathcal{F}\]
+	\[\forall B \in \mathcal{E}:\: X^{-1}(B) = \{\omega :\: X(\omega) \in B\} \in \mathcal{F}\]
 \end{definition}
 
 \begin{definition}
-	Если $(E,\, \xi) = (\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, то случайный элемент называется случайной величиной.
+	Если $(E,\, \mathcal{E}) = (\mathbb{R},\, \mathcal{B}(\mathbb{R}))$, то случайный элемент называется случайной величиной.
 \end{definition}
 
 \begin{definition}
-	Если $(E,\,\xi) = (\mathbb{R}^n,\, \mathcal{B}(\mathbb{R}^n))$, то случайный элемент называется случайным вектором.
+	Если $(E,\, \mathcal{E}) = (\mathbb{R}^n,\, \mathcal{B}(\mathbb{R}^n))$, то случайный элемент называется случайным вектором.
 \end{definition}
 
 \begin{lemma}
 	Критерий измеримости отображения.
 
 	Пусть $\mathcal{M} \subset \mathcal{E}$, так чтобы $\sigma(\mathcal{M}) = \mathcal{E}$.
-	Тогда $X:\: \Omega \to \mathcal{E}$ является случайным элементом $\Leftrightarrow$
+	Тогда $X:\: \Omega \to E$ является случайным элементом $\Leftrightarrow$
 	\[\forall B \in \mathcal{M}:\: X^{-1}(B) \in \mathcal{F}\]
 \end{lemma}
 
