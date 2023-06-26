@@ -9,7 +9,7 @@
 \begin{proof}
 	Докажем только для суммы. Для произведения можно навесить логарифм на обе части и свести к сумме.
 
-	Пусть $x$ -- точка непрерывности $F_{\xi + C} \Rightarrow x$ -- точка непрерывности $F_\xi$:
+	Пусть $x$ -- точка непрерывности $F_{\xi + C} \Rightarrow x - C$ -- точка непрерывности $F_\xi$:
 	\begin{align*}
 		F_{\xi_n + \eta_n}(x) = P(\xi_n + \eta_n \leq x) = P(\xi_n + \eta_n \leq x,\, C - \eta_n \geq \varepsilon) + P(\xi_n + \eta_n \leq x,\, C - \eta_n < \varepsilon) \leq \\
 		P(|\eta_n - C| \geq \varepsilon) + P(\xi_n + C \leq x + \varepsilon)
